@@ -1,0 +1,95 @@
+aid: docuseal
+name: DocuSeal
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/apis.yml
+created: 2026-06-12
+modified: 2026-06-12
+specificationVersion: "0.19"
+description: >
+  DocuSeal is an open-source document signing platform that provides a REST API
+  for building electronic signature workflows into applications. The API supports
+  creating and managing templates, sending signature requests via submissions, and
+  tracking signing status through submitter endpoints. DocuSeal supports embedding
+  signing forms directly into web applications using JavaScript SDKs for React,
+  Vue, and Angular. Webhooks deliver real-time events when documents are viewed,
+  started, or completed by signers. The platform is available as a cloud-hosted
+  service with US and EU data residency options, or as a self-hosted on-premises
+  deployment under an AGPL-3.0 open-source license.
+tags:
+  - Document Signing
+  - eSignature
+  - Electronic Signature
+  - Document Management
+  - PDF
+  - Templates
+  - Open Source
+  - Webhooks
+  - Embedding
+
+apis:
+  - aid: docuseal:docuseal-api
+    name: DocuSeal REST API
+    type: REST
+    description: >
+      REST API for creating document signing workflows, managing templates,
+      sending signature requests, tracking submission status, and receiving
+      webhook events for document lifecycle management.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.docuseal.com/docs/api
+    baseURL: https://api.docuseal.com
+    tags:
+      - Document Signing
+      - eSignature
+      - Templates
+      - Submissions
+      - Webhooks
+    properties:
+      - type: Documentation
+        url: https://www.docuseal.com/docs/api
+      - type: OpenAPI
+        url: https://www.docuseal.com/docs/api
+
+common:
+  - type: Website
+    url: https://www.docuseal.com/
+  - type: Documentation
+    url: https://www.docuseal.com/docs
+  - type: GettingStarted
+    url: https://www.docuseal.com/resources/quick-start
+  - type: Guides
+    url: https://www.docuseal.com/guides
+  - type: APIReference
+    url: https://www.docuseal.com/docs/api
+  - type: Developers
+    url: https://www.docuseal.com/developers
+  - type: GitHubOrganization
+    url: https://github.com/docusealco
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/docuseal
+  - type: Blog
+    url: https://www.docuseal.com/blog
+  - type: Changelog
+    url: https://www.docuseal.com/changelog
+  - type: Pricing
+    url: https://www.docuseal.com/pricing
+  - type: StatusPage
+    url: https://status.docuseal.net/
+  - type: Webhooks
+    url: https://www.docuseal.com/resources/use-webhooks
+  - type: OnPremises
+    url: https://www.docuseal.com/on-premises
+  - type: SigningAPI
+    url: https://www.docuseal.com/signing-api
+  - type: PostmanCollection
+    url: https://www.postman.com/docuseal/docuseal/documentation/baauu23/docuseal-api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/plans/docuseal-plans-pricing.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/rate-limits/docuseal-rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/finops/docuseal-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

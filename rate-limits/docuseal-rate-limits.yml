@@ -1,0 +1,68 @@
+spec: API Commons Rate Limits 0.1
+provider: DocuSeal
+providerId: docuseal
+created: 2026-06-12
+modified: 2026-06-12
+url: https://www.docuseal.com/docs/api
+
+notes: >
+  DocuSeal does not publicly document specific API rate limits in their REST API
+  reference. The platform applies rate limiting via an internal RateLimit module
+  for sensitive operations. Pagination is cursor-based using after/before
+  parameters with a default page size of 10 items and a maximum of 100 items
+  per request. For production rate limit specifics, contact support@docuseal.com
+  or consult the self-hosted source code in lib/rate_limit.rb.
+
+pagination:
+  style: cursor
+  defaultLimit: 10
+  maxLimit: 100
+  parameters:
+    - name: after
+      description: Cursor ID to retrieve results after (next page)
+      type: string
+    - name: before
+      description: Cursor ID to retrieve results before (previous page)
+      type: string
+
+rateLimits:
+  - name: API Requests
+    scope: account
+    limit: null
+    period: null
+    documented: false
+    notes: >
+      Not publicly documented. Rate limiting is enforced server-side for
+      sensitive operations. Contact DocuSeal support for specifics.
+  - name: Sensitive Operations
+    scope: endpoint
+    limit: null
+    period: null
+    documented: false
+    notes: >
+      Internal RateLimit module applied to authentication and sensitive endpoints.
+      Exact thresholds are not publicly disclosed.
+
+throttling:
+  statusCode: 429
+  retryAfterHeader: Retry-After
+  behavior: >
+    When rate limits are exceeded, the API returns HTTP 429 Too Many Requests.
+    Clients should inspect the Retry-After header and back off accordingly.
+
+authentication:
+  method: apiKey
+  header: X-Auth-Token
+  notes: >
+    API keys are obtained from the DocuSeal dashboard. Each key is scoped
+    to a single account. Separate API keys are available for sandbox and
+    production environments.
+
+endpoints:
+  baseURLs:
+    - region: US
+      url: https://api.docuseal.com
+    - region: EU
+      url: https://api.docuseal.eu
+    - region: Self-Hosted
+      url: https://your-domain/api

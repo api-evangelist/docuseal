@@ -1,0 +1,138 @@
+spec: FinOps Framework 1.0
+provider: DocuSeal
+providerId: docuseal
+created: 2026-06-12
+modified: 2026-06-12
+url: https://www.docuseal.com/pricing
+
+billingModel:
+  type: hybrid
+  description: >
+    DocuSeal uses a hybrid billing model combining per-seat subscription pricing
+    with consumption-based metering for API and embedding usage. The Pro plan
+    requires a minimum of one seat at $20/user/month, then charges $0.20 per
+    completed document submission through the API or embedding. Additional
+    identity verification and compliance services are billed per-event.
+  currency: USD
+
+focusColumns:
+  - name: ServiceName
+    value: DocuSeal
+  - name: ServiceCategory
+    value: Document Signing / eSignature
+  - name: ChargeType
+    values:
+      - Usage
+      - Recurring
+  - name: BillingPeriod
+    value: Monthly
+
+meters:
+  - name: User Seats
+    metric: user_seats
+    unit: seat
+    billingType: recurring
+    price: 20.00
+    currency: USD
+    period: month
+    description: >
+      Per-user monthly subscription fee for Pro cloud or Pro on-premises plan.
+      Minimum one seat required to access API and embedding features.
+
+  - name: API Document Completions
+    metric: api_document_completions
+    unit: completion
+    billingType: consumption
+    price: 0.20
+    currency: USD
+    description: >
+      Charged per completed document submission via API or embedded form.
+      A submission counts as one completion regardless of the number of
+      signatories or files included. Volume discounts available.
+    volumeDiscounts: true
+
+  - name: ID Card Verification
+    metric: id_verifications
+    unit: verification
+    billingType: consumption
+    price: 2.00
+    currency: USD
+    description: >
+      Per-event charge for identity verification via ID card scanning.
+      Applied when signer identity verification is required.
+
+  - name: EU Qualified eSignature
+    metric: qualified_esignatures
+    unit: signature
+    billingType: consumption
+    priceMin: 2.00
+    priceMax: 4.00
+    currency: USD
+    description: >
+      Per-event charge for EU-compliant Qualified Electronic Signatures (QeS).
+      Price varies based on the type and issuing authority.
+
+  - name: Knowledge-Based Authentication
+    metric: kba_events
+    unit: authentication
+    billingType: consumption
+    price: 2.00
+    currency: USD
+    description: >
+      Per-event charge for knowledge-based authentication (KBA) identity checks
+      performed during the signing process.
+
+  - name: Embedded Form Builder with AI Detection
+    metric: embedded_form_builder
+    unit: subscription
+    billingType: recurring
+    price: 100.00
+    currency: USD
+    period: month
+    description: >
+      Monthly add-on for the embedded form builder with AI field detection
+      capability. Allows automated field placement within documents.
+
+principles:
+  - name: Transparency
+    description: >
+      Pricing is publicly documented on the DocuSeal website. Per-completion
+      costs are clearly defined as $0.20 per signed submission.
+  - name: Predictability
+    description: >
+      Fixed per-seat recurring cost provides a predictable base expense.
+      Variable API usage costs scale linearly with document completions.
+  - name: Optimization
+    description: >
+      Volume discounts are available for high-volume API usage. Organizations
+      should contact sales@docuseal.com to negotiate custom pricing.
+  - name: Self-Hosted Cost Control
+    description: >
+      The open-source self-hosted option eliminates per-seat and per-completion
+      costs entirely, with only infrastructure costs to consider. The Pro
+      on-premises license at $20/user/month provides advanced features without
+      per-document charges.
+
+costExamples:
+  - scenario: Single SaaS Business, 200 Documents/Month
+    seats: 1
+    completions: 200
+    seatCost: 20.00
+    usageCost: 40.00
+    totalMonthly: 60.00
+    currency: USD
+
+  - scenario: Multi-Tenant Platform, 5 Admins, 1000 Documents/Month
+    seats: 5
+    completions: 1000
+    seatCost: 100.00
+    usageCost: 200.00
+    totalMonthly: 300.00
+    currency: USD
+    notes: Approximate; actual seat pricing may vary with multiple admin accounts
+
+sandbox:
+  cost: free
+  description: >
+    Unlimited API and embedding calls in the sandbox environment at no charge.
+    No credit card required for sandbox testing.

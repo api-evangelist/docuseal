@@ -1,0 +1,279 @@
+spec: API Commons Plans 0.1
+provider: DocuSeal
+providerId: docuseal
+created: 2026-06-12
+modified: 2026-06-12
+reconciled: true
+url: https://www.docuseal.com/pricing
+
+plans:
+  - name: Basic
+    type: freemium
+    description: >
+      Free cloud plan with limited signature requests per month. Includes
+      legally-binding eSignature, indefinite document retention, multiple
+      signers, and 10 field types. Does not include API access, webhooks,
+      or embedding. Suitable for individuals and small teams with light usage.
+    url: https://www.docuseal.com/pricing
+    quotas:
+      - name: Signature Request Emails
+        type: quota
+        metric: emails_per_month
+        limit: 10
+        period: month
+        metered: false
+      - name: SMS Signing Requests
+        type: quota
+        metric: sms_per_month
+        limit: 20
+        period: month
+        metered: false
+      - name: Bulk Send from Spreadsheet
+        type: quota
+        metric: bulk_sends_per_month
+        limit: 50
+        period: month
+        metered: false
+    features:
+      - name: eSignature
+        type: boolean
+        value: true
+      - name: Document Retention
+        type: boolean
+        value: true
+      - name: Multiple Signers
+        type: boolean
+        value: true
+      - name: API Access
+        type: boolean
+        value: false
+      - name: Webhooks
+        type: boolean
+        value: false
+      - name: Embedding
+        type: boolean
+        value: false
+      - name: SSO/SAML
+        type: boolean
+        value: false
+      - name: Custom Branding
+        type: boolean
+        value: false
+    pricing:
+      model: free
+      price: 0
+      currency: USD
+      period: month
+
+  - name: Pro
+    type: paid
+    description: >
+      Full-featured cloud plan with unlimited signature requests, API access,
+      embedding, webhooks, SSO/SAML, custom branding, automated reminders,
+      payment collection, and bulk send. API usage is billed at $0.20 per
+      completed document submission in addition to the per-seat cost.
+    url: https://www.docuseal.com/pricing
+    quotas:
+      - name: Signature Request Emails
+        type: quota
+        metric: emails_per_month
+        limit: -1
+        period: month
+        metered: false
+        description: Unlimited
+      - name: SMS Signing Requests
+        type: quota
+        metric: sms_per_month
+        limit: -1
+        period: month
+        metered: false
+        description: Unlimited
+      - name: Bulk Send from Spreadsheet
+        type: quota
+        metric: bulk_sends_per_month
+        limit: -1
+        period: month
+        metered: false
+        description: Unlimited
+    features:
+      - name: eSignature
+        type: boolean
+        value: true
+      - name: Document Retention
+        type: boolean
+        value: true
+      - name: Multiple Signers
+        type: boolean
+        value: true
+      - name: API Access
+        type: boolean
+        value: true
+      - name: Webhooks
+        type: boolean
+        value: true
+      - name: Embedding
+        type: boolean
+        value: true
+      - name: SSO/SAML
+        type: boolean
+        value: true
+      - name: Custom Branding
+        type: boolean
+        value: true
+      - name: Automated Reminders
+        type: boolean
+        value: true
+      - name: Payment Collection
+        type: boolean
+        value: true
+      - name: User Roles and Teams
+        type: boolean
+        value: true
+      - name: SMS Identity Verification
+        type: boolean
+        value: true
+    pricing:
+      model: paid
+      price: 20
+      currency: USD
+      period: month
+      unit: user
+      overage:
+        - name: API Document Completion
+          metric: api_document_completion
+          price: 0.20
+          currency: USD
+          unit: completion
+        - name: ID Card Verification
+          metric: id_card_verification
+          price: 2.00
+          currency: USD
+          unit: verification
+        - name: EU Qualified eSignature
+          metric: qualified_esignature
+          price: 2.00
+          currency: USD
+          unit: signature
+          priceMax: 4.00
+        - name: Knowledge-Based Authentication
+          metric: knowledge_based_auth
+          price: 2.00
+          currency: USD
+          unit: authentication
+        - name: Embedded Form Builder with AI Detection
+          metric: embedded_form_builder
+          price: 100.00
+          currency: USD
+          period: month
+
+  - name: Open Source On-Premises
+    type: free
+    description: >
+      Self-hosted open-source deployment with no licensing fee. Includes
+      core eSignature features, indefinite document retention, multiple signers,
+      own SMTP control, and community support via GitHub. Does not include
+      white-label, API access, webhooks, SSO, or advanced features.
+    url: https://www.docuseal.com/on-premises
+    features:
+      - name: eSignature
+        type: boolean
+        value: true
+      - name: Document Retention
+        type: boolean
+        value: true
+      - name: Multiple Signers
+        type: boolean
+        value: true
+      - name: Own SMTP Control
+        type: boolean
+        value: true
+      - name: API Access
+        type: boolean
+        value: false
+      - name: White Label
+        type: boolean
+        value: false
+      - name: Webhooks
+        type: boolean
+        value: false
+    pricing:
+      model: free
+      price: 0
+      currency: USD
+      period: month
+      license: AGPL-3.0
+
+  - name: Pro On-Premises
+    type: paid
+    description: >
+      Licensed self-hosted deployment with all open-source features plus
+      white-label capability, full data control, email customization, automated
+      reminders, payment acceptance, webhooks, user roles, bulk send, SSO/SAML,
+      SMS verification, and API/embedding access.
+    url: https://www.docuseal.com/on-premises
+    features:
+      - name: eSignature
+        type: boolean
+        value: true
+      - name: Document Retention
+        type: boolean
+        value: true
+      - name: Multiple Signers
+        type: boolean
+        value: true
+      - name: API Access
+        type: boolean
+        value: true
+      - name: White Label
+        type: boolean
+        value: true
+      - name: Webhooks
+        type: boolean
+        value: true
+      - name: SSO/SAML
+        type: boolean
+        value: true
+      - name: Automated Reminders
+        type: boolean
+        value: true
+      - name: Payment Acceptance
+        type: boolean
+        value: true
+      - name: User Roles
+        type: boolean
+        value: true
+      - name: Bulk Send
+        type: boolean
+        value: true
+      - name: SMS Verification
+        type: boolean
+        value: true
+    pricing:
+      model: paid
+      price: 20
+      currency: USD
+      period: month
+      unit: user
+
+  - name: Sandbox
+    type: free
+    description: >
+      Free sandbox environment for testing API and embedding integrations.
+      Provides unlimited API and embedding calls for development and testing
+      purposes. No credit card required. Not for production use.
+    url: https://www.docuseal.com/signing-api
+    features:
+      - name: API Access
+        type: boolean
+        value: true
+      - name: Embedding
+        type: boolean
+        value: true
+      - name: Unlimited Test Calls
+        type: boolean
+        value: true
+    pricing:
+      model: free
+      price: 0
+      currency: USD
+      period: month
