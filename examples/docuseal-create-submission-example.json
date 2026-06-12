@@ -1,0 +1,104 @@
+{
+  "title": "Create Submission Example",
+  "description": "Example request and response for creating a document signing submission via the DocuSeal API.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.docuseal.com/submissions",
+    "headers": {
+      "X-Auth-Token": "your-api-token",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "template_id": 1,
+      "send_email": true,
+      "send_sms": false,
+      "order": "preserved",
+      "completed_redirect_url": "https://example.com/signing-complete",
+      "bcc_completed": "admin@example.com",
+      "reply_to": "support@example.com",
+      "expire_at": "2024-12-31T23:59:59Z",
+      "message": {
+        "subject": "Please sign the NDA",
+        "body": "Hi, please review and sign the attached Non-Disclosure Agreement at your earliest convenience."
+      },
+      "metadata": {
+        "client_id": "client-123",
+        "contract_type": "nda"
+      },
+      "submitters": [
+        {
+          "name": "John Doe",
+          "email": "john.doe@example.com",
+          "phone": "+1234567890",
+          "role": "First Party",
+          "external_id": "user-456",
+          "send_email": true,
+          "values": {
+            "Full Name": "John Doe",
+            "Company": "Acme Corp"
+          },
+          "metadata": {
+            "department": "Legal"
+          }
+        },
+        {
+          "name": "Jane Smith",
+          "email": "jane.smith@example.com",
+          "role": "Second Party",
+          "external_id": "user-789"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "id": 1,
+        "submission_id": 1,
+        "uuid": "884d545b-3396-49f1-8c07-05b8b2a78755",
+        "email": "john.doe@example.com",
+        "slug": "pAMimKcyrLjqVt",
+        "sent_at": "2023-12-13T23:04:04.252Z",
+        "opened_at": null,
+        "completed_at": null,
+        "declined_at": null,
+        "created_at": "2023-12-14T15:50:21.799Z",
+        "updated_at": "2023-12-14T15:50:21.799Z",
+        "name": "John Doe",
+        "phone": "+1234567890",
+        "external_id": "user-456",
+        "metadata": {
+          "department": "Legal"
+        },
+        "status": "pending",
+        "role": "First Party",
+        "submission_events": [],
+        "values": [],
+        "documents": []
+      },
+      {
+        "id": 2,
+        "submission_id": 1,
+        "uuid": "99a1b2c3-4567-89ab-cdef-0123456789ab",
+        "email": "jane.smith@example.com",
+        "slug": "qBNjnLdzSMUdWu",
+        "sent_at": null,
+        "opened_at": null,
+        "completed_at": null,
+        "declined_at": null,
+        "created_at": "2023-12-14T15:50:21.799Z",
+        "updated_at": "2023-12-14T15:50:21.799Z",
+        "name": "Jane Smith",
+        "phone": null,
+        "external_id": "user-789",
+        "metadata": {},
+        "status": "pending",
+        "role": "Second Party",
+        "submission_events": [],
+        "values": [],
+        "documents": []
+      }
+    ]
+  }
+}

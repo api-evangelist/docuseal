@@ -1,0 +1,236 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "docuseal": "https://www.docuseal.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Template": {
+      "@id": "docuseal:Template",
+      "@type": "@id"
+    },
+    "Submission": {
+      "@id": "docuseal:Submission",
+      "@type": "@id"
+    },
+    "Submitter": {
+      "@id": "docuseal:Submitter",
+      "@type": "@id"
+    },
+    "Field": {
+      "@id": "docuseal:Field",
+      "@type": "@id"
+    },
+    "FieldArea": {
+      "@id": "docuseal:FieldArea",
+      "@type": "@id"
+    },
+    "SubmissionEvent": {
+      "@id": "docuseal:SubmissionEvent",
+      "@type": "@id"
+    },
+
+    "id": {
+      "@id": "schema:identifier",
+      "@type": "xsd:integer"
+    },
+    "slug": {
+      "@id": "docuseal:slug",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "phone": {
+      "@id": "schema:telephone",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "docuseal:status",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "docuseal:source",
+      "@type": "xsd:string"
+    },
+    "external_id": {
+      "@id": "docuseal:externalId",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "docuseal:metadata",
+      "@type": "@json"
+    },
+    "preferences": {
+      "@id": "docuseal:preferences",
+      "@type": "@json"
+    },
+    "uuid": {
+      "@id": "docuseal:uuid",
+      "@type": "xsd:string"
+    },
+    "role": {
+      "@id": "docuseal:role",
+      "@type": "xsd:string"
+    },
+
+    "template_id": {
+      "@id": "docuseal:templateId",
+      "@type": "xsd:integer"
+    },
+    "submission_id": {
+      "@id": "docuseal:submissionId",
+      "@type": "xsd:integer"
+    },
+    "submitters_order": {
+      "@id": "docuseal:submittersOrder",
+      "@type": "xsd:string"
+    },
+    "audit_log_url": {
+      "@id": "docuseal:auditLogUrl",
+      "@type": "@id"
+    },
+    "combined_document_url": {
+      "@id": "docuseal:combinedDocumentUrl",
+      "@type": "@id"
+    },
+    "shared_link": {
+      "@id": "docuseal:sharedLink",
+      "@type": "@id"
+    },
+    "folder_name": {
+      "@id": "docuseal:folderName",
+      "@type": "xsd:string"
+    },
+    "folder_id": {
+      "@id": "docuseal:folderId",
+      "@type": "xsd:integer"
+    },
+    "author_id": {
+      "@id": "docuseal:authorId",
+      "@type": "xsd:integer"
+    },
+
+    "send_email": {
+      "@id": "docuseal:sendEmail",
+      "@type": "xsd:boolean"
+    },
+    "send_sms": {
+      "@id": "docuseal:sendSms",
+      "@type": "xsd:boolean"
+    },
+    "bcc_completed": {
+      "@id": "docuseal:bccCompleted",
+      "@type": "xsd:string"
+    },
+    "reply_to": {
+      "@id": "docuseal:replyTo",
+      "@type": "xsd:string"
+    },
+    "completed_redirect_url": {
+      "@id": "docuseal:completedRedirectUrl",
+      "@type": "@id"
+    },
+    "require_email_2fa": {
+      "@id": "docuseal:requireEmail2fa",
+      "@type": "xsd:boolean"
+    },
+    "require_phone_2fa": {
+      "@id": "docuseal:requirePhone2fa",
+      "@type": "xsd:boolean"
+    },
+    "expire_at": {
+      "@id": "docuseal:expireAt",
+      "@type": "xsd:dateTime"
+    },
+    "variables": {
+      "@id": "docuseal:variables",
+      "@type": "@json"
+    },
+    "values": {
+      "@id": "docuseal:values",
+      "@type": "@json"
+    },
+
+    "type": {
+      "@id": "docuseal:fieldType",
+      "@type": "xsd:string"
+    },
+    "required": {
+      "@id": "docuseal:required",
+      "@type": "xsd:boolean"
+    },
+    "readonly": {
+      "@id": "docuseal:readonly",
+      "@type": "xsd:boolean"
+    },
+    "areas": {
+      "@id": "docuseal:areas",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "docuseal:fields",
+      "@container": "@set"
+    },
+    "submitters": {
+      "@id": "docuseal:submitters",
+      "@container": "@set"
+    },
+    "documents": {
+      "@id": "docuseal:documents",
+      "@container": "@set"
+    },
+    "submission_events": {
+      "@id": "docuseal:submissionEvents",
+      "@container": "@set"
+    },
+    "schema": {
+      "@id": "docuseal:documentSchema",
+      "@container": "@set"
+    },
+
+    "x": { "@id": "docuseal:areaX", "@type": "xsd:decimal" },
+    "y": { "@id": "docuseal:areaY", "@type": "xsd:decimal" },
+    "w": { "@id": "docuseal:areaWidth", "@type": "xsd:decimal" },
+    "h": { "@id": "docuseal:areaHeight", "@type": "xsd:decimal" },
+    "page": { "@id": "docuseal:page", "@type": "xsd:integer" },
+    "attachment_uuid": { "@id": "docuseal:attachmentUuid", "@type": "xsd:string" },
+
+    "event_type": { "@id": "docuseal:eventType", "@type": "xsd:string" },
+    "data": { "@id": "docuseal:eventData", "@type": "@json" },
+
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "archived_at": {
+      "@id": "docuseal:archivedAt",
+      "@type": "xsd:dateTime"
+    },
+    "completed_at": {
+      "@id": "docuseal:completedAt",
+      "@type": "xsd:dateTime"
+    },
+    "sent_at": {
+      "@id": "docuseal:sentAt",
+      "@type": "xsd:dateTime"
+    },
+    "opened_at": {
+      "@id": "docuseal:openedAt",
+      "@type": "xsd:dateTime"
+    },
+    "declined_at": {
+      "@id": "docuseal:declinedAt",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

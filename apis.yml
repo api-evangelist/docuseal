@@ -48,7 +48,7 @@ apis:
       - type: Documentation
         url: https://www.docuseal.com/docs/api
       - type: OpenAPI
-        url: https://www.docuseal.com/docs/api
+        url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/openapi/docuseal-docuseal-api-openapi.yml
 
 common:
   - type: Website
@@ -89,6 +89,18 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/rate-limits/docuseal-rate-limits.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/finops/docuseal-finops.yml
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/vocabulary/docuseal-vocabulary.yml
+  - type: JSONLDContext
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/json-ld/docuseal-context.jsonld
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/json-schema/docuseal-submission-schema.json
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/json-schema/docuseal-template-schema.json
+  - type: Examples
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/examples/docuseal-create-submission-example.json
+  - type: Examples
+    url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/examples/docuseal-create-template-from-pdf-example.json
 
 maintainers:
   - FN: Kin Lane

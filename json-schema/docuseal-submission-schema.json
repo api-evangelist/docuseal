@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docuseal/main/json-schema/docuseal-submission-schema.json",
+  "title": "DocuSeal Submission",
+  "description": "A document signing submission in DocuSeal, representing a signature request sent to one or more submitters.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the submission."
+    },
+    "name": {
+      "type": ["string", "null"],
+      "description": "Name of the submission."
+    },
+    "slug": {
+      "type": "string",
+      "description": "Unique URL-safe identifier for the submission."
+    },
+    "source": {
+      "type": "string",
+      "description": "Origin of the submission (e.g., link, api, email).",
+      "enum": ["link", "api", "email"]
+    },
+    "submitters_order": {
+      "type": "string",
+      "description": "Order in which submitters must sign: random or preserved.",
+      "enum": ["random", "preserved"]
+    },
+    "audit_log_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to the PDF audit log for the submission."
+    },
+    "combined_document_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to the combined signed document PDF."
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the submission.",
+      "enum": ["pending", "completed", "expired", "declined"]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Arbitrary key-value metadata attached to the submission.",
+      "additionalProperties": true
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the submission was completed."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the submission was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the submission was last updated."
+    },
+    "archived_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the submission was archived."
+    },
+    "submitters": {
+      "type": "array",
+      "description": "List of signers assigned to this submission.",
+      "items": {
+        "$ref": "#/definitions/Submitter"
+      }
+    },
+    "template": {
+      "$ref": "#/definitions/TemplateRef",
+      "description": "The template used to create this submission."
+    },
+    "created_by_user": {
+      "$ref": "#/definitions/UserRef",
+      "description": "The user who created this submission."
+    },
+    "submission_events": {
+      "type": "array",
+      "description": "Audit trail of events for this submission.",
+      "items": {
+        "$ref": "#/definitions/SubmissionEvent"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "description": "Signed documents generated for this submission.",
+      "items": {
+        "$ref": "#/definitions/Document"
+      }
+    }
+  },
+  "required": ["id", "slug", "source", "status", "created_at", "updated_at"],
+  "definitions": {
+    "Submitter": {
+      "type": "object",
+      "description": "A signer within a submission.",
+      "properties": {
+        "id": { "type": "integer" },
+        "submission_id": { "type": "integer" },
+        "uuid": { "type": "string", "format": "uuid" },
+        "email": { "type": "string", "format": "email" },
+        "slug": { "type": "string" },
+        "name": { "type": ["string", "null"] },
+        "phone": { "type": ["string", "null"] },
+        "role": { "type": ["string", "null"] },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "opened", "completed", "declined"]
+        },
+        "external_id": { "type": ["string", "null"] },
+        "metadata": { "type": "object", "additionalProperties": true },
+        "sent_at": { "type": ["string", "null"], "format": "date-time" },
+        "opened_at": { "type": ["string", "null"], "format": "date-time" },
+        "completed_at": { "type": ["string", "null"], "format": "date-time" },
+        "declined_at": { "type": ["string", "null"], "format": "date-time" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "TemplateRef": {
+      "type": "object",
+      "description": "Reference to a template used in the submission.",
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "external_id": { "type": ["string", "null"] }
+      }
+    },
+    "UserRef": {
+      "type": "object",
+      "description": "Reference to a DocuSeal user.",
+      "properties": {
+        "id": { "type": "integer" },
+        "email": { "type": "string", "format": "email" },
+        "name": { "type": ["string", "null"] }
+      }
+    },
+    "SubmissionEvent": {
+      "type": "object",
+      "description": "An event in the submission audit trail.",
+      "properties": {
+        "id": { "type": "integer" },
+        "submitter_id": { "type": ["integer", "null"] },
+        "event_type": { "type": "string" },
+        "data": { "type": "object", "additionalProperties": true },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Document": {
+      "type": "object",
+      "description": "A document file associated with the submission.",
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "title": "Create Template from PDF Example",
+  "description": "Example request and response for creating a DocuSeal template from a PDF file URL.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.docuseal.com/templates/pdf",
+    "headers": {
+      "X-Auth-Token": "your-api-token",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "Non-Disclosure Agreement",
+      "documents": [
+        {
+          "name": "nda-document",
+          "url": "https://example.com/nda-template.pdf",
+          "fields": [
+            {
+              "name": "Full Name",
+              "type": "text",
+              "role": "First Party",
+              "required": true,
+              "areas": [
+                {
+                  "x": 0.1,
+                  "y": 0.2,
+                  "w": 0.3,
+                  "h": 0.05,
+                  "page": 1
+                }
+              ]
+            },
+            {
+              "name": "Signature",
+              "type": "signature",
+              "role": "First Party",
+              "required": true,
+              "areas": [
+                {
+                  "x": 0.1,
+                  "y": 0.85,
+                  "w": 0.3,
+                  "h": 0.08,
+                  "page": 1
+                }
+              ]
+            },
+            {
+              "name": "Date",
+              "type": "date",
+              "role": "First Party",
+              "required": true,
+              "areas": [
+                {
+                  "x": 0.5,
+                  "y": 0.85,
+                  "w": 0.2,
+                  "h": 0.05,
+                  "page": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "roles": ["First Party", "Second Party"],
+      "folder_name": "Legal Agreements",
+      "external_id": "nda-template-v1"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": 42,
+      "slug": "Xk9pQrTvWsYmZn",
+      "name": "Non-Disclosure Agreement",
+      "source": "api",
+      "external_id": "nda-template-v1",
+      "folder_name": "Legal Agreements",
+      "created_at": "2023-12-14T15:50:21.799Z",
+      "updated_at": "2023-12-14T15:50:21.799Z",
+      "archived_at": null
+    }
+  }
+}

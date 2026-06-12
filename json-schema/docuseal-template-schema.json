@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/docuseal/main/json-schema/docuseal-template-schema.json",
+  "title": "DocuSeal Template",
+  "description": "A document template in DocuSeal, defining fields, roles, and document structure for signing workflows.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the template."
+    },
+    "slug": {
+      "type": "string",
+      "description": "Unique URL-safe identifier for the template."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the template."
+    },
+    "source": {
+      "type": "string",
+      "description": "How the template was created (e.g., api, web)."
+    },
+    "external_id": {
+      "type": ["string", "null"],
+      "description": "Application-specific identifier for the template."
+    },
+    "folder_id": {
+      "type": ["integer", "null"],
+      "description": "ID of the folder containing the template."
+    },
+    "folder_name": {
+      "type": ["string", "null"],
+      "description": "Name of the folder containing the template."
+    },
+    "shared_link": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Public sharing link for the template."
+    },
+    "preferences": {
+      "type": "object",
+      "description": "Template-level preferences and configuration.",
+      "additionalProperties": true
+    },
+    "author_id": {
+      "type": "integer",
+      "description": "ID of the user who created the template."
+    },
+    "author": {
+      "type": "object",
+      "description": "Author user details.",
+      "properties": {
+        "id": { "type": "integer" },
+        "email": { "type": "string", "format": "email" },
+        "name": { "type": ["string", "null"] }
+      }
+    },
+    "schema": {
+      "type": "array",
+      "description": "Document attachment references defining the template structure.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "attachment_uuid": { "type": "string", "format": "uuid" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "description": "Form fields defined in the template.",
+      "items": {
+        "$ref": "#/definitions/Field"
+      }
+    },
+    "submitters": {
+      "type": "array",
+      "description": "Roles (submitter slots) defined in the template.",
+      "items": {
+        "$ref": "#/definitions/SubmitterRole"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "description": "Documents attached to the template.",
+      "items": {
+        "$ref": "#/definitions/Document"
+      }
+    },
+    "archived_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the template was archived."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the template was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the template was last updated."
+    }
+  },
+  "required": ["id", "slug", "name", "created_at", "updated_at"],
+  "definitions": {
+    "Field": {
+      "type": "object",
+      "description": "A form field within the template.",
+      "properties": {
+        "uuid": { "type": "string", "format": "uuid" },
+        "submitter_uuid": { "type": "string", "format": "uuid" },
+        "name": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["signature", "text", "date", "number", "image", "checkbox", "select", "radio", "file", "payment", "stamp", "initials", "phone", "cells", "verification"]
+        },
+        "required": { "type": "boolean" },
+        "readonly": { "type": "boolean" },
+        "preferences": { "type": "object", "additionalProperties": true },
+        "areas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FieldArea"
+          }
+        },
+        "options": {
+          "type": ["array", "null"],
+          "items": { "type": "object" }
+        }
+      }
+    },
+    "FieldArea": {
+      "type": "object",
+      "description": "Placement area for a field on a document page.",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "w": { "type": "number" },
+        "h": { "type": "number" },
+        "page": { "type": "integer" },
+        "attachment_uuid": { "type": "string", "format": "uuid" }
+      }
+    },
+    "SubmitterRole": {
+      "type": "object",
+      "description": "A signer role slot defined in the template.",
+      "properties": {
+        "name": { "type": "string" },
+        "uuid": { "type": "string", "format": "uuid" }
+      }
+    },
+    "Document": {
+      "type": "object",
+      "description": "A document attached to the template.",
+      "properties": {
+        "id": { "type": "integer" },
+        "uuid": { "type": "string", "format": "uuid" },
+        "url": { "type": "string", "format": "uri" },
+        "preview_image_url": { "type": ["string", "null"], "format": "uri" },
+        "filename": { "type": "string" }
+      }
+    }
+  }
+}
