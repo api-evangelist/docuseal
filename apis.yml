@@ -1,7 +1,7 @@
 aid: docuseal
 name: DocuSeal
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -35,7 +35,7 @@ apis:
       REST API for creating document signing workflows, managing templates,
       sending signature requests, tracking submission status, and receiving
       webhook events for document lifecycle management.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.docuseal.com/docs/api
     baseURL: https://api.docuseal.com
     tags:
