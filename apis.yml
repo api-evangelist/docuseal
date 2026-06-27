@@ -69,7 +69,7 @@ common:
     url: https://www.linkedin.com/company/docuseal
   - type: Blog
     url: https://www.docuseal.com/blog
-  - type: Changelog
+  - type: ChangeLog
     url: https://www.docuseal.com/changelog
   - type: Pricing
     url: https://www.docuseal.com/pricing
