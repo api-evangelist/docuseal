@@ -51,6 +51,14 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/openapi/docuseal-docuseal-api-openapi.yml
 
 common:
+  - type: TrustCenter
+    url: security/docuseal-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/docuseal-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/docuseal-domain-security.yml
+  - type: Authentication
+    url: authentication/docuseal-authentication.yml
   - type: Website
     url: https://www.docuseal.com/
   - type: Documentation
