@@ -51,6 +51,8 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/openapi/docuseal-docuseal-api-openapi.yml
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/docuseal-agentic-access.yml
   - type: TrustCenter
     url: security/docuseal-trust-center.yml
   - type: VulnerabilityDisclosure
