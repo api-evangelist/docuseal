@@ -1,0 +1,3639 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: DocuSeal Submissions API
+  description: DocuSeal API specs
+  contact:
+    name: DocuSeal
+    email: admin@docuseal.com
+    url: https://www.docuseal.com
+servers:
+- url: https://api.docuseal.com
+  description: Global Server
+- url: https://api.docuseal.eu
+  description: EU Server
+tags:
+- name: Submissions
+  description: Signature requests can be initiated with Submissions API. Submissions can contain one submitter if signed by a single party or multiple submitters if the document template form contains signatures and fields to be collected and filled by multiple parties. Initiate new submissions to request signatures for specified submitters via email or phone number.
+paths:
+  /submissions:
+    get:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: List all submissions
+      description: The API endpoint provides the ability to retrieve a list of available submissions.
+      operationId: getSubmissions
+      parameters:
+      - name: template_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The template ID allows you to receive only the submissions created from that specific template.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - pending
+          - completed
+          - declined
+          - expired
+        description: Filter submissions by status.
+      - name: q
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter submissions based on submitter's name, email or phone partial match.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter submissions by unique slug.
+        example: NtLDQM7eJX2ZMd
+      - name: template_folder
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter submissions by template folder name.
+      - name: archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Returns only archived submissions when `true` and only active submissions when `false`.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The number of submissions to return. Default value is 10. Maximum value is 100.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The unique identifier of the submission to start the list from. It allows you to receive only submissions with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of submissions.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The unique identifier of the submission that marks the end of the list. It allows you to receive only submissions with an ID less than the specified value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - data
+                - pagination
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - source
+                      - slug
+                      - status
+                      - submitters_order
+                      - audit_log_url
+                      - completed_at
+                      - created_at
+                      - updated_at
+                      - submitters
+                      - created_by_user
+                      properties:
+                        id:
+                          type: integer
+                          description: Submission unique ID number.
+                        name:
+                          type: string
+                          description: Name of the document submission.
+                          example: Test Submission Document
+                        source:
+                          type: string
+                          description: The source of the submission.
+                          enum:
+                          - invite
+                          - bulk
+                          - api
+                          - embed
+                          - link
+                        slug:
+                          type: string
+                          description: Unique slug of the submission.
+                        status:
+                          type: string
+                          description: The status of the submission.
+                          enum:
+                          - completed
+                          - declined
+                          - expired
+                          - pending
+                        submitters_order:
+                          type: string
+                          description: The order of submitters.
+                          enum:
+                          - random
+                          - preserved
+                        audit_log_url:
+                          type: string
+                          nullable: true
+                          description: Audit log file URL.
+                        combined_document_url:
+                          type: string
+                          nullable: true
+                          description: Combined PDF file URL with documents and Audit Log.
+                        completed_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submission was completed.
+                        created_at:
+                          type: string
+                          description: The date and time when the submission was created.
+                        updated_at:
+                          type: string
+                          description: The date and time when the submission was last updated.
+                        archived_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submission was archived.
+                        submitters:
+                          type: array
+                          description: The list of submitters.
+                          items:
+                            type: object
+                            required:
+                            - id
+                            - submission_id
+                            - uuid
+                            - email
+                            - slug
+                            - sent_at
+                            - opened_at
+                            - completed_at
+                            - declined_at
+                            - created_at
+                            - updated_at
+                            - name
+                            - phone
+                            - status
+                            - role
+                            - metadata
+                            - preferences
+                            properties:
+                              id:
+                                type: integer
+                                description: Submitter unique ID number.
+                              submission_id:
+                                type: integer
+                                description: Submission unique ID number.
+                              uuid:
+                                type: string
+                                description: Submitter UUID.
+                              email:
+                                type: string
+                                nullable: true
+                                description: The email address of the submitter.
+                              slug:
+                                type: string
+                                description: Unique key to be used in the form signing link and embedded form.
+                              sent_at:
+                                type: string
+                                nullable: true
+                                description: The date and time when the signing request was sent to the submitter.
+                              opened_at:
+                                type: string
+                                nullable: true
+                                description: The date and time when the submitter opened the signing form.
+                              completed_at:
+                                type: string
+                                nullable: true
+                                description: The date and time when the submitter completed the signing form.
+                              declined_at:
+                                type: string
+                                nullable: true
+                                description: The date and time when the submitter declined the signing form.
+                              created_at:
+                                type: string
+                                description: The date and time when the submitter was created.
+                              updated_at:
+                                type: string
+                                description: The date and time when the submitter was last updated.
+                              name:
+                                type: string
+                                nullable: true
+                                description: The name of the submitter.
+                              phone:
+                                type: string
+                                nullable: true
+                                description: The phone number of the submitter.
+                              external_id:
+                                type: string
+                                nullable: true
+                                description: Your application-specific unique string key to identify this submitter within your app.
+                              status:
+                                type: string
+                                description: The status of signing request for the submitter.
+                                enum:
+                                - completed
+                                - declined
+                                - opened
+                                - sent
+                                - awaiting
+                              role:
+                                type: string
+                                description: The role of the submitter in the signing process.
+                              metadata:
+                                type: object
+                                description: Metadata object with additional submitter information.
+                              preferences:
+                                type: object
+                                description: Submitter preferences.
+                        template:
+                          type: object
+                          required:
+                          - id
+                          - name
+                          - external_id
+                          - folder_name
+                          - created_at
+                          - updated_at
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier of the document template.
+                            name:
+                              type: string
+                              description: The name of the template.
+                            external_id:
+                              type: string
+                              nullable: true
+                              description: Your application-specific unique string key to identify this template within your app.
+                            folder_name:
+                              type: string
+                              description: Folder name where the template is located.
+                            created_at:
+                              type: string
+                              description: The date and time when the template was created.
+                            updated_at:
+                              type: string
+                              description: The date and time when the template was last updated.
+                        created_by_user:
+                          type: object
+                          nullable: true
+                          required:
+                          - id
+                          - first_name
+                          - last_name
+                          - email
+                          properties:
+                            id:
+                              type: integer
+                              description: Unique identifier of the user who created the submission.
+                            first_name:
+                              type: string
+                              description: The first name of the user who created the submission.
+                            last_name:
+                              type: string
+                              description: The last name of the user who created the submission.
+                            email:
+                              type: string
+                              description: The email address of the user who created the submission.
+                  pagination:
+                    type: object
+                    required:
+                    - count
+                    - next
+                    - prev
+                    properties:
+                      count:
+                        type: integer
+                        description: Submissions count.
+                      next:
+                        type: integer
+                        nullable: true
+                        description: The ID of the submission after which the next page starts.
+                      prev:
+                        type: integer
+                        nullable: true
+                        description: The ID of the submission before which the previous page ends.
+              example:
+                data:
+                - id: 1
+                  name: null
+                  source: link
+                  submitters_order: random
+                  slug: VyL4szTwYoSvXq
+                  status: completed
+                  audit_log_url: https://docuseal.com/file/hash/example.pdf
+                  combined_document_url: null
+                  expire_at: null
+                  completed_at: '2023-12-10T15:49:21.895Z'
+                  created_at: '2023-12-10T15:48:17.166Z'
+                  updated_at: '2023-12-10T15:49:21.895Z'
+                  archived_at: null
+                  submitters:
+                  - id: 1
+                    submission_id: 1
+                    uuid: 0954d146-db8c-4772-aafe-2effc7c0e0c0
+                    email: submitter@example.com
+                    slug: dsEeWrhRD8yDXT
+                    sent_at: '2023-12-14T15:45:49.011Z'
+                    opened_at: '2023-12-14T15:48:23.011Z'
+                    completed_at: '2023-12-14T15:49:21.701Z'
+                    declined_at: null
+                    created_at: '2023-12-10T15:48:17.173Z'
+                    updated_at: '2023-12-14T15:50:21.799Z'
+                    name: John Doe
+                    phone: '+1234567890'
+                    status: completed
+                    role: First Party
+                    metadata: {}
+                    preferences: {}
+                  template:
+                    id: 1
+                    name: Example Template
+                    external_id: Temp123
+                    folder_name: Default
+                    created_at: '2023-12-14T15:50:21.799Z'
+                    updated_at: '2023-12-14T15:50:21.799Z'
+                  created_by_user:
+                    id: 1
+                    first_name: Bob
+                    last_name: Smith
+                    email: bob.smith@example.com
+                pagination:
+                  count: 1
+                  next: 1
+                  prev: 1
+    post:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Create a submission
+      description: This API endpoint allows you to create signature requests (submissions) for a document template and send them to the specified submitters (signers).<br><b>Related Guides</b><br><a href="https://www.docuseal.com/guides/send-documents-for-signature-via-api" class="link">Send documents for signature via API</a><br><a href="https://www.docuseal.com/guides/pre-fill-pdf-document-form-fields-with-api" class="link">Pre-fill PDF document form fields with API</a>
+      operationId: createSubmission
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - template_id
+              - submitters
+              properties:
+                template_id:
+                  type: integer
+                  description: The unique identifier of the template. Document template forms can be created via the Web UI, <a href="https://www.docuseal.com/guides/use-embedded-text-field-tags-in-the-pdf-to-create-a-fillable-form" class="link">PDF and DOCX API</a>, or <a href="https://www.docuseal.com/guides/create-pdf-document-fillable-form-with-html-api" class="link">HTML API</a>.
+                  example: 1000001
+                send_email:
+                  type: boolean
+                  description: Set `false` to disable signature request emails sending.
+                  default: true
+                send_sms:
+                  type: boolean
+                  description: Set `true` to send signature request via phone number and SMS.
+                  default: false
+                order:
+                  type: string
+                  description: Pass 'random' to send signature request emails to all parties right away. The order is 'preserved' by default so the second party will receive a signature request email only after the document is signed by the first party.
+                  default: preserved
+                  enum:
+                  - preserved
+                  - random
+                completed_redirect_url:
+                  type: string
+                  description: Specify URL to redirect to after the submission completion.
+                bcc_completed:
+                  type: string
+                  description: Specify BCC address to send signed documents to after the completion.
+                reply_to:
+                  type: string
+                  description: Specify Reply-To address to use in the notification emails.
+                expire_at:
+                  type: string
+                  description: Specify the expiration date and time after which the submission becomes unavailable for signature.
+                  example: 2024-09-01 12:00:00 UTC
+                variables:
+                  type: object
+                  description: Dynamic content variables object. Variable values can be strings, numbers, arrays, objects, or HTML content used to generate styled text, paragraphs, and tables in dynamic template documents.
+                  example:
+                    variable_name: value
+                message:
+                  type: object
+                  description: Custom signature request email message.
+                  properties:
+                    subject:
+                      type: string
+                      description: Custom signature request email subject.
+                    body:
+                      type: string
+                      description: 'Custom signature request email body. Can include the following variables: {{template.name}}, {{submitter.link}}, {{account.name}}.'
+                submitters:
+                  type: array
+                  description: The list of submitters for the submission.
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: The name of the submitter.
+                      role:
+                        type: string
+                        description: The role name or title of the submitter.
+                        example: First Party
+                      email:
+                        type: string
+                        description: The email address of the submitter.
+                        format: email
+                        example: john.doe@example.com
+                      phone:
+                        type: string
+                        description: The phone number of the submitter, formatted according to the E.164 standard.
+                        example: '+1234567890'
+                      values:
+                        type: object
+                        description: An object with pre-filled values for the submission. Use field names for keys of the object. For more configurations see `fields` param.
+                      external_id:
+                        type: string
+                        description: Your application-specific unique string key to identify this submitter within your app.
+                      completed:
+                        type: boolean
+                        description: Pass `true` to mark submitter as completed and auto-signed via API.
+                      metadata:
+                        type: object
+                        description: Metadata object with additional submitter information.
+                        example: '{ "customField": "value" }'
+                      send_email:
+                        type: boolean
+                        description: Set `false` to disable signature request emails sending only for this submitter.
+                        default: true
+                      send_sms:
+                        type: boolean
+                        description: Set `true` to send signature request via phone number and SMS.
+                        default: false
+                      reply_to:
+                        type: string
+                        description: Specify Reply-To address to use in the notification emails for this submitter.
+                      completed_redirect_url:
+                        type: string
+                        description: Submitter specific URL to redirect to after the submission completion.
+                      order:
+                        type: integer
+                        description: The order of the submitter in the workflow (e.g., 0 for the first signer, 1 for the second, etc.). Use the same order number to create order groups. By default, submitters are ordered as in the submitters array.
+                      require_phone_2fa:
+                        type: boolean
+                        description: Set to `true` to require phone 2FA verification via a one-time code sent to the phone number in order to access the documents.
+                        default: false
+                      require_email_2fa:
+                        type: boolean
+                        description: Set to `true` to require email 2FA verification via a one-time code sent to the email address in order to access the documents.
+                        default: false
+                      message:
+                        type: object
+                        description: Custom signature request email message for the submitter.
+                        properties:
+                          subject:
+                            type: string
+                            description: Custom signature request email subject for the submitter.
+                          body:
+                            type: string
+                            description: 'Custom signature request email body for the submitter. Can include the following variables: {{template.name}}, {{submitter.link}}, {{account.name}}.'
+                      fields:
+                        type: array
+                        description: A list of configurations for template document form fields.
+                        items:
+                          type: object
+                          required:
+                          - name
+                          properties:
+                            name:
+                              type: string
+                              description: Document template field name.
+                              example: First Name
+                            default_value:
+                              oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                              - type: array
+                                items:
+                                  oneOf:
+                                  - type: string
+                                  - type: number
+                                  - type: boolean
+                              description: Default value of the field. Use base64 encoded file or a public URL to the image file to set default signature or image fields.
+                              example: Acme
+                            readonly:
+                              type: boolean
+                              description: Set `true` to make it impossible for the submitter to edit predefined field value.
+                              default: false
+                            required:
+                              type: boolean
+                              description: Set `true` to make the field required.
+                            title:
+                              type: string
+                              description: Field title displayed to the user instead of the name, shown on the signing form. Supports Markdown.
+                            description:
+                              type: string
+                              description: Field description displayed on the signing form. Supports Markdown.
+                            validation:
+                              type: object
+                              description: Field validation rules.
+                              properties:
+                                pattern:
+                                  type: string
+                                  description: HTML field validation pattern string based on https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern specification.
+                                  example: '[A-Z]{4}'
+                                message:
+                                  type: string
+                                  description: A custom error message to display on validation failure.
+                                min:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Minimum allowed number value or date depending on field type.
+                                max:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Maximum allowed number value or date depending on field type.
+                                step:
+                                  type: number
+                                  description: Increment step for number field. Pass 1 to accept only integers, or 0.01 to accept decimal currency.
+                            preferences:
+                              type: object
+                              description: Field display preferences.
+                              properties:
+                                font_size:
+                                  type: integer
+                                  description: Font size of the field value in pixels.
+                                  example: 12
+                                font_type:
+                                  type: string
+                                  description: Font type of the field value.
+                                  enum:
+                                  - bold
+                                  - italic
+                                  - bold_italic
+                                font:
+                                  type: string
+                                  description: Font family of the field value.
+                                  enum:
+                                  - Times
+                                  - Helvetica
+                                  - Courier
+                                color:
+                                  type: string
+                                  description: Font color of the field value.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                  default: black
+                                background:
+                                  type: string
+                                  description: Field box background color.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                align:
+                                  type: string
+                                  description: Horizontal alignment of the field text value.
+                                  enum:
+                                  - left
+                                  - center
+                                  - right
+                                  default: left
+                                valign:
+                                  type: string
+                                  description: Vertical alignment of the field text value.
+                                  enum:
+                                  - top
+                                  - center
+                                  - bottom
+                                  default: center
+                                format:
+                                  type: string
+                                  description: 'The data format for different field types.<br>- Date field: accepts formats such as DD/MM/YYYY (default: MM/DD/YYYY).<br>- Signature field: accepts drawn, typed, drawn_or_typed (default), or upload.<br>- Number field: accepts currency formats such as usd, eur, gbp.'
+                                  example: DD/MM/YYYY
+                                price:
+                                  type: number
+                                  description: Price value of the payment field. Only for payment fields.
+                                  example: 99.99
+                                currency:
+                                  type: string
+                                  description: Currency value of the payment field. Only for payment fields.
+                                  enum:
+                                  - USD
+                                  - EUR
+                                  - GBP
+                                  - CAD
+                                  - AUD
+                                  default: USD
+                                mask:
+                                  description: Set `true` to make sensitive data masked on the document.
+                                  oneOf:
+                                  - type: integer
+                                  - type: boolean
+                                  default: false
+                                reasons:
+                                  description: An array of signature reasons to choose from.
+                                  type: array
+                                  items:
+                                    type: string
+                      roles:
+                        type: array
+                        description: A list of roles for the submitter. Use this param to merge multiple roles into one submitter.
+                        items:
+                          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - id
+                  - submission_id
+                  - uuid
+                  - email
+                  - slug
+                  - status
+                  - values
+                  - metadata
+                  - sent_at
+                  - opened_at
+                  - completed_at
+                  - declined_at
+                  - created_at
+                  - updated_at
+                  - name
+                  - phone
+                  - external_id
+                  - preferences
+                  - role
+                  - embed_src
+                  properties:
+                    id:
+                      type: integer
+                      description: Submitter unique ID number.
+                    submission_id:
+                      type: integer
+                      description: Submission unique ID number.
+                    uuid:
+                      type: string
+                      description: Submitter UUID.
+                    email:
+                      type: string
+                      nullable: true
+                      description: The email address of the submitter.
+                    slug:
+                      type: string
+                      description: Unique key to be used in the form signing link and embedded form.
+                    status:
+                      type: string
+                      description: The status of signing request for the submitter.
+                      enum:
+                      - completed
+                      - declined
+                      - opened
+                      - sent
+                      - awaiting
+                    values:
+                      type: array
+                      description: An array of pre-filled values for the submitter.
+                      items:
+                        type: object
+                        required:
+                        - field
+                        - value
+                        properties:
+                          field:
+                            type: string
+                            description: Document template field name.
+                          value:
+                            oneOf:
+                            - type: string
+                            - type: number
+                            - type: boolean
+                            - type: array
+                              items:
+                                oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                            description: Pre-filled value of the field.
+                    metadata:
+                      type: object
+                      description: Metadata object with additional submitter information.
+                    sent_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the signing request was sent to the submitter.
+                    opened_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the submitter opened the signing form.
+                    completed_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the submitter completed the signing form.
+                    declined_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the submitter declined the signing form.
+                    created_at:
+                      type: string
+                      description: The date and time when the submitter was created.
+                    updated_at:
+                      type: string
+                      description: The date and time when the submitter was last updated.
+                    name:
+                      type: string
+                      nullable: true
+                      description: The name of the submitter.
+                    phone:
+                      type: string
+                      nullable: true
+                      description: The phone number of the submitter.
+                    external_id:
+                      type: string
+                      nullable: true
+                      description: Your application-specific unique string key to identify this submitter within your app.
+                    preferences:
+                      type: object
+                      description: Submitter preferences.
+                      properties:
+                        send_email:
+                          type: boolean
+                          description: Indicates whether the signature request email should be sent.
+                        send_sms:
+                          type: boolean
+                          description: Indicates whether the signature request should be sent via SMS.
+                    role:
+                      type: string
+                      description: The role of the submitter in the signing process.
+                    embed_src:
+                      type: string
+                      description: The `src` URL value to embed the signing form or sign via a link.
+              example:
+              - id: 1
+                submission_id: 1
+                uuid: 884d545b-3396-49f1-8c07-05b8b2a78755
+                email: john.doe@example.com
+                slug: pAMimKcyrLjqVt
+                sent_at: '2023-12-13T23:04:04.252Z'
+                opened_at: null
+                completed_at: null
+                declined_at: null
+                created_at: '2023-12-14T15:50:21.799Z'
+                updated_at: '2023-12-14T15:50:21.799Z'
+                name: string
+                phone: '+1234567890'
+                external_id: '2321'
+                metadata:
+                  customData: custom value
+                status: sent
+                values:
+                - field: Full Name
+                  value: John Doe
+                preferences:
+                  send_email: true
+                  send_sms: false
+                role: First Party
+                embed_src: https://docuseal.com/s/pAMimKcyrLjqVt
+  /submissions/{id}:
+    get:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Get a submission
+      description: The API endpoint provides the functionality to retrieve information about a submission.
+      operationId: getSubmission
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The unique identifier of the submission.
+        example: 1001
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - id
+                - slug
+                - source
+                - submitters_order
+                - audit_log_url
+                - combined_document_url
+                - created_at
+                - updated_at
+                - archived_at
+                - submitters
+                - created_by_user
+                - submission_events
+                - documents
+                - status
+                - metadata
+                - completed_at
+                properties:
+                  id:
+                    type: integer
+                    description: Submission unique ID number.
+                  name:
+                    type: string
+                    description: Name of the document submission.
+                    example: Test Submission Document
+                  slug:
+                    type: string
+                    description: Unique slug of the submission.
+                  source:
+                    type: string
+                    description: The source of the submission.
+                    enum:
+                    - invite
+                    - bulk
+                    - api
+                    - embed
+                    - link
+                  submitters_order:
+                    type: string
+                    description: The order of submitters.
+                    enum:
+                    - random
+                    - preserved
+                  audit_log_url:
+                    type: string
+                    nullable: true
+                    description: Audit log file URL.
+                  combined_document_url:
+                    type: string
+                    nullable: true
+                    description: Combined PDF file URL with documents and Audit Log.
+                  created_at:
+                    type: string
+                    description: The date and time when the submission was created.
+                  updated_at:
+                    type: string
+                    description: The date and time when the submission was last updated.
+                  archived_at:
+                    type: string
+                    nullable: true
+                    description: The date and time when the submission was archived.
+                  submitters:
+                    type: array
+                    description: The list of submitters.
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - submission_id
+                      - uuid
+                      - email
+                      - slug
+                      - sent_at
+                      - opened_at
+                      - completed_at
+                      - declined_at
+                      - created_at
+                      - updated_at
+                      - name
+                      - phone
+                      - external_id
+                      - status
+                      - values
+                      - documents
+                      - role
+                      properties:
+                        id:
+                          type: integer
+                          description: Submitter unique ID number.
+                        submission_id:
+                          type: integer
+                          description: Submission unique ID number.
+                        uuid:
+                          type: string
+                          description: Submitter UUID.
+                        email:
+                          type: string
+                          nullable: true
+                          description: The email address of the submitter.
+                        slug:
+                          type: string
+                          description: Unique key to be used in the form signing link and embedded form.
+                        sent_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the signing request was sent to the submitter.
+                        opened_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter opened the signing form.
+                        completed_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter completed the signing form.
+                        declined_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter declined the signing form.
+                        created_at:
+                          type: string
+                          description: The date and time when the submitter was created.
+                        updated_at:
+                          type: string
+                          description: The date and time when the submitter was last updated.
+                        name:
+                          type: string
+                          nullable: true
+                          description: The name of the submitter.
+                        phone:
+                          type: string
+                          nullable: true
+                          description: The phone number of the submitter.
+                        external_id:
+                          type: string
+                          nullable: true
+                          description: Your application-specific unique string key to identify this submitter within your app.
+                        status:
+                          type: string
+                          description: The status of signing request for the submitter.
+                          enum:
+                          - completed
+                          - declined
+                          - opened
+                          - sent
+                          - awaiting
+                        values:
+                          type: array
+                          description: An array of pre-filled values for the submitter.
+                          items:
+                            type: object
+                            required:
+                            - field
+                            - value
+                            properties:
+                              field:
+                                type: string
+                                description: Document template field name.
+                              value:
+                                oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                                - type: array
+                                  items:
+                                    oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                                description: Pre-filled value of the field.
+                        documents:
+                          type: array
+                          description: An array of completed or signed documents by the submitter.
+                          items:
+                            type: object
+                            required:
+                            - name
+                            - url
+                            properties:
+                              name:
+                                type: string
+                                description: Document name.
+                              url:
+                                type: string
+                                description: Document URL.
+                        role:
+                          type: string
+                          description: The role of the submitter in the signing process.
+                  template:
+                    type: object
+                    required:
+                    - id
+                    - name
+                    - external_id
+                    - folder_name
+                    - created_at
+                    - updated_at
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier of the document template.
+                      name:
+                        type: string
+                        description: The name of the template.
+                      external_id:
+                        type: string
+                        nullable: true
+                        description: Your application-specific unique string key to identify this template within your app.
+                      folder_name:
+                        type: string
+                        description: Folder name where the template is located.
+                      created_at:
+                        type: string
+                        description: The date and time when the template was created.
+                      updated_at:
+                        type: string
+                        description: The date and time when the template was last updated.
+                  created_by_user:
+                    type: object
+                    nullable: true
+                    required:
+                    - id
+                    - first_name
+                    - last_name
+                    - email
+                    properties:
+                      id:
+                        type: integer
+                        description: Unique identifier of the user who created the submission.
+                      first_name:
+                        type: string
+                        description: The first name of the user who created the submission.
+                      last_name:
+                        type: string
+                        description: The last name of the user who created the submission.
+                      email:
+                        type: string
+                        description: The email address of the user who created the submission.
+                  submission_events:
+                    type: array
+                    description: An array of events related to the submission.
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - submitter_id
+                      - event_type
+                      - event_timestamp
+                      properties:
+                        id:
+                          type: integer
+                          description: Submission event unique ID number.
+                        submitter_id:
+                          type: integer
+                          description: Unique identifier of the submitter that triggered the event.
+                        event_type:
+                          type: string
+                          description: Event type.
+                          enum:
+                          - send_email
+                          - bounce_email
+                          - complaint_email
+                          - send_reminder_email
+                          - send_sms
+                          - send_2fa_sms
+                          - open_email
+                          - click_email
+                          - click_sms
+                          - phone_verified
+                          - start_form
+                          - start_verification
+                          - complete_verification
+                          - view_form
+                          - invite_party
+                          - complete_form
+                          - decline_form
+                          - api_complete_form
+                        event_timestamp:
+                          type: string
+                          description: Date and time when the event was triggered.
+                        data:
+                          type: object
+                          description: Additional event details object.
+                  documents:
+                    type: array
+                    description: An array of completed or signed documents of the submission.
+                    items:
+                      type: object
+                      required:
+                      - name
+                      - url
+                      properties:
+                        name:
+                          type: string
+                          description: Document name.
+                        url:
+                          type: string
+                          description: Document URL.
+                  status:
+                    type: string
+                    description: The status of the submission.
+                    enum:
+                    - completed
+                    - declined
+                    - expired
+                    - pending
+                  metadata:
+                    type: object
+                    description: Object with custom metadata.
+                  completed_at:
+                    type: string
+                    nullable: true
+                    description: The date and time when the submission was completed.
+              example:
+                id: 1
+                name: null
+                source: link
+                submitters_order: random
+                slug: VyL4szTwYoSvXq
+                audit_log_url: https://docuseal.com/blobs/proxy/hash/example.pdf
+                combined_document_url: null
+                completed_at: '2023-12-14T15:49:21.701Z'
+                expire_at: null
+                created_at: '2023-12-10T15:48:17.166Z'
+                updated_at: '2023-12-10T15:49:21.895Z'
+                archived_at: null
+                submitters:
+                - id: 1
+                  submission_id: 1
+                  uuid: 0954d146-db8c-4772-aafe-2effc7c0e0c0
+                  email: submitter@example.com
+                  slug: dsEeWrhRD8yDXT
+                  sent_at: '2023-12-14T15:45:49.011Z'
+                  opened_at: '2023-12-14T15:48:23.011Z'
+                  completed_at: '2023-12-14T15:49:21.701Z'
+                  declined_at: null
+                  created_at: '2023-12-14T15:48:17.173Z'
+                  updated_at: '2023-12-14T15:50:21.799Z'
+                  name: John Doe
+                  phone: '+1234567890'
+                  external_id: null
+                  status: completed
+                  metadata: {}
+                  values:
+                  - field: Full Name
+                    value: John Doe
+                  documents:
+                  - name: example
+                    url: https://docuseal.com/blobs/proxy/hash/example.pdf
+                  role: First Party
+                template:
+                  id: 1
+                  name: Example Template
+                  external_id: Temp123
+                  folder_name: Default
+                  created_at: '2023-12-14T15:50:21.799Z'
+                  updated_at: '2023-12-14T15:50:21.799Z'
+                created_by_user:
+                  id: 1
+                  first_name: Bob
+                  last_name: Smith
+                  email: bob.smith@example.com
+                submission_events:
+                - id: 1
+                  submitter_id: 2
+                  event_type: view_form
+                  event_timestamp: '2023-12-14T15:47:24.566Z'
+                  data: {}
+                documents:
+                - name: example
+                  url: https://docuseal.com/file/hash/example.pdf
+                status: completed
+    delete:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Archive a submission
+      description: The API endpoint allows you to archive a submission.
+      operationId: archiveSubmission
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The unique identifier of the submission.
+        example: 1001
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - id
+                - archived_at
+                properties:
+                  id:
+                    type: integer
+                    description: Submission unique ID number.
+                  archived_at:
+                    type: string
+                    nullable: true
+                    description: Date and time when the submission was archived.
+              example:
+                id: 1
+                archived_at: '2023-12-14T15:50:21.799Z'
+  /submissions/{id}/documents:
+    get:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Get submission documents
+      description: This endpoint returns a list of partially filled documents for a submission. If the submission has been completed, the final signed documents are returned.
+      operationId: getSubmissionDocuments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The unique identifier of the submission.
+        example: 1001
+      - name: merge
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: When `true`, merges all documents into a single PDF.
+        example: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - id
+                - documents
+                properties:
+                  id:
+                    type: integer
+                    description: Submission unique ID number.
+                  documents:
+                    type: array
+                    description: An array of completed or signed documents of the submission.
+                    items:
+                      type: object
+                      required:
+                      - name
+                      - url
+                      properties:
+                        name:
+                          type: string
+                          description: Document name.
+                        url:
+                          type: string
+                          description: Document URL.
+              example:
+                id: 1
+                documents:
+                - name: example
+                  url: https://docuseal.com/file/hash/example.pdf
+  /submissions/emails:
+    post:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Create submissions from emails
+      description: This API endpoint allows you to create submissions for a document template and send them to the specified email addresses. This is a simplified version of the POST /submissions API to be used with Zapier or other automation tools.
+      operationId: createSubmissionsFromEmails
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - template_id
+              - emails
+              properties:
+                template_id:
+                  type: integer
+                  description: The unique identifier of the template.
+                  example: 1000001
+                emails:
+                  type: string
+                  description: A comma-separated list of email addresses to send the submission to.
+                  example: '{{emails}}'
+                send_email:
+                  type: boolean
+                  description: Set `false` to disable signature request emails sending.
+                  default: true
+                message:
+                  type: object
+                  description: Custom signature request email message.
+                  properties:
+                    subject:
+                      type: string
+                      description: Custom signature request email subject.
+                    body:
+                      type: string
+                      description: 'Custom signature request email body. Can include the following variables: {{template.name}}, {{submitter.link}}, {{account.name}}.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - id
+                  - submission_id
+                  - uuid
+                  - email
+                  - slug
+                  - status
+                  - values
+                  - metadata
+                  - sent_at
+                  - opened_at
+                  - completed_at
+                  - declined_at
+                  - created_at
+                  - updated_at
+                  - name
+                  - phone
+                  - external_id
+                  - preferences
+                  - role
+                  - embed_src
+                  properties:
+                    id:
+                      type: integer
+                      description: Submitter unique ID number.
+                    submission_id:
+                      type: integer
+                      description: Submission unique ID number.
+                    uuid:
+                      type: string
+                      description: Submitter UUID.
+                    email:
+                      type: string
+                      nullable: true
+                      description: The email address of the submitter.
+                    slug:
+                      type: string
+                      description: Unique key to be used in the form signing link and embedded form.
+                    status:
+                      type: string
+                      description: The status of signing request for the submitter.
+                      enum:
+                      - completed
+                      - declined
+                      - opened
+                      - sent
+                      - awaiting
+                    values:
+                      type: array
+                      description: An array of pre-filled values for the submitter.
+                      items:
+                        type: object
+                        required:
+                        - field
+                        - value
+                        properties:
+                          field:
+                            type: string
+                            description: Document template field name.
+                          value:
+                            oneOf:
+                            - type: string
+                            - type: number
+                            - type: boolean
+                            - type: array
+                              items:
+                                oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                            description: Pre-filled value of the field.
+                    metadata:
+                      type: object
+                      description: Metadata object with additional submitter information.
+                    sent_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the signing request was sent to the submitter.
+                    opened_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the submitter opened the signing form.
+                    completed_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the submitter completed the signing form.
+                    declined_at:
+                      type: string
+                      nullable: true
+                      description: The date and time when the submitter declined the signing form.
+                    created_at:
+                      type: string
+                      description: The date and time when the submitter was created.
+                    updated_at:
+                      type: string
+                      description: The date and time when the submitter was last updated.
+                    name:
+                      type: string
+                      nullable: true
+                      description: The name of the submitter.
+                    phone:
+                      type: string
+                      nullable: true
+                      description: The phone number of the submitter.
+                    external_id:
+                      type: string
+                      nullable: true
+                      description: Your application-specific unique string key to identify this submitter within your app.
+                    preferences:
+                      type: object
+                      description: Submitter preferences.
+                      properties:
+                        send_email:
+                          type: boolean
+                          description: Indicates whether the signature request email should be sent.
+                        send_sms:
+                          type: boolean
+                          description: Indicates whether the signature request should be sent via SMS.
+                    role:
+                      type: string
+                      description: The role of the submitter in the signing process.
+                    embed_src:
+                      type: string
+                      description: The `src` URL value to embed the signing form or sign via a link.
+              example:
+              - id: 1
+                submission_id: 1
+                uuid: 884d545b-3396-49f1-8c07-05b8b2a78755
+                email: john.doe@example.com
+                slug: pAMimKcyrLjqVt
+                sent_at: '2023-12-13T23:04:04.252Z'
+                opened_at: null
+                completed_at: null
+                declined_at: null
+                created_at: '2023-12-14T15:50:21.799Z'
+                updated_at: '2023-12-14T15:50:21.799Z'
+                name: string
+                phone: '+1234567890'
+                external_id: '2321'
+                metadata:
+                  customData: custom value
+                status: sent
+                values:
+                - field: Full Name
+                  value: John Doe
+                preferences:
+                  send_email: true
+                  send_sms: false
+                role: First Party
+                embed_src: https://docuseal.com/s/pAMimKcyrLjqVt
+              - id: 2
+                submission_id: 1
+                uuid: 884d545b-3396-49f1-8c07-05b8b2a78755
+                email: alan.smith@example.com
+                slug: SEwc65vHNDH3QS
+                sent_at: '2023-12-13T23:04:04.252Z'
+                opened_at: null
+                completed_at: null
+                declined_at: null
+                created_at: '2023-12-14T15:50:21.799Z'
+                updated_at: '2023-12-14T15:50:21.799Z'
+                name: string
+                phone: '+1234567890'
+                external_id: '2321'
+                metadata:
+                  customData: custom value
+                status: sent
+                values:
+                - field: Full Name
+                  value: Roe Moe
+                preferences:
+                  send_email: true
+                  send_sms: false
+                role: First Party
+                embed_src: SEwc65vHNDH3QS
+  /submissions/pdf:
+    post:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Create a submission from PDF
+      description: 'The API endpoint provides the functionality to create one-off submission request from a PDF. Use <code>{{Field Name;role=Signer1;type=date}}</code> text tags to define fillable fields in the document. See <a href="https://www.docuseal.com/examples/fieldtags.pdf" target="_blank" class="link font-bold">https://www.docuseal.com/examples/fieldtags.pdf</a> for more text tag formats. Or specify the exact pixel coordinates of the document fields using `fields` param.<br><b>Related Guides</b><br><a href="https://www.docuseal.com/guides/use-embedded-text-field-tags-in-the-pdf-to-create-a-fillable-form" class="link">Use embedded text field tags to create a fillable form</a>
+
+        '
+      operationId: createSubmissionFromPdf
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documents
+              - submitters
+              properties:
+                name:
+                  type: string
+                  description: Name of the document submission.
+                  example: Test Submission Document
+                send_email:
+                  type: boolean
+                  description: Set `false` to disable signature request emails sending.
+                  default: true
+                send_sms:
+                  type: boolean
+                  description: Set `true` to send signature request via phone number and SMS.
+                  default: false
+                order:
+                  type: string
+                  description: Pass 'random' to send signature request emails to all parties right away. The order is 'preserved' by default so the second party will receive a signature request email only after the document is signed by the first party.
+                  default: preserved
+                  enum:
+                  - preserved
+                  - random
+                completed_redirect_url:
+                  type: string
+                  description: Specify URL to redirect to after the submission completion.
+                bcc_completed:
+                  type: string
+                  description: Specify BCC address to send signed documents to after the completion.
+                reply_to:
+                  type: string
+                  description: Specify Reply-To address to use in the notification emails.
+                expire_at:
+                  type: string
+                  description: Specify the expiration date and time after which the submission becomes unavailable for signature.
+                  example: 2024-09-01 12:00:00 UTC
+                template_ids:
+                  type: array
+                  description: An optional array of template IDs to use in the submission along with the provided documents. This can be used to create multi-document submissions when some of the required documents exist within templates.
+                  items:
+                    type: integer
+                    description: The ID of the template to use for the submission.
+                documents:
+                  type: array
+                  description: An array of PDF documents to create a submission.
+                  items:
+                    type: object
+                    required:
+                    - name
+                    - file
+                    properties:
+                      name:
+                        type: string
+                        description: Name of the document.
+                      file:
+                        example: base64
+                        type: string
+                        format: base64
+                        description: Base64-encoded content of the PDF file or downloadable file URL.
+                      fields:
+                        type: array
+                        description: Fields are optional if you use {{...}} text tags to define fields in the document.
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              description: Name of the field.
+                            type:
+                              type: string
+                              description: Type of the field (e.g., text, signature, date, initials).
+                              enum:
+                              - heading
+                              - text
+                              - signature
+                              - initials
+                              - date
+                              - number
+                              - image
+                              - checkbox
+                              - multiple
+                              - file
+                              - radio
+                              - select
+                              - cells
+                              - stamp
+                              - payment
+                              - phone
+                              - verification
+                              - kba
+                              - strikethrough
+                            role:
+                              type: string
+                              description: Role name of the signer.
+                            required:
+                              type: boolean
+                              description: Indicates if the field is required.
+                            title:
+                              type: string
+                              description: Field title displayed to the user instead of the name, shown on the signing form. Supports Markdown.
+                            description:
+                              type: string
+                              description: Field description displayed on the signing form. Supports Markdown.
+                            areas:
+                              type: array
+                              description: List of areas where the field is located in the document.
+                              items:
+                                type: object
+                                required:
+                                - x
+                                - y
+                                - w
+                                - h
+                                - page
+                                properties:
+                                  x:
+                                    type: number
+                                    description: X-coordinate of the field area.
+                                  y:
+                                    type: number
+                                    description: Y-coordinate of the field area.
+                                  w:
+                                    type: number
+                                    description: Width of the field area.
+                                  h:
+                                    type: number
+                                    description: Height of the field area.
+                                  page:
+                                    type: integer
+                                    description: Page number of the field area. Starts from 1.
+                                    example: 1
+                                  option:
+                                    type: string
+                                    description: Option string value for 'radio' and 'multiple' select field types.
+                            options:
+                              type: array
+                              description: An array of option values for 'select' field type.
+                              items:
+                                type: string
+                              example:
+                              - Option A
+                              - Option B
+                      position:
+                        type: integer
+                        description: Document position in the submission. If not specified, the document will be added in the order it appears in the documents array.
+                submitters:
+                  type: array
+                  description: The list of submitters for the submission.
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: The name of the submitter.
+                      role:
+                        type: string
+                        description: The role name or title of the submitter.
+                        example: First Party
+                      email:
+                        type: string
+                        description: The email address of the submitter.
+                        format: email
+                        example: john.doe@example.com
+                      phone:
+                        type: string
+                        description: The phone number of the submitter, formatted according to the E.164 standard.
+                        example: '+1234567890'
+                      values:
+                        type: object
+                        description: An object with pre-filled values for the submission. Use field names for keys of the object. For more configurations see `fields` param.
+                      external_id:
+                        type: string
+                        description: Your application-specific unique string key to identify this submitter within your app.
+                      completed:
+                        type: boolean
+                        description: Pass `true` to mark submitter as completed and auto-signed via API.
+                      metadata:
+                        type: object
+                        description: Metadata object with additional submitter information.
+                        example: '{ "customField": "value" }'
+                      send_email:
+                        type: boolean
+                        description: Set `false` to disable signature request emails sending only for this submitter.
+                        default: true
+                      send_sms:
+                        type: boolean
+                        description: Set `true` to send signature request via phone number and SMS.
+                        default: false
+                      reply_to:
+                        type: string
+                        description: Specify Reply-To address to use in the notification emails for this submitter.
+                      completed_redirect_url:
+                        type: string
+                        description: Submitter specific URL to redirect to after the submission completion.
+                      order:
+                        type: integer
+                        description: The order of the submitter in the workflow (e.g., 0 for the first signer, 1 for the second, etc.). Use the same order number to create order groups. By default, submitters are ordered as in the submitters array.
+                      require_phone_2fa:
+                        type: boolean
+                        description: Set to `true` to require phone 2FA verification via a one-time code sent to the phone number in order to access the documents.
+                        default: false
+                      require_email_2fa:
+                        type: boolean
+                        description: Set to `true` to require email 2FA verification via a one-time code sent to the email address in order to access the documents.
+                        default: false
+                      invite_by:
+                        type: string
+                        description: Set the role name of the previous party that should invite this party via email.
+                      fields:
+                        type: array
+                        description: A list of configurations for document form fields.
+                        items:
+                          type: object
+                          required:
+                          - name
+                          properties:
+                            name:
+                              type: string
+                              description: Document field name.
+                              example: First Name
+                            default_value:
+                              oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                              - type: array
+                                items:
+                                  oneOf:
+                                  - type: string
+                                  - type: number
+                                  - type: boolean
+                              description: Default value of the field. Use base64 encoded file or a public URL to the image file to set default signature or image fields.
+                              example: Acme
+                            readonly:
+                              type: boolean
+                              description: Set `true` to make it impossible for the submitter to edit predefined field value.
+                              default: false
+                            required:
+                              type: boolean
+                              description: Set `true` to make the field required.
+                            title:
+                              type: string
+                              description: Field title displayed to the user instead of the name, shown on the signing form. Supports Markdown.
+                            description:
+                              type: string
+                              description: Field description displayed on the signing form. Supports Markdown.
+                            validation:
+                              type: object
+                              description: Field validation rules.
+                              properties:
+                                pattern:
+                                  type: string
+                                  description: HTML field validation pattern string based on https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern specification.
+                                  example: '[A-Z]{4}'
+                                message:
+                                  type: string
+                                  description: A custom error message to display on validation failure.
+                                min:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Minimum allowed number value or date depending on field type.
+                                max:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Maximum allowed number value or date depending on field type.
+                                step:
+                                  type: number
+                                  description: Increment step for number field. Pass 1 to accept only integers, or 0.01 to accept decimal currency.
+                            preferences:
+                              type: object
+                              description: Field display preferences.
+                              properties:
+                                font_size:
+                                  type: integer
+                                  description: Font size of the field value in pixels.
+                                  example: 12
+                                font_type:
+                                  type: string
+                                  description: Font type of the field value.
+                                  enum:
+                                  - bold
+                                  - italic
+                                  - bold_italic
+                                font:
+                                  type: string
+                                  description: Font family of the field value.
+                                  enum:
+                                  - Times
+                                  - Helvetica
+                                  - Courier
+                                color:
+                                  type: string
+                                  description: Font color of the field value.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                  default: black
+                                background:
+                                  type: string
+                                  description: Field box background color.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                align:
+                                  type: string
+                                  description: Horizontal alignment of the field text value.
+                                  enum:
+                                  - left
+                                  - center
+                                  - right
+                                  default: left
+                                valign:
+                                  type: string
+                                  description: Vertical alignment of the field text value.
+                                  enum:
+                                  - top
+                                  - center
+                                  - bottom
+                                  default: center
+                                format:
+                                  type: string
+                                  description: 'The data format for different field types.<br>- Date field: accepts formats such as DD/MM/YYYY (default: MM/DD/YYYY).<br>- Signature field: accepts drawn, typed, drawn_or_typed (default), or upload.<br>- Number field: accepts currency formats such as usd, eur, gbp.'
+                                  example: DD/MM/YYYY
+                                price:
+                                  type: number
+                                  description: Price value of the payment field. Only for payment fields.
+                                  example: 99.99
+                                currency:
+                                  type: string
+                                  description: Currency value of the payment field. Only for payment fields.
+                                  enum:
+                                  - USD
+                                  - EUR
+                                  - GBP
+                                  - CAD
+                                  - AUD
+                                  default: USD
+                                mask:
+                                  description: Set `true` to make sensitive data masked on the document.
+                                  oneOf:
+                                  - type: integer
+                                  - type: boolean
+                                  default: false
+                                reasons:
+                                  description: An array of signature reasons to choose from.
+                                  type: array
+                                  items:
+                                    type: string
+                      roles:
+                        type: array
+                        description: A list of roles for the submitter. Use this param to merge multiple roles into one submitter.
+                        items:
+                          type: string
+                message:
+                  type: object
+                  description: Custom signature request email message.
+                  properties:
+                    subject:
+                      type: string
+                      description: Custom signature request email subject.
+                    body:
+                      type: string
+                      description: 'Custom signature request email body. Can include the following variables: {{submission.name}}, {{submitter.link}}, {{account.name}}.'
+                flatten:
+                  type: boolean
+                  description: Remove PDF form fields from the documents.
+                  default: false
+                merge_documents:
+                  type: boolean
+                  description: Set `true` to merge the documents into a single PDF file.
+                  default: false
+                remove_tags:
+                  type: boolean
+                  description: Pass `false` to disable the removal of {{text}} tags from the PDF. This can be used along with transparent text tags for faster and more robust PDF processing.
+                  default: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - id
+                - submitters
+                - source
+                - submitters_order
+                - status
+                - documents
+                - expire_at
+                - created_at
+                properties:
+                  id:
+                    type: integer
+                    description: Submission unique ID number.
+                  name:
+                    type: string
+                    description: Submission name.
+                  submitters:
+                    type: array
+                    description: The list of submitters.
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - uuid
+                      - email
+                      - slug
+                      - sent_at
+                      - opened_at
+                      - completed_at
+                      - declined_at
+                      - created_at
+                      - updated_at
+                      - name
+                      - phone
+                      - status
+                      - role
+                      - metadata
+                      - preferences
+                      properties:
+                        id:
+                          type: integer
+                          description: Submitter unique ID number.
+                        uuid:
+                          type: string
+                          description: Submitter UUID.
+                        email:
+                          type: string
+                          nullable: true
+                          description: The email address of the submitter.
+                        slug:
+                          type: string
+                          description: Unique key to be used in the form signing link and embedded form.
+                        sent_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the signing request was sent to the submitter.
+                        opened_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter opened the signing form.
+                        completed_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter completed the signing form.
+                        declined_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter declined the signing form.
+                        created_at:
+                          type: string
+                          description: The date and time when the submitter was created.
+                        updated_at:
+                          type: string
+                          description: The date and time when the submitter was last updated.
+                        name:
+                          type: string
+                          nullable: true
+                          description: The name of the submitter.
+                        phone:
+                          type: string
+                          nullable: true
+                          description: The phone number of the submitter.
+                        external_id:
+                          type: string
+                          nullable: true
+                          description: Your application-specific unique string key to identify this submitter within your app.
+                        status:
+                          type: string
+                          description: The status of signing request for the submitter.
+                          enum:
+                          - completed
+                          - declined
+                          - opened
+                          - sent
+                          - awaiting
+                        values:
+                          type: array
+                          description: An array of pre-filled values for the submitter.
+                          items:
+                            type: object
+                            required:
+                            - field
+                            - value
+                            properties:
+                              field:
+                                type: string
+                                description: Document template field name.
+                              value:
+                                oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                                - type: array
+                                  items:
+                                    oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                                description: Pre-filled value of the field.
+                        role:
+                          type: string
+                          description: The role of the submitter in the signing process.
+                        metadata:
+                          type: object
+                          description: Metadata object with additional submitter information.
+                        preferences:
+                          type: object
+                          description: Submitter preferences.
+                        embed_src:
+                          type: string
+                          description: The `src` URL value to embed the signing form or sign via a link.
+                  source:
+                    type: string
+                    description: The source of the submission.
+                    enum:
+                    - invite
+                    - bulk
+                    - api
+                    - embed
+                    - link
+                  submitters_order:
+                    type: string
+                    description: The order of submitters.
+                    enum:
+                    - random
+                    - preserved
+                  status:
+                    type: string
+                    description: The status of the submission.
+                    enum:
+                    - completed
+                    - declined
+                    - expired
+                    - pending
+                  schema:
+                    type: array
+                    description: The one-off submission document files.
+                    items:
+                      type: object
+                      properties:
+                        attachment_uuid:
+                          type: string
+                          description: The attachment UUID.
+                        name:
+                          type: string
+                          description: The attachment name.
+                  fields:
+                    type: array
+                    description: List of fields to be filled in the one-off submission.
+                    items:
+                      type: object
+                      required:
+                      - uuid
+                      - submitter_uuid
+                      - name
+                      - type
+                      - required
+                      - areas
+                      properties:
+                        uuid:
+                          type: string
+                          description: Unique identifier of the field.
+                        submitter_uuid:
+                          type: string
+                          description: Unique identifier of the submitter that filled the field.
+                        name:
+                          type: string
+                          description: Field name.
+                        type:
+                          type: string
+                          description: Type of the field (e.g., text, signature, date, initials).
+                          enum:
+                          - heading
+                          - text
+                          - signature
+                          - initials
+                          - date
+                          - number
+                          - image
+                          - checkbox
+                          - multiple
+                          - file
+                          - radio
+                          - select
+                          - cells
+                          - stamp
+                          - payment
+                          - phone
+                          - verification
+                          - kba
+                          - strikethrough
+                        required:
+                          type: boolean
+                          description: Indicates if the field is required.
+                        preferences:
+                          type: object
+                          description: Field display preferences.
+                          properties:
+                            font_size:
+                              type: integer
+                              description: Font size of the field value in pixels.
+                            font_type:
+                              type: string
+                              description: Font type of the field value.
+                            font:
+                              type: string
+                              description: Font family of the field value.
+                            color:
+                              type: string
+                              description: Font color of the field value.
+                            background:
+                              type: string
+                              description: Field box background color.
+                            align:
+                              type: string
+                              description: Horizontal alignment of the field text value.
+                            valign:
+                              type: string
+                              description: Vertical alignment of the field text value.
+                            format:
+                              type: string
+                              description: The data format for different field types.
+                            price:
+                              type: number
+                              description: Price value of the payment field. Only for payment fields.
+                            currency:
+                              type: string
+                              description: Currency value of the payment field. Only for payment fields.
+                            mask:
+                              type: boolean
+                              description: Indicates if the field is masked on the document.
+                            reasons:
+                              description: An array of signature reasons to choose from.
+                              type: array
+                              items:
+                                type: string
+                        areas:
+                          type: array
+                          description: List of areas where the field is located in the document.
+                          items:
+                            type: object
+                            required:
+                            - x
+                            - y
+                            - w
+                            - h
+                            - attachment_uuid
+                            - page
+                            properties:
+                              x:
+                                type: number
+                                description: X coordinate of the area where the field is located in the document.
+                              y:
+                                type: number
+                                description: Y coordinate of the area where the field is located in the document.
+                              w:
+                                type: number
+                                description: Width of the area where the field is located in the document.
+                              h:
+                                type: number
+                                description: Height of the area where the field is located in the document.
+                              attachment_uuid:
+                                type: string
+                                description: Unique identifier of the attached document where the field is located.
+                              page:
+                                type: integer
+                                description: Page number of the attached document where the field is located.
+                  expire_at:
+                    type: string
+                    description: Specify the expiration date and time after which the submission becomes unavailable for signature.
+                    example: 2024-09-01 12:00:00 UTC
+                  created_at:
+                    type: string
+                    description: The date and time when the submission was created.
+              example:
+                id: 5
+                name: Test Submission
+                submitters:
+                - id: 1
+                  uuid: 884d545b-3396-49f1-8c07-05b8b2a78755
+                  email: john.doe@example.com
+                  slug: pAMimKcyrLjqVt
+                  sent_at: '2025-06-02T15:55:51.310Z'
+                  opened_at: null
+                  completed_at: null
+                  declined_at: null
+                  created_at: '2025-06-02T15:55:50.320Z'
+                  updated_at: '2025-06-02T15:55:50.320Z'
+                  name: string
+                  phone: '+1234567890'
+                  external_id: '2321'
+                  metadata:
+                    customData: custom value
+                  status: sent
+                  values:
+                  - field: Full Name
+                    value: John Doe
+                  preferences:
+                    send_email: true
+                    send_sms: false
+                    reply_to: reply@example.com
+                    completed_redirect_url: https://example.com/
+                  role: First Party
+                  embed_src: https://docuseal.com/s/pAMimKcyrLjqVt
+                source: api
+                submitters_order: preserved
+                status: pending
+                schema:
+                - name: Demo PDF
+                  attachment_uuid: 48d2998f-266b-47e4-beb2-250ab7ccebdf
+                fields:
+                - name: Name
+                  type: text
+                  required: true
+                  uuid: d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff
+                  submitter_uuid: 0b0bff58-bc9a-475d-b4a9-2f3e5323faf7
+                  areas:
+                  - page: 1
+                    attachment_uuid: 48d2998f-266b-47e4-beb2-250ab7ccebdf
+                    x: 0.403158189124654
+                    y: 0.04211750189825361
+                    w: 0.100684625476058
+                    h: 0.01423690205011389
+                expire_at: null
+                created_at: '2025-06-02T15:55:50.270Z'
+  /submissions/docx:
+    post:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Create a submission from DOCX
+      description: The API endpoint provides functionality to create a one-off submission request from a DOCX file with dynamic content variables. Use <code>[[variable_name]]</code> text tags to define dynamic content variables in the document. See <a href="https://www.docuseal.com/examples/demo_template.docx" target="_blank" class="link font-bold">https://www.docuseal.com/examples/demo_template.docx</a> for the specific text variable syntax, including dynamic content tables and lists. You can also use the <code>{{signature}}</code> field syntax to define fillable fields, as in a PDF.<br><b>Related Guides</b><br><a href="https://www.docuseal.com/guides/use-dynamic-content-variables-in-docx-to-create-personalized-documents" class="link">Use dynamic content variables in DOCX to create personalized documents</a>
+      operationId: createSubmissionFromDocx
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documents
+              - submitters
+              properties:
+                name:
+                  type: string
+                  description: Name of the document submission.
+                  example: Test Submission Document
+                send_email:
+                  type: boolean
+                  description: Set `false` to disable signature request emails sending.
+                  default: true
+                send_sms:
+                  type: boolean
+                  description: Set `true` to send signature request via phone number and SMS.
+                  default: false
+                variables:
+                  type: object
+                  description: Dynamic content variables object. Variable values can be strings, numbers, arrays, objects, or HTML content used to generate styled text, paragraphs, and tables in DOCX.
+                  example:
+                    variable_name: value
+                order:
+                  type: string
+                  description: Pass 'random' to send signature request emails to all parties right away. The order is 'preserved' by default so the second party will receive a signature request email only after the document is signed by the first party.
+                  default: preserved
+                  enum:
+                  - preserved
+                  - random
+                completed_redirect_url:
+                  type: string
+                  description: Specify URL to redirect to after the submission completion.
+                bcc_completed:
+                  type: string
+                  description: Specify BCC address to send signed documents to after the completion.
+                reply_to:
+                  type: string
+                  description: Specify Reply-To address to use in the notification emails.
+                expire_at:
+                  type: string
+                  description: Specify the expiration date and time after which the submission becomes unavailable for signature.
+                  example: 2024-09-01 12:00:00 UTC
+                template_ids:
+                  type: array
+                  description: An optional array of template IDs to use in the submission along with the provided documents. This can be used to create multi-document submissions when some of the required documents exist within templates.
+                  items:
+                    type: integer
+                    description: The ID of the template to use for the submission.
+                documents:
+                  type: array
+                  description: An array of DOCX documents to create a submission.
+                  items:
+                    type: object
+                    required:
+                    - name
+                    - file
+                    properties:
+                      name:
+                        type: string
+                        description: Name of the document.
+                      file:
+                        example: base64
+                        type: string
+                        format: base64
+                        description: Base64-encoded content of the PDF or DOCX file or downloadable file URL.
+                      position:
+                        type: integer
+                        description: Document position in the submission. If not specified, the document will be added in the order it appears in the documents array.
+                submitters:
+                  type: array
+                  description: The list of submitters for the submission.
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: The name of the submitter.
+                      role:
+                        type: string
+                        description: The role name or title of the submitter.
+                        example: First Party
+                      email:
+                        type: string
+                        description: The email address of the submitter.
+                        format: email
+                        example: john.doe@example.com
+                      phone:
+                        type: string
+                        description: The phone number of the submitter, formatted according to the E.164 standard.
+                        example: '+1234567890'
+                      values:
+                        type: object
+                        description: An object with pre-filled values for the submission. Use field names for keys of the object. For more configurations see `fields` param.
+                      external_id:
+                        type: string
+                        description: Your application-specific unique string key to identify this submitter within your app.
+                      completed:
+                        type: boolean
+                        description: Pass `true` to mark submitter as completed and auto-signed via API.
+                      metadata:
+                        type: object
+                        description: Metadata object with additional submitter information.
+                        example: '{ "customField": "value" }'
+                      send_email:
+                        type: boolean
+                        description: Set `false` to disable signature request emails sending only for this submitter.
+                        default: true
+                      send_sms:
+                        type: boolean
+                        description: Set `true` to send signature request via phone number and SMS.
+                        default: false
+                      reply_to:
+                        type: string
+                        description: Specify Reply-To address to use in the notification emails for this submitter.
+                      completed_redirect_url:
+                        type: string
+                        description: Submitter specific URL to redirect to after the submission completion.
+                      order:
+                        type: integer
+                        description: The order of the submitter in the workflow (e.g., 0 for the first signer, 1 for the second, etc.). Use the same order number to create order groups. By default, submitters are ordered as in the submitters array.
+                      require_phone_2fa:
+                        type: boolean
+                        description: Set to `true` to require phone 2FA verification via a one-time code sent to the phone number in order to access the documents.
+                        default: false
+                      require_email_2fa:
+                        type: boolean
+                        description: Set to `true` to require email 2FA verification via a one-time code sent to the email address in order to access the documents.
+                        default: false
+                      invite_by:
+                        type: string
+                        description: Set the role name of the previous party that should invite this party via email.
+                      fields:
+                        type: array
+                        description: A list of configurations for document form fields.
+                        items:
+                          type: object
+                          required:
+                          - name
+                          properties:
+                            name:
+                              type: string
+                              description: Document field name.
+                              example: First Name
+                            default_value:
+                              oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                              - type: array
+                                items:
+                                  oneOf:
+                                  - type: string
+                                  - type: number
+                                  - type: boolean
+                              description: Default value of the field. Use base64 encoded file or a public URL to the image file to set default signature or image fields.
+                              example: Acme
+                            readonly:
+                              type: boolean
+                              description: Set `true` to make it impossible for the submitter to edit predefined field value.
+                              default: false
+                            required:
+                              type: boolean
+                              description: Set `true` to make the field required.
+                            title:
+                              type: string
+                              description: Field title displayed to the user instead of the name, shown on the signing form. Supports Markdown.
+                            description:
+                              type: string
+                              description: Field description displayed on the signing form. Supports Markdown.
+                            validation:
+                              type: object
+                              description: Field validation rules.
+                              properties:
+                                pattern:
+                                  type: string
+                                  description: HTML field validation pattern string based on https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern specification.
+                                  example: '[A-Z]{4}'
+                                message:
+                                  type: string
+                                  description: A custom error message to display on validation failure.
+                                min:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Minimum allowed number value or date depending on field type.
+                                max:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Maximum allowed number value or date depending on field type.
+                                step:
+                                  type: number
+                                  description: Increment step for number field. Pass 1 to accept only integers, or 0.01 to accept decimal currency.
+                            preferences:
+                              type: object
+                              description: Field display preferences.
+                              properties:
+                                font_size:
+                                  type: integer
+                                  description: Font size of the field value in pixels.
+                                  example: 12
+                                font_type:
+                                  type: string
+                                  description: Font type of the field value.
+                                  enum:
+                                  - bold
+                                  - italic
+                                  - bold_italic
+                                font:
+                                  type: string
+                                  description: Font family of the field value.
+                                  enum:
+                                  - Times
+                                  - Helvetica
+                                  - Courier
+                                color:
+                                  type: string
+                                  description: Font color of the field value.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                  default: black
+                                background:
+                                  type: string
+                                  description: Field box background color.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                align:
+                                  type: string
+                                  description: Horizontal alignment of the field text value.
+                                  enum:
+                                  - left
+                                  - center
+                                  - right
+                                  default: left
+                                valign:
+                                  type: string
+                                  description: Vertical alignment of the field text value.
+                                  enum:
+                                  - top
+                                  - center
+                                  - bottom
+                                  default: center
+                                format:
+                                  type: string
+                                  description: 'The data format for different field types.<br>- Date field: accepts formats such as DD/MM/YYYY (default: MM/DD/YYYY).<br>- Signature field: accepts drawn, typed, drawn_or_typed (default), or upload.<br>- Number field: accepts currency formats such as usd, eur, gbp.'
+                                  example: DD/MM/YYYY
+                                price:
+                                  type: number
+                                  description: Price value of the payment field. Only for payment fields.
+                                  example: 99.99
+                                currency:
+                                  type: string
+                                  description: Currency value of the payment field. Only for payment fields.
+                                  enum:
+                                  - USD
+                                  - EUR
+                                  - GBP
+                                  - CAD
+                                  - AUD
+                                  default: USD
+                                mask:
+                                  description: Set `true` to make sensitive data masked on the document.
+                                  oneOf:
+                                  - type: integer
+                                  - type: boolean
+                                  default: false
+                                reasons:
+                                  description: An array of signature reasons to choose from.
+                                  type: array
+                                  items:
+                                    type: string
+                      roles:
+                        type: array
+                        description: A list of roles for the submitter. Use this param to merge multiple roles into one submitter.
+                        items:
+                          type: string
+                message:
+                  type: object
+                  description: Custom signature request email message.
+                  properties:
+                    subject:
+                      type: string
+                      description: Custom signature request email subject.
+                    body:
+                      type: string
+                      description: 'Custom signature request email body. Can include the following variables: {{submission.name}}, {{submitter.link}}, {{account.name}}.'
+                merge_documents:
+                  type: boolean
+                  description: Set `true` to merge the documents into a single PDF file.
+                  default: false
+                remove_tags:
+                  type: boolean
+                  description: Pass `false` to disable the removal of {{text}} tags from the document. This can be used along with transparent text tags for faster and more robust document processing.
+                  default: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - id
+                - submitters
+                - source
+                - submitters_order
+                - status
+                - documents
+                - expire_at
+                - created_at
+                properties:
+                  id:
+                    type: integer
+                    description: Submission unique ID number.
+                  name:
+                    type: string
+                    description: Submission name.
+                  submitters:
+                    type: array
+                    description: The list of submitters.
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - uuid
+                      - email
+                      - slug
+                      - sent_at
+                      - opened_at
+                      - completed_at
+                      - declined_at
+                      - created_at
+                      - updated_at
+                      - name
+                      - phone
+                      - status
+                      - role
+                      - metadata
+                      - preferences
+                      properties:
+                        id:
+                          type: integer
+                          description: Submitter unique ID number.
+                        uuid:
+                          type: string
+                          description: Submitter UUID.
+                        email:
+                          type: string
+                          nullable: true
+                          description: The email address of the submitter.
+                        slug:
+                          type: string
+                          description: Unique key to be used in the form signing link and embedded form.
+                        sent_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the signing request was sent to the submitter.
+                        opened_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter opened the signing form.
+                        completed_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter completed the signing form.
+                        declined_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter declined the signing form.
+                        created_at:
+                          type: string
+                          description: The date and time when the submitter was created.
+                        updated_at:
+                          type: string
+                          description: The date and time when the submitter was last updated.
+                        name:
+                          type: string
+                          nullable: true
+                          description: The name of the submitter.
+                        phone:
+                          type: string
+                          nullable: true
+                          description: The phone number of the submitter.
+                        external_id:
+                          type: string
+                          nullable: true
+                          description: Your application-specific unique string key to identify this submitter within your app.
+                        status:
+                          type: string
+                          description: The status of signing request for the submitter.
+                          enum:
+                          - completed
+                          - declined
+                          - opened
+                          - sent
+                          - awaiting
+                        values:
+                          type: array
+                          description: An array of pre-filled values for the submitter.
+                          items:
+                            type: object
+                            required:
+                            - field
+                            - value
+                            properties:
+                              field:
+                                type: string
+                                description: Document template field name.
+                              value:
+                                oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                                - type: array
+                                  items:
+                                    oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                                description: Pre-filled value of the field.
+                        role:
+                          type: string
+                          description: The role of the submitter in the signing process.
+                        metadata:
+                          type: object
+                          description: Metadata object with additional submitter information.
+                        preferences:
+                          type: object
+                          description: Submitter preferences.
+                        embed_src:
+                          type: string
+                          description: The `src` URL value to embed the signing form or sign via a link.
+                  source:
+                    type: string
+                    description: The source of the submission.
+                    enum:
+                    - invite
+                    - bulk
+                    - api
+                    - embed
+                    - link
+                  submitters_order:
+                    type: string
+                    description: The order of submitters.
+                    enum:
+                    - random
+                    - preserved
+                  status:
+                    type: string
+                    description: The status of the submission.
+                    enum:
+                    - completed
+                    - declined
+                    - expired
+                    - pending
+                  schema:
+                    type: array
+                    description: The one-off submission document files.
+                    items:
+                      type: object
+                      properties:
+                        attachment_uuid:
+                          type: string
+                          description: The attachment UUID.
+                        name:
+                          type: string
+                          description: The attachment name.
+                  fields:
+                    type: array
+                    description: List of fields to be filled in the one-off submission.
+                    items:
+                      type: object
+                      required:
+                      - uuid
+                      - submitter_uuid
+                      - name
+                      - type
+                      - required
+                      - areas
+                      properties:
+                        uuid:
+                          type: string
+                          description: Unique identifier of the field.
+                        submitter_uuid:
+                          type: string
+                          description: Unique identifier of the submitter that filled the field.
+                        name:
+                          type: string
+                          description: Field name.
+                        type:
+                          type: string
+                          description: Type of the field (e.g., text, signature, date, initials).
+                          enum:
+                          - heading
+                          - text
+                          - signature
+                          - initials
+                          - date
+                          - number
+                          - image
+                          - checkbox
+                          - multiple
+                          - file
+                          - radio
+                          - select
+                          - cells
+                          - stamp
+                          - payment
+                          - phone
+                          - verification
+                          - kba
+                          - strikethrough
+                        required:
+                          type: boolean
+                          description: Indicates if the field is required.
+                        preferences:
+                          type: object
+                          description: Field display preferences.
+                          properties:
+                            font_size:
+                              type: integer
+                              description: Font size of the field value in pixels.
+                            font_type:
+                              type: string
+                              description: Font type of the field value.
+                            font:
+                              type: string
+                              description: Font family of the field value.
+                            color:
+                              type: string
+                              description: Font color of the field value.
+                            background:
+                              type: string
+                              description: Field box background color.
+                            align:
+                              type: string
+                              description: Horizontal alignment of the field text value.
+                            valign:
+                              type: string
+                              description: Vertical alignment of the field text value.
+                            format:
+                              type: string
+                              description: The data format for different field types.
+                            price:
+                              type: number
+                              description: Price value of the payment field. Only for payment fields.
+                            currency:
+                              type: string
+                              description: Currency value of the payment field. Only for payment fields.
+                            mask:
+                              type: boolean
+                              description: Indicates if the field is masked on the document.
+                            reasons:
+                              description: An array of signature reasons to choose from.
+                              type: array
+                              items:
+                                type: string
+                        areas:
+                          type: array
+                          description: List of areas where the field is located in the document.
+                          items:
+                            type: object
+                            required:
+                            - x
+                            - y
+                            - w
+                            - h
+                            - attachment_uuid
+                            - page
+                            properties:
+                              x:
+                                type: number
+                                description: X coordinate of the area where the field is located in the document.
+                              y:
+                                type: number
+                                description: Y coordinate of the area where the field is located in the document.
+                              w:
+                                type: number
+                                description: Width of the area where the field is located in the document.
+                              h:
+                                type: number
+                                description: Height of the area where the field is located in the document.
+                              attachment_uuid:
+                                type: string
+                                description: Unique identifier of the attached document where the field is located.
+                              page:
+                                type: integer
+                                description: Page number of the attached document where the field is located.
+                  expire_at:
+                    type: string
+                    description: Specify the expiration date and time after which the submission becomes unavailable for signature.
+                    example: 2024-09-01 12:00:00 UTC
+                  created_at:
+                    type: string
+                    description: The date and time when the submission was created.
+              example:
+                id: 5
+                name: Test Submission
+                submitters:
+                - id: 1
+                  uuid: 884d545b-3396-49f1-8c07-05b8b2a78755
+                  email: john.doe@example.com
+                  slug: pAMimKcyrLjqVt
+                  sent_at: '2025-06-02T15:55:51.310Z'
+                  opened_at: null
+                  completed_at: null
+                  declined_at: null
+                  created_at: '2025-06-02T15:55:50.320Z'
+                  updated_at: '2025-06-02T15:55:50.320Z'
+                  name: string
+                  phone: '+1234567890'
+                  external_id: '2321'
+                  metadata:
+                    customData: custom value
+                  status: sent
+                  values:
+                  - field: Full Name
+                    value: John Doe
+                  preferences:
+                    send_email: true
+                    send_sms: false
+                    reply_to: reply@example.com
+                    completed_redirect_url: https://example.com/
+                  role: First Party
+                  embed_src: https://docuseal.com/s/pAMimKcyrLjqVt
+                source: api
+                submitters_order: preserved
+                status: pending
+                schema:
+                - name: Demo PDF
+                  attachment_uuid: 48d2998f-266b-47e4-beb2-250ab7ccebdf
+                fields:
+                - name: Name
+                  type: text
+                  required: true
+                  uuid: d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff
+                  submitter_uuid: 0b0bff58-bc9a-475d-b4a9-2f3e5323faf7
+                  areas:
+                  - page: 1
+                    attachment_uuid: 48d2998f-266b-47e4-beb2-250ab7ccebdf
+                    x: 0.403158189124654
+                    y: 0.04211750189825361
+                    w: 0.100684625476058
+                    h: 0.01423690205011389
+                expire_at: null
+                created_at: '2025-06-02T15:55:50.270Z'
+  /submissions/html:
+    post:
+      security:
+      - AuthToken: []
+      tags:
+      - Submissions
+      summary: Create a submission from HTML
+      description: This API endpoint allows you to create a one-off submission request document using the provided HTML content, with special field tags rendered as a fillable and signable form.<br><b>Related Guides</b><br><a href="https://www.docuseal.com/guides/create-pdf-document-fillable-form-with-html-api" class="link">Create PDF document fillable form with HTML</a>
+      operationId: createSubmissionFromHtml
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documents
+              - submitters
+              properties:
+                name:
+                  type: string
+                  description: Name of the document submission.
+                  example: Test Submission Document
+                send_email:
+                  type: boolean
+                  description: Set `false` to disable signature request emails sending.
+                  default: true
+                send_sms:
+                  type: boolean
+                  description: Set `true` to send signature request via phone number and SMS.
+                  default: false
+                order:
+                  type: string
+                  description: Pass 'random' to send signature request emails to all parties right away. The order is 'preserved' by default so the second party will receive a signature request email only after the document is signed by the first party.
+                  default: preserved
+                  enum:
+                  - preserved
+                  - random
+                completed_redirect_url:
+                  type: string
+                  description: Specify URL to redirect to after the submission completion.
+                bcc_completed:
+                  type: string
+                  description: Specify BCC address to send signed documents to after the completion.
+                reply_to:
+                  type: string
+                  description: Specify Reply-To address to use in the notification emails.
+                expire_at:
+                  type: string
+                  description: Specify the expiration date and time after which the submission becomes unavailable for signature.
+                  example: 2024-09-01 12:00:00 UTC
+                template_ids:
+                  type: array
+                  description: An optional array of template IDs to use in the submission along with the provided documents. This can be used to create multi-document submissions when some of the required documents exist within templates.
+                  items:
+                    type: integer
+                    description: The ID of the template to use for the submission.
+                documents:
+                  type: array
+                  description: The list of documents built from HTML. Can be used to create a submission with multiple documents.
+                  items:
+                    type: object
+                    required:
+                    - html
+                    properties:
+                      name:
+                        type: string
+                        description: Document name. Random uuid will be assigned when not specified.
+                        example: Test Document
+                      html:
+                        type: string
+                        description: HTML document content with field tags.
+                        example: "<p>Lorem Ipsum is simply dummy text of the\n<text-field\n  name=\"Industry\"\n  role=\"First Party\"\n  required=\"false\"\n  style=\"width: 80px; height: 16px; display: inline-block; margin-bottom: -4px\">\n</text-field>\nand typesetting industry</p>\n"
+                      html_header:
+                        type: string
+                        description: HTML document content of the header to be displayed on every page.
+                      html_footer:
+                        type: string
+                        description: HTML document content of the footer to be displayed on every page.
+                      size:
+                        type: string
+                        default: Letter
+                        description: Page size. Letter 8.5 x 11 will be assigned when not specified.
+                        enum:
+                        - Letter
+                        - Legal
+                        - Tabloid
+                        - Ledger
+                        - A0
+                        - A1
+                        - A2
+                        - A3
+                        - A4
+                        - A5
+                        - A6
+                        example: A4
+                      position:
+                        type: integer
+                        description: Document position in the submission. If not specified, the document will be added in the order it appears in the documents array.
+                submitters:
+                  type: array
+                  description: The list of submitters for the submission.
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: The name of the submitter.
+                      role:
+                        type: string
+                        description: The role name or title of the submitter.
+                        example: First Party
+                      email:
+                        type: string
+                        description: The email address of the submitter.
+                        format: email
+                        example: john.doe@example.com
+                      phone:
+                        type: string
+                        description: The phone number of the submitter, formatted according to the E.164 standard.
+                        example: '+1234567890'
+                      values:
+                        type: object
+                        description: An object with pre-filled values for the submission. Use field names for keys of the object. For more configurations see `fields` param.
+                      external_id:
+                        type: string
+                        description: Your application-specific unique string key to identify this submitter within your app.
+                      completed:
+                        type: boolean
+                        description: Pass `true` to mark submitter as completed and auto-signed via API.
+                      metadata:
+                        type: object
+                        description: Metadata object with additional submitter information.
+                        example: '{ "customField": "value" }'
+                      send_email:
+                        type: boolean
+                        description: Set `false` to disable signature request emails sending only for this submitter.
+                        default: true
+                      send_sms:
+                        type: boolean
+                        description: Set `true` to send signature request via phone number and SMS.
+                        default: false
+                      reply_to:
+                        type: string
+                        description: Specify Reply-To address to use in the notification emails for this submitter.
+                      completed_redirect_url:
+                        type: string
+                        description: Submitter specific URL to redirect to after the submission completion.
+                      order:
+                        type: integer
+                        description: The order of the submitter in the workflow (e.g., 0 for the first signer, 1 for the second, etc.). Use the same order number to create order groups. By default, submitters are ordered as in the submitters array.
+                      require_phone_2fa:
+                        type: boolean
+                        description: Set to `true` to require phone 2FA verification via a one-time code sent to the phone number in order to access the documents.
+                        default: false
+                      require_email_2fa:
+                        type: boolean
+                        description: Set to `true` to require email 2FA verification via a one-time code sent to the email address in order to access the documents.
+                        default: false
+                      invite_by:
+                        type: string
+                        description: Set the role name of the previous party that should invite this party via email.
+                      fields:
+                        type: array
+                        description: A list of configurations for document form fields.
+                        items:
+                          type: object
+                          required:
+                          - name
+                          properties:
+                            name:
+                              type: string
+                              description: Document field name.
+                              example: First Name
+                            default_value:
+                              oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                              - type: array
+                                items:
+                                  oneOf:
+                                  - type: string
+                                  - type: number
+                                  - type: boolean
+                              description: Default value of the field. Use base64 encoded file or a public URL to the image file to set default signature or image fields.
+                              example: Acme
+                            readonly:
+                              type: boolean
+                              description: Set `true` to make it impossible for the submitter to edit predefined field value.
+                              default: false
+                            required:
+                              type: boolean
+                              description: Set `true` to make the field required.
+                            title:
+                              type: string
+                              description: Field title displayed to the user instead of the name, shown on the signing form. Supports Markdown.
+                            description:
+                              type: string
+                              description: Field description displayed on the signing form. Supports Markdown.
+                            validation:
+                              type: object
+                              description: Field validation rules.
+                              properties:
+                                pattern:
+                                  type: string
+                                  description: HTML field validation pattern string based on https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern specification.
+                                  example: '[A-Z]{4}'
+                                message:
+                                  type: string
+                                  description: A custom error message to display on validation failure.
+                                min:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Minimum allowed number value or date depending on field type.
+                                max:
+                                  oneOf:
+                                  - type: number
+                                  - type: string
+                                  description: Maximum allowed number value or date depending on field type.
+                                step:
+                                  type: number
+                                  description: Increment step for number field. Pass 1 to accept only integers, or 0.01 to accept decimal currency.
+                            preferences:
+                              type: object
+                              description: Field display preferences.
+                              properties:
+                                font_size:
+                                  type: integer
+                                  description: Font size of the field value in pixels.
+                                  example: 12
+                                font_type:
+                                  type: string
+                                  description: Font type of the field value.
+                                  enum:
+                                  - bold
+                                  - italic
+                                  - bold_italic
+                                font:
+                                  type: string
+                                  description: Font family of the field value.
+                                  enum:
+                                  - Times
+                                  - Helvetica
+                                  - Courier
+                                color:
+                                  type: string
+                                  description: Font color of the field value.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                  default: black
+                                background:
+                                  type: string
+                                  description: Field box background color.
+                                  enum:
+                                  - black
+                                  - white
+                                  - blue
+                                align:
+                                  type: string
+                                  description: Horizontal alignment of the field text value.
+                                  enum:
+                                  - left
+                                  - center
+                                  - right
+                                  default: left
+                                valign:
+                                  type: string
+                                  description: Vertical alignment of the field text value.
+                                  enum:
+                                  - top
+                                  - center
+                                  - bottom
+                                  default: center
+                                format:
+                                  type: string
+                                  description: 'The data format for different field types.<br>- Date field: accepts formats such as DD/MM/YYYY (default: MM/DD/YYYY).<br>- Signature field: accepts drawn, typed, drawn_or_typed (default), or upload.<br>- Number field: accepts currency formats such as usd, eur, gbp.'
+                                  example: DD/MM/YYYY
+                                price:
+                                  type: number
+                                  description: Price value of the payment field. Only for payment fields.
+                                  example: 99.99
+                                currency:
+                                  type: string
+                                  description: Currency value of the payment field. Only for payment fields.
+                                  enum:
+                                  - USD
+                                  - EUR
+                                  - GBP
+                                  - CAD
+                                  - AUD
+                                  default: USD
+                                mask:
+                                  description: Set `true` to make sensitive data masked on the document.
+                                  oneOf:
+                                  - type: integer
+                                  - type: boolean
+                                  default: false
+                                reasons:
+                                  description: An array of signature reasons to choose from.
+                                  type: array
+                                  items:
+                                    type: string
+                      roles:
+                        type: array
+                        description: A list of roles for the submitter. Use this param to merge multiple roles into one submitter.
+                        items:
+                          type: string
+                message:
+                  type: object
+                  description: Custom signature request email message.
+                  properties:
+                    subject:
+                      type: string
+                      description: Custom signature request email subject.
+                    body:
+                      type: string
+                      description: 'Custom signature request email body. Can include the following variables: {{submission.name}}, {{submitter.link}}, {{account.name}}.'
+                merge_documents:
+                  type: boolean
+                  description: Set `true` to merge the documents into a single PDF file.
+                  default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - id
+                - submitters
+                - source
+                - submitters_order
+                - status
+                - documents
+                - expire_at
+                - created_at
+                properties:
+                  id:
+                    type: integer
+                    description: Submission unique ID number.
+                  name:
+                    type: string
+                    description: Submission name.
+                  submitters:
+                    type: array
+                    description: The list of submitters.
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - uuid
+                      - email
+                      - slug
+                      - sent_at
+                      - opened_at
+                      - completed_at
+                      - declined_at
+                      - created_at
+                      - updated_at
+                      - name
+                      - phone
+                      - status
+                      - role
+                      - metadata
+                      - preferences
+                      properties:
+                        id:
+                          type: integer
+                          description: Submitter unique ID number.
+                        uuid:
+                          type: string
+                          description: Submitter UUID.
+                        email:
+                          type: string
+                          nullable: true
+                          description: The email address of the submitter.
+                        slug:
+                          type: string
+                          description: Unique key to be used in the form signing link and embedded form.
+                        sent_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the signing request was sent to the submitter.
+                        opened_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter opened the signing form.
+                        completed_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter completed the signing form.
+                        declined_at:
+                          type: string
+                          nullable: true
+                          description: The date and time when the submitter declined the signing form.
+                        created_at:
+                          type: string
+                          description: The date and time when the submitter was created.
+                        updated_at:
+                          type: string
+                          description: The date and time when the submitter was last updated.
+                        name:
+                          type: string
+                          nullable: true
+                          description: The name of the submitter.
+                        phone:
+                          type: string
+                          nullable: true
+                          description: The phone number of the submitter.
+                        external_id:
+                          type: string
+                          nullable: true
+                          description: Your application-specific unique string key to identify this submitter within your app.
+                        status:
+                          type: string
+                          description: The status of signing request for the submitter.
+                          enum:
+                          - completed
+                          - declined
+                          - opened
+                          - sent
+                          - awaiting
+                        values:
+                          type: array
+                          description: An array of pre-filled values for the submitter.
+                          items:
+                            type: object
+                            required:
+                            - field
+                            - value
+                            properties:
+                              field:
+                                type: string
+                                description: Document template field name.
+                              value:
+                                oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                                - type: array
+                                  items:
+                                    oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                                description: Pre-filled value of the field.
+                        role:
+                          type: string
+                          description: The role of the submitter in the signing process.
+                        metadata:
+                          type: object
+                          description: Metadata object with additional submitter information.
+                        preferences:
+                          type: object
+                          description: Submitter preferences.
+                        embed_src:
+                          type: string
+                          description: The `src` URL value to embed the signing form or sign via a link.
+                  source:
+                    type: string
+                    description: The source of the submission.
+                    enum:
+                    - invite
+                    - bulk
+                    - api
+                    - embed
+                    - link
+                  submitters_order:
+                    type: string
+                    description: The order of submitters.
+                    enum:
+                    - random
+                    - preserved
+                  status:
+                    type: string
+                    description: The status of the submission.
+                    enum:
+                    - completed
+                    - declined
+                    - expired
+                    - pending
+                  schema:
+                    type: array
+                    description: The one-off submission document files.
+                    items:
+                      type: object
+                      properties:
+                        attachment_uuid:
+                          type: string
+                          description: The attachment UUID.
+                        name:
+                          type: string
+                          description: The attachment name.
+                  fields:
+                    type: array
+                    description: List of fields to be filled in the one-off submission.
+                    items:
+                      type: object
+                      required:
+                      - uuid
+                      - submitter_uuid
+                      - name
+                      - type
+                      - required
+                      - areas
+                      properties:
+                        uuid:
+                          type: string
+                          description: Unique identifier of the field.
+                        submitter_uuid:
+                          type: string
+                          description: Unique identifier of the submitter that filled the field.
+                        name:
+                          type: string
+                          description: Field name.
+                        type:
+                          type: string
+                          description: Type of the field (e.g., text, signature, date, initials).
+                          enum:
+                          - heading
+                          - text
+                          - signature
+                          - initials
+                          - date
+                          - number
+                          - image
+                          - checkbox
+                          - multiple
+                          - file
+                          - radio
+                          - select
+                          - cells
+                          - stamp
+                          - payment
+                          - phone
+                          - verification
+                          - kba
+                          - strikethrough
+                        required:
+                          type: boolean
+                          description: Indicates if the field is required.
+                        preferences:
+                          type: object
+                          description: Field display preferences.
+                          properties:
+                            font_size:
+                              type: integer
+                              description: Font size of the field value in pixels.
+                            font_type:
+                              type: string
+                              description: Font type of the field value.
+                            font:
+                              type: string
+                              description: Font family of the field value.
+                            color:
+                              type: string
+                              description: Font color of the field value.
+                            background:
+                              type: string
+                              description: Field box background color.
+                            align:
+                              type: string
+                              description: Horizontal alignment of the field text value.
+                            valign:
+                              type: string
+                              description: Vertical alignment of the field text value.
+                            format:
+                              type: string
+                              description: The data format for different field types.
+                            price:
+                              type: number
+                              description: Price value of the payment field. Only for payment fields.
+                            currency:
+                              type: string
+                              description: Currency value of the payment field. Only for payment fields.
+                            mask:
+                              type: boolean
+                              description: Indicates if the field is masked on the document.
+                            reasons:
+                              description: An array of signature reasons to choose from.
+                              type: array
+                              items:
+                                type: string
+                        areas:
+                          type: array
+                          description: List of areas where the field is located in the document.
+                          items:
+                            type: object
+                            required:
+                            - x
+                            - y
+                            - w
+                            - h
+                            - attachment_uuid
+                            - page
+                            properties:
+                              x:
+                                type: number
+                                description: X coordinate of the area where the field is located in the document.
+                              y:
+                                type: number
+                                description: Y coordinate of the area where the field is located in the document.
+                              w:
+                                type: number
+                                description: Width of the area where the field is located in the document.
+                              h:
+                                type: number
+                                description: Height of the area where the field is located in the document.
+                              attachment_uuid:
+                                type: string
+                                description: Unique identifier of the attached document where the field is located.
+                              page:
+                                type: integer
+                                description: Page number of the attached document where the field is located.
+                  expire_at:
+                    type: string
+                    description: Specify the expiration date and time after which the submission becomes unavailable for signature.
+                    example: 2024-09-01 12:00:00 UTC
+                  created_at:
+                    type: string
+                    description: The date and time when the submission was created.
+              example:
+                id: 5
+                name: Test Submission
+                submitters:
+                - id: 1
+                  uuid: 884d545b-3396-49f1-8c07-05b8b2a78755
+                  email: john.doe@example.com
+                  slug: pAMimKcyrLjqVt
+                  sent_at: '2025-06-02T15:55:51.310Z'
+                  opened_at: null
+                  completed_at: null
+                  declined_at: null
+                  created_at: '2025-06-02T15:55:50.320Z'
+                  updated_at: '2025-06-02T15:55:50.320Z'
+                  name: string
+                  phone: '+1234567890'
+                  external_id: '2321'
+                  metadata:
+                    customData: custom value
+                  status: sent
+                  values:
+                  - field: Full Name
+                    value: John Doe
+                  preferences:
+                    send_email: true
+                    send_sms: false
+                    reply_to: reply@example.com
+                    completed_redirect_url: https://example.com/
+                  role: First Party
+                  embed_src: https://docuseal.com/s/pAMimKcyrLjqVt
+                source: api
+                submitters_order: preserved
+                status: pending
+                schema:
+                - name: Demo PDF
+                  attachment_uuid: 48d2998f-266b-47e4-beb2-250ab7ccebdf
+                fields:
+                - name: Name
+                  type: text
+                  required: true
+                  uuid: d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff
+                  submitter_uuid: 0b0bff58-bc9a-475d-b4a9-2f3e5323faf7
+                  areas:
+                  - page: 1
+                    attachment_uuid: 48d2998f-266b-47e4-beb2-250ab7ccebdf
+                    x: 0.403158189124654
+                    y: 0.04211750189825361
+                    w: 0.100684625476058
+                    h: 0.01423690205011389
+                expire_at: null
+                created_at: '2025-06-02T15:55:50.270Z'
+components:
+  securitySchemes:
+    AuthToken:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
