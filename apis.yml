@@ -1,7 +1,20 @@
 aid: docuseal
 name: DocuSeal
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/docuseal.png
 url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -28,29 +41,51 @@ tags:
   - Embedding
 
 apis:
-  - aid: docuseal:docuseal-api
-    name: DocuSeal REST API
-    type: REST
-    description: >
-      REST API for creating document signing workflows, managing templates,
-      sending signature requests, tracking submission status, and receiving
-      webhook events for document lifecycle management.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.docuseal.com/docs/api
-    baseURL: https://api.docuseal.com
-    tags:
-      - Document Signing
-      - eSignature
-      - Templates
-      - Submissions
-      - Webhooks
-    properties:
-      - type: Documentation
-        url: https://www.docuseal.com/docs/api
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/openapi/docuseal-docuseal-api-openapi.yml
-
+- aid: docuseal:docuseal-submissions-api
+  name: DocuSeal Submissions API
+  description: >-
+    Signature requests can be initiated with Submissions API. Submissions can contain one submitter if
+    signed by a single party or multiple submitters if the document template form contains signatures
+    and fields to be collected and filled by multiple parties. Initiate new submissions to request signatures
+    for specified submitters via email or phone number.
+  humanURL: https://www.docuseal.com/docs/api
+  baseURL: https://api.docuseal.com
+  tags:
+  - Submissions
+  properties:
+  - type: OpenAPI
+    url: openapi/docuseal-submissions-api-openapi.yml
+  - type: Documentation
+    url: https://www.docuseal.com/docs/api
+- aid: docuseal:docuseal-submitters-api
+  name: DocuSeal Submitters API
+  description: Submitters API allows you to load all details provided by the signer of the document.
+  humanURL: https://www.docuseal.com/docs/api
+  baseURL: https://api.docuseal.com
+  tags:
+  - Submitters
+  properties:
+  - type: OpenAPI
+    url: openapi/docuseal-submitters-api-openapi.yml
+  - type: Documentation
+    url: https://www.docuseal.com/docs/api
+- aid: docuseal:docuseal-templates-api
+  name: DocuSeal Templates API
+  description: >-
+    Templates represent reusable document signing forms with fields and signatures to be collected. It's
+    possible to create unique template forms with fields and signatures using HTML or with tagged PDFs.
+  humanURL: https://www.docuseal.com/docs/api
+  baseURL: https://api.docuseal.com
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/docuseal-templates-api-openapi.yml
+  - type: Documentation
+    url: https://www.docuseal.com/docs/api
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/docuseal/overview
   - type: AgenticAccess
     url: agentic-access/docuseal-agentic-access.yml
   - type: TrustCenter
