@@ -1,0 +1,469 @@
+{
+  "info": {
+    "_postman_id": "e3b6b15d-d88b-4f38-a57e-e9f96f4a0d3e",
+    "name": "DocuSeal Submissions Submitters API",
+    "description": "DocuSeal API specs\n\nContact Support:\n Name: DocuSeal\n Email: admin@docuseal.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:31:45.000Z",
+    "updatedAt": "2026-07-28T01:31:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e3b6b15d-d88b-4f38-a57e-e9f96f4a0d3e"
+  },
+  "item": [
+    {
+      "name": "submitters",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a submitter",
+              "id": "1603f184-556b-4578-8042-4d9d3a074a65",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/submitters/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submitters",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a85c2251-6998-46f9-ab4e-087eeb1ef22d",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the submitter."
+                    }
+                  ]
+                },
+                "description": "The API endpoint provides functionality to retrieve information about a submitter, along with the submitter documents and field values."
+              },
+              "response": [
+                {
+                  "id": "7ee0070d-1c6c-458e-a2f5-51404b0ce674",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/submitters/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submitters",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"submission_id\": \"<integer>\",\n  \"uuid\": \"<string>\",\n  \"email\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"sent_at\": \"<string>\",\n  \"opened_at\": \"<string>\",\n  \"completed_at\": \"<string>\",\n  \"declined_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"status\": \"completed\",\n  \"external_id\": \"<string>\",\n  \"metadata\": {},\n  \"preferences\": {},\n  \"template\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"submission_events\": [\n    {\n      \"id\": \"<integer>\",\n      \"submitter_id\": \"<integer>\",\n      \"event_type\": \"click_email\",\n      \"event_timestamp\": \"<string>\",\n      \"data\": {}\n    },\n    {\n      \"id\": \"<integer>\",\n      \"submitter_id\": \"<integer>\",\n      \"event_type\": \"complete_form\",\n      \"event_timestamp\": \"<string>\",\n      \"data\": {}\n    }\n  ],\n  \"values\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"role\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:31:46.000Z",
+                  "updatedAt": "2026-07-28T01:31:46.000Z",
+                  "uid": "35240-7ee0070d-1c6c-458e-a2f5-51404b0ce674"
+                }
+              ],
+              "createdAt": "2026-07-28T01:31:46.000Z",
+              "updatedAt": "2026-07-28T01:31:46.000Z",
+              "uid": "35240-1603f184-556b-4578-8042-4d9d3a074a65"
+            },
+            {
+              "name": "Update a submitter",
+              "id": "edfbcca2-9c71-42a9-9c47-81349a5df4ac",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"values\": {},\n  \"external_id\": \"<string>\",\n  \"send_email\": \"<boolean>\",\n  \"send_sms\": false,\n  \"reply_to\": \"<string>\",\n  \"completed\": \"<boolean>\",\n  \"metadata\": {},\n  \"completed_redirect_url\": \"<string>\",\n  \"require_phone_2fa\": false,\n  \"require_email_2fa\": false,\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"<string>\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"bold_italic\",\n        \"font\": \"Times\",\n        \"color\": \"black\",\n        \"background\": \"white\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"<string>\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"italic\",\n        \"font\": \"Times\",\n        \"color\": \"black\",\n        \"background\": \"white\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/submitters/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submitters",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c9b30d63-c42b-4da2-91c7-6d49fc8d6c0f",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the submitter."
+                    }
+                  ]
+                },
+                "description": "The API endpoint allows you to update submitter details, pre-fill or update field values and re-send emails.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/pre-fill-pdf-document-form-fields-with-api#automatically_sign_documents_via_api\" class=\"link\">Automatically sign documents via API</a>"
+              },
+              "response": [
+                {
+                  "id": "a2c7167b-5bbd-4839-b4ac-d2aefde8bae0",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"values\": {},\n  \"external_id\": \"<string>\",\n  \"send_email\": \"<boolean>\",\n  \"send_sms\": false,\n  \"reply_to\": \"<string>\",\n  \"completed\": \"<boolean>\",\n  \"metadata\": {},\n  \"completed_redirect_url\": \"<string>\",\n  \"require_phone_2fa\": false,\n  \"require_email_2fa\": false,\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"<string>\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"bold_italic\",\n        \"font\": \"Times\",\n        \"color\": \"black\",\n        \"background\": \"white\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"<string>\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"italic\",\n        \"font\": \"Times\",\n        \"color\": \"black\",\n        \"background\": \"white\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/submitters/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "submitters",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"submission_id\": \"<integer>\",\n  \"uuid\": \"<string>\",\n  \"email\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"sent_at\": \"<string>\",\n  \"opened_at\": \"<string>\",\n  \"completed_at\": \"<string>\",\n  \"declined_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"status\": \"completed\",\n  \"external_id\": \"<string>\",\n  \"metadata\": {},\n  \"preferences\": {},\n  \"values\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"role\": \"<string>\",\n  \"embed_src\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:31:46.000Z",
+                  "updatedAt": "2026-07-28T01:31:46.000Z",
+                  "uid": "35240-a2c7167b-5bbd-4839-b4ac-d2aefde8bae0"
+                }
+              ],
+              "createdAt": "2026-07-28T01:31:46.000Z",
+              "updatedAt": "2026-07-28T01:31:46.000Z",
+              "uid": "35240-edfbcca2-9c71-42a9-9c47-81349a5df4ac"
+            }
+          ],
+          "id": "510ec753-5c7e-4938-9946-c7598043585a",
+          "createdAt": "2026-07-28T01:31:46.000Z",
+          "updatedAt": "2026-07-28T01:31:46.000Z",
+          "uid": "35240-510ec753-5c7e-4938-9946-c7598043585a"
+        },
+        {
+          "name": "List all submitters",
+          "id": "8d617a44-8a4e-4caa-a492-8e33bc57bbcf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submitters?submission_id=<integer>&q=<string>&slug=<string>&completed_after=<dateTime>&completed_before=<dateTime>&external_id=<string>&limit=<integer>&after=<integer>&before=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "submitters"
+              ],
+              "query": [
+                {
+                  "description": "The submission ID allows you to receive only the submitters related to that specific submission.",
+                  "key": "submission_id",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Filter submitters on name, email or phone partial match.",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter submitters by unique slug.",
+                  "key": "slug",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The date and time string value to filter submitters that completed the submission after the specified date and time.",
+                  "key": "completed_after",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "The date and time string value to filter submitters that completed the submission before the specified date and time.",
+                  "key": "completed_before",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "The unique application-specific identifier provided for a submitter when initializing a signature request. It allows you to receive only submitters with a specified external ID.",
+                  "key": "external_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The number of submitters to return. Default value is 10. Maximum value is 100.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The unique identifier of the submitter to start the list from. It allows you to receive only submitters with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of submitters.",
+                  "key": "after",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The unique identifier of the submitter to end the list with. It allows you to receive only submitters with an ID less than the specified value.",
+                  "key": "before",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "The API endpoint provides the ability to retrieve a list of submitters."
+          },
+          "response": [
+            {
+              "id": "c5283f97-8781-4cd0-8005-16f366bca890",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/submitters?submission_id=<integer>&q=<string>&slug=<string>&completed_after=<dateTime>&completed_before=<dateTime>&external_id=<string>&limit=<integer>&after=<integer>&before=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submitters"
+                  ],
+                  "query": [
+                    {
+                      "description": "The submission ID allows you to receive only the submitters related to that specific submission.",
+                      "key": "submission_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter submitters on name, email or phone partial match.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter submitters by unique slug.",
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date and time string value to filter submitters that completed the submission after the specified date and time.",
+                      "key": "completed_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The date and time string value to filter submitters that completed the submission before the specified date and time.",
+                      "key": "completed_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The unique application-specific identifier provided for a submitter when initializing a signature request. It allows you to receive only submitters with a specified external ID.",
+                      "key": "external_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The number of submitters to return. Default value is 10. Maximum value is 100.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The unique identifier of the submitter to start the list from. It allows you to receive only submitters with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of submitters.",
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The unique identifier of the submitter to end the list with. It allows you to receive only submitters with an ID less than the specified value.",
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"submission_id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"email\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"sent_at\": \"<string>\",\n      \"opened_at\": \"<string>\",\n      \"completed_at\": \"<string>\",\n      \"declined_at\": \"<string>\",\n      \"created_at\": \"<string>\",\n      \"updated_at\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"status\": \"sent\",\n      \"external_id\": \"<string>\",\n      \"preferences\": {},\n      \"metadata\": {},\n      \"submission_events\": [\n        {\n          \"id\": \"<integer>\",\n          \"submitter_id\": \"<integer>\",\n          \"event_type\": \"view_form\",\n          \"event_timestamp\": \"<string>\",\n          \"data\": {}\n        },\n        {\n          \"id\": \"<integer>\",\n          \"submitter_id\": \"<integer>\",\n          \"event_type\": \"bounce_email\",\n          \"event_timestamp\": \"<string>\",\n          \"data\": {}\n        }\n      ],\n      \"values\": [\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"role\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"submission_id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"email\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"sent_at\": \"<string>\",\n      \"opened_at\": \"<string>\",\n      \"completed_at\": \"<string>\",\n      \"declined_at\": \"<string>\",\n      \"created_at\": \"<string>\",\n      \"updated_at\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"status\": \"awaiting\",\n      \"external_id\": \"<string>\",\n      \"preferences\": {},\n      \"metadata\": {},\n      \"submission_events\": [\n        {\n          \"id\": \"<integer>\",\n          \"submitter_id\": \"<integer>\",\n          \"event_type\": \"decline_form\",\n          \"event_timestamp\": \"<string>\",\n          \"data\": {}\n        },\n        {\n          \"id\": \"<integer>\",\n          \"submitter_id\": \"<integer>\",\n          \"event_type\": \"click_email\",\n          \"event_timestamp\": \"<string>\",\n          \"data\": {}\n        }\n      ],\n      \"values\": [\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"role\": \"<string>\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": \"<integer>\",\n    \"next\": \"<integer>\",\n    \"prev\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:31:46.000Z",
+              "updatedAt": "2026-07-28T01:31:46.000Z",
+              "uid": "35240-c5283f97-8781-4cd0-8005-16f366bca890"
+            }
+          ],
+          "createdAt": "2026-07-28T01:31:46.000Z",
+          "updatedAt": "2026-07-28T01:31:46.000Z",
+          "uid": "35240-8d617a44-8a4e-4caa-a492-8e33bc57bbcf"
+        }
+      ],
+      "id": "2be132d1-dabd-4d44-bca2-9c2a56789c99",
+      "createdAt": "2026-07-28T01:31:46.000Z",
+      "updatedAt": "2026-07-28T01:31:46.000Z",
+      "uid": "35240-2be132d1-dabd-4d44-bca2-9c2a56789c99"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.docuseal.com"
+    }
+  ]
+}

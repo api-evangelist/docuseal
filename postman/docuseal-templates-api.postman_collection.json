@@ -1,0 +1,1389 @@
+{
+  "info": {
+    "_postman_id": "08d860a1-0513-4211-b75a-cdda47152305",
+    "name": "DocuSeal Submissions Templates API",
+    "description": "DocuSeal API specs\n\nContact Support:\n Name: DocuSeal\n Email: admin@docuseal.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:31:59.000Z",
+    "updatedAt": "2026-07-28T01:31:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-08d860a1-0513-4211-b75a-cdda47152305"
+  },
+  "item": [
+    {
+      "name": "templates",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "documents",
+              "item": [
+                {
+                  "name": "Update template documents",
+                  "id": "051416c6-ff59-4f74-9834-c9186ae29896",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Auth-Token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"html\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"replace\": false,\n      \"remove\": false\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"html\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"replace\": false,\n      \"remove\": false\n    }\n  ],\n  \"merge\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/:id/documents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        ":id",
+                        "documents"
+                      ],
+                      "variable": [
+                        {
+                          "id": "260b0c72-b66c-4462-9ad4-9b2b85816d4b",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the document template."
+                        }
+                      ]
+                    },
+                    "description": "The API endpoint allows you to add, remove or replace documents in the template with provided PDF/DOCX file or HTML content."
+                  },
+                  "response": [
+                    {
+                      "id": "f3d2d092-0f89-4288-ad85-db083b16aaab",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"html\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"replace\": false,\n      \"remove\": false\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"html\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"replace\": false,\n      \"remove\": false\n    }\n  ],\n  \"merge\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/templates/:id/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "templates",
+                            ":id",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"kba\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"payment\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ],\n  \"author_id\": \"<integer>\",\n  \"archived_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"source\": \"native\",\n  \"external_id\": \"<string>\",\n  \"folder_id\": \"<integer>\",\n  \"folder_name\": \"<string>\",\n  \"author\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    }\n  ],\n  \"shared_link\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:32:00.000Z",
+                      "updatedAt": "2026-07-28T01:32:00.000Z",
+                      "uid": "35240-f3d2d092-0f89-4288-ad85-db083b16aaab"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-051416c6-ff59-4f74-9834-c9186ae29896"
+                }
+              ],
+              "id": "7d4a9754-6efe-4ac0-ada0-d20b6c38528d",
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-7d4a9754-6efe-4ac0-ada0-d20b6c38528d"
+            },
+            {
+              "name": "clone",
+              "item": [
+                {
+                  "name": "Clone a template",
+                  "id": "d19351e2-fbc9-46fe-b422-b3bea889c77b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Auth-Token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/:id/clone",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        ":id",
+                        "clone"
+                      ],
+                      "variable": [
+                        {
+                          "id": "091f6a30-76a0-4ef1-a05d-f12ecf45c9b2",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier of the document template."
+                        }
+                      ]
+                    },
+                    "description": "The API endpoint allows you to clone an existing template into a new template."
+                  },
+                  "response": [
+                    {
+                      "id": "c1635e5c-8a44-4201-b892-d43f5ac1c62e",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Auth-Token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/templates/:id/clone",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "templates",
+                            ":id",
+                            "clone"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"kba\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"payment\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ],\n  \"author_id\": \"<integer>\",\n  \"archived_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"source\": \"native\",\n  \"external_id\": \"<string>\",\n  \"folder_id\": \"<integer>\",\n  \"folder_name\": \"<string>\",\n  \"author\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    }\n  ],\n  \"shared_link\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:32:00.000Z",
+                      "updatedAt": "2026-07-28T01:32:00.000Z",
+                      "uid": "35240-c1635e5c-8a44-4201-b892-d43f5ac1c62e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-d19351e2-fbc9-46fe-b422-b3bea889c77b"
+                }
+              ],
+              "id": "7a560de2-fa22-4c76-8eed-4bf7e672aa4e",
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-7a560de2-fa22-4c76-8eed-4bf7e672aa4e"
+            },
+            {
+              "name": "Get a template",
+              "id": "924541bd-8c4d-4e8d-a0b3-569109fb1690",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/templates/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "db7660df-6f49-4273-9dfa-f41bf8c1b3cb",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "description": "The API endpoint provides the functionality to retrieve information about a document template."
+              },
+              "response": [
+                {
+                  "id": "c0078652-b305-4597-823a-be623d5140f9",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"kba\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"payment\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ],\n  \"author_id\": \"<integer>\",\n  \"archived_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"source\": \"native\",\n  \"external_id\": \"<string>\",\n  \"folder_id\": \"<integer>\",\n  \"folder_name\": \"<string>\",\n  \"author\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    }\n  ],\n  \"shared_link\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-c0078652-b305-4597-823a-be623d5140f9"
+                }
+              ],
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-924541bd-8c4d-4e8d-a0b3-569109fb1690"
+            },
+            {
+              "name": "Archive a template",
+              "id": "2ecc30a2-f3d2-4a89-8d9b-2cd289059df4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/templates/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ab92742b-2c82-49f8-b50b-4ace516cf012",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "description": "The API endpoint allows you to archive a document template."
+              },
+              "response": [
+                {
+                  "id": "db20ad01-6a08-42b0-9f17-53d9af1b6a7c",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"archived_at\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-db20ad01-6a08-42b0-9f17-53d9af1b6a7c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-2ecc30a2-f3d2-4a89-8d9b-2cd289059df4"
+            },
+            {
+              "name": "Update a template",
+              "id": "0634c27d-5645-473d-a97d-8baba08d5b2c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/templates/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c2588be3-0b4a-49e3-bb60-0c480db1b2c5",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "description": "The API endpoint provides the functionality to move a document template to a different folder and update the name of the template."
+              },
+              "response": [
+                {
+                  "id": "4e1e572d-44ec-4eed-a9ba-8229b7de86c0",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"archived\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"updated_at\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-4e1e572d-44ec-4eed-a9ba-8229b7de86c0"
+                }
+              ],
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-0634c27d-5645-473d-a97d-8baba08d5b2c"
+            }
+          ],
+          "id": "ab0d5cdc-b7c5-4a4b-b708-3a363a62c757",
+          "createdAt": "2026-07-28T01:32:00.000Z",
+          "updatedAt": "2026-07-28T01:32:00.000Z",
+          "uid": "35240-ab0d5cdc-b7c5-4a4b-b708-3a363a62c757"
+        },
+        {
+          "name": "html",
+          "item": [
+            {
+              "name": "Create a template from HTML",
+              "id": "623e8181-a406-495f-855a-06e4eb00c78e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<string>\",\n  \"html_header\": \"<string>\",\n  \"html_footer\": \"<string>\",\n  \"name\": \"<string>\",\n  \"size\": \"Letter\",\n  \"external_id\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true,\n  \"documents\": [\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/templates/html",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates",
+                    "html"
+                  ]
+                },
+                "description": "The API endpoint provides the functionality to seamlessly generate a PDF document template by utilizing the provided HTML content while incorporating pre-defined fields.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/create-pdf-document-fillable-form-with-html-api\" class=\"link\">Create PDF document fillable form with HTML</a>"
+              },
+              "response": [
+                {
+                  "id": "f11501f8-fd86-4ae2-8cbb-deff5778db77",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"html\": \"<string>\",\n  \"html_header\": \"<string>\",\n  \"html_footer\": \"<string>\",\n  \"name\": \"<string>\",\n  \"size\": \"Letter\",\n  \"external_id\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true,\n  \"documents\": [\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/html",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        "html"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"kba\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"payment\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ],\n  \"author_id\": \"<integer>\",\n  \"archived_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"source\": \"native\",\n  \"external_id\": \"<string>\",\n  \"folder_id\": \"<integer>\",\n  \"folder_name\": \"<string>\",\n  \"author\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    }\n  ],\n  \"shared_link\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-f11501f8-fd86-4ae2-8cbb-deff5778db77"
+                }
+              ],
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-623e8181-a406-495f-855a-06e4eb00c78e"
+            }
+          ],
+          "id": "d445e36f-0fd1-48d7-b1b3-7718609e3c09",
+          "createdAt": "2026-07-28T01:32:00.000Z",
+          "updatedAt": "2026-07-28T01:32:00.000Z",
+          "uid": "35240-d445e36f-0fd1-48d7-b1b3-7718609e3c09"
+        },
+        {
+          "name": "docx",
+          "item": [
+            {
+              "name": "Create a template from Word DOCX",
+              "id": "2f23b6a7-a5aa-4f51-86c8-1c60abc2d05a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"text\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold\",\n            \"font\": \"Helvetica\",\n            \"color\": \"black\",\n            \"background\": \"black\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"checkbox\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"italic\",\n            \"font\": \"Times\",\n            \"color\": \"black\",\n            \"background\": \"blue\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"kba\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"italic\",\n            \"font\": \"Courier\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"checkbox\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold\",\n            \"font\": \"Helvetica\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/templates/docx",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates",
+                    "docx"
+                  ]
+                },
+                "description": "The API endpoint provides the functionality to create a fillable document template for an existing Microsoft Word document. Use <code>{{Field Name;role=Signer1;type=date}}</code> text tags to define fillable fields in the document. See <a href=\"https://www.docuseal.com/examples/fieldtags.docx\" target=\"_blank\" class=\"link font-bold\" >https://www.docuseal.com/examples/fieldtags.docx</a> for more text tag formats. Or specify the exact pixel coordinates of the document fields using `fields` param.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/use-embedded-text-field-tags-in-the-pdf-to-create-a-fillable-form\" class=\"link\">Use embedded text field tags to create a fillable form</a>\n"
+              },
+              "response": [
+                {
+                  "id": "2d2479ee-1af6-43db-b1b7-e60c85c6fe09",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"text\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold\",\n            \"font\": \"Helvetica\",\n            \"color\": \"black\",\n            \"background\": \"black\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"checkbox\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"italic\",\n            \"font\": \"Times\",\n            \"color\": \"black\",\n            \"background\": \"blue\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"kba\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"italic\",\n            \"font\": \"Courier\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"checkbox\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold\",\n            \"font\": \"Helvetica\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/docx",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        "docx"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"kba\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"payment\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ],\n  \"author_id\": \"<integer>\",\n  \"archived_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"source\": \"native\",\n  \"external_id\": \"<string>\",\n  \"folder_id\": \"<integer>\",\n  \"folder_name\": \"<string>\",\n  \"author\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    }\n  ],\n  \"shared_link\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-2d2479ee-1af6-43db-b1b7-e60c85c6fe09"
+                }
+              ],
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-2f23b6a7-a5aa-4f51-86c8-1c60abc2d05a"
+            }
+          ],
+          "id": "1d0057d2-7279-4a8e-a652-06fb7e9392d2",
+          "createdAt": "2026-07-28T01:32:00.000Z",
+          "updatedAt": "2026-07-28T01:32:00.000Z",
+          "uid": "35240-1d0057d2-7279-4a8e-a652-06fb7e9392d2"
+        },
+        {
+          "name": "pdf",
+          "item": [
+            {
+              "name": "Create a template from PDF",
+              "id": "fe0415d2-dea2-4de3-94a6-37726ffa8916",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"file\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"italic\",\n            \"font\": \"Courier\",\n            \"color\": \"black\",\n            \"background\": \"black\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"number\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold_italic\",\n            \"font\": \"Courier\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"strikethrough\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold_italic\",\n            \"font\": \"Times\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"strikethrough\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold_italic\",\n            \"font\": \"Times\",\n            \"color\": \"black\",\n            \"background\": \"blue\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"shared_link\": true,\n  \"flatten\": false,\n  \"remove_tags\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/templates/pdf",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates",
+                    "pdf"
+                  ]
+                },
+                "description": "The API endpoint provides the functionality to create a fillable document template for a PDF file. Use <code>{{Field Name;role=Signer1;type=date}}</code> text tags to define fillable fields in the document. See <a href=\"https://www.docuseal.com/examples/fieldtags.pdf\" target=\"_blank\" class=\"link font-bold\">https://www.docuseal.com/examples/fieldtags.pdf</a> for more text tag formats. Or specify the exact pixel coordinates of the document fields using `fields` param.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/use-embedded-text-field-tags-in-the-pdf-to-create-a-fillable-form\" class=\"link\">Use embedded text field tags to create a fillable form</a>\n"
+              },
+              "response": [
+                {
+                  "id": "f990aa41-1c93-402c-80e5-22113cc0a690",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"file\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"italic\",\n            \"font\": \"Courier\",\n            \"color\": \"black\",\n            \"background\": \"black\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"number\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold_italic\",\n            \"font\": \"Courier\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"strikethrough\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold_italic\",\n            \"font\": \"Times\",\n            \"color\": \"black\",\n            \"background\": \"white\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"strikethrough\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"bold_italic\",\n            \"font\": \"Times\",\n            \"color\": \"black\",\n            \"background\": \"blue\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"shared_link\": true,\n  \"flatten\": false,\n  \"remove_tags\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/pdf",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        "pdf"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"kba\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"payment\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ],\n  \"author_id\": \"<integer>\",\n  \"archived_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"source\": \"native\",\n  \"external_id\": \"<string>\",\n  \"folder_id\": \"<integer>\",\n  \"folder_name\": \"<string>\",\n  \"author\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    }\n  ],\n  \"shared_link\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-f990aa41-1c93-402c-80e5-22113cc0a690"
+                }
+              ],
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-fe0415d2-dea2-4de3-94a6-37726ffa8916"
+            }
+          ],
+          "id": "2c6a3127-3af2-4135-b8a1-19d428e302e6",
+          "createdAt": "2026-07-28T01:32:00.000Z",
+          "updatedAt": "2026-07-28T01:32:00.000Z",
+          "uid": "35240-2c6a3127-3af2-4135-b8a1-19d428e302e6"
+        },
+        {
+          "name": "merge",
+          "item": [
+            {
+              "name": "Merge templates",
+              "id": "daa6ad54-f6fb-4998-89e4-d0295bd2c7b4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Auth-Token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"shared_link\": true,\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/templates/merge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates",
+                    "merge"
+                  ]
+                },
+                "description": "The API endpoint allows you to merge multiple templates with documents and fields into a new combined template."
+              },
+              "response": [
+                {
+                  "id": "d9361400-9654-4e98-b685-ac64e791e01a",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Auth-Token",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"shared_link\": true,\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/templates/merge",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "templates",
+                        "merge"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"attachment_uuid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"kba\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"uuid\": \"<string>\",\n      \"submitter_uuid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"payment\",\n      \"required\": \"<boolean>\",\n      \"areas\": [\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        },\n        {\n          \"x\": \"<number>\",\n          \"y\": \"<number>\",\n          \"w\": \"<number>\",\n          \"h\": \"<number>\",\n          \"attachment_uuid\": \"<string>\",\n          \"page\": \"<integer>\"\n        }\n      ],\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"<string>\",\n        \"background\": \"<string>\",\n        \"align\": \"<string>\",\n        \"valign\": \"<string>\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"mask\": \"<boolean>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ],\n  \"author_id\": \"<integer>\",\n  \"archived_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"source\": \"native\",\n  \"external_id\": \"<string>\",\n  \"folder_id\": \"<integer>\",\n  \"folder_name\": \"<string>\",\n  \"author\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"documents\": [\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"uuid\": \"<string>\",\n      \"url\": \"<string>\",\n      \"preview_image_url\": \"<string>\",\n      \"filename\": \"<string>\"\n    }\n  ],\n  \"shared_link\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:32:00.000Z",
+                  "updatedAt": "2026-07-28T01:32:00.000Z",
+                  "uid": "35240-d9361400-9654-4e98-b685-ac64e791e01a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-daa6ad54-f6fb-4998-89e4-d0295bd2c7b4"
+            }
+          ],
+          "id": "01d764f2-46c1-41ff-b830-f47d411b5c28",
+          "createdAt": "2026-07-28T01:32:00.000Z",
+          "updatedAt": "2026-07-28T01:32:00.000Z",
+          "uid": "35240-01d764f2-46c1-41ff-b830-f47d411b5c28"
+        },
+        {
+          "name": "List all templates",
+          "id": "c0cd9e82-6542-4b3e-beb8-89ea35e7ea13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/templates?q=<string>&slug=<string>&external_id=<string>&folder=<string>&archived=<boolean>&limit=<integer>&after=<integer>&before=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "templates"
+              ],
+              "query": [
+                {
+                  "description": "Filter templates based on the name partial match.",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter templates by unique slug.",
+                  "key": "slug",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The unique application-specific identifier provided for the template via API or Embedded template form builder. It allows you to receive only templates with your specified external ID.",
+                  "key": "external_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter templates by folder name.",
+                  "key": "folder",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Get only archived templates instead of active ones.",
+                  "key": "archived",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "The number of templates to return. Default value is 10. Maximum value is 100.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The unique identifier of the template to start the list from. It allows you to receive only templates with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of templates.",
+                  "key": "after",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The unique identifier of the template to end the list with. It allows you to receive only templates with an ID less than the specified value.",
+                  "key": "before",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "The API endpoint provides the ability to retrieve a list of available document templates."
+          },
+          "response": [
+            {
+              "id": "fd2af3f4-3c41-4dc0-a8e2-48916a27c4f6",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/templates?q=<string>&slug=<string>&external_id=<string>&folder=<string>&archived=<boolean>&limit=<integer>&after=<integer>&before=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "templates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter templates based on the name partial match.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter templates by unique slug.",
+                      "key": "slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The unique application-specific identifier provided for the template via API or Embedded template form builder. It allows you to receive only templates with your specified external ID.",
+                      "key": "external_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter templates by folder name.",
+                      "key": "folder",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Get only archived templates instead of active ones.",
+                      "key": "archived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The number of templates to return. Default value is 10. Maximum value is 100.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The unique identifier of the template to start the list from. It allows you to receive only templates with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of templates.",
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The unique identifier of the template to end the list with. It allows you to receive only templates with an ID less than the specified value.",
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preferences\": {},\n      \"schema\": [\n        {\n          \"attachment_uuid\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"attachment_uuid\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"fields\": [\n        {\n          \"uuid\": \"<string>\",\n          \"submitter_uuid\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"multiple\",\n          \"required\": \"<boolean>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            }\n          ],\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"<string>\",\n            \"background\": \"<string>\",\n            \"align\": \"<string>\",\n            \"valign\": \"<string>\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"mask\": \"<boolean>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"uuid\": \"<string>\",\n          \"submitter_uuid\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"checkbox\",\n          \"required\": \"<boolean>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            }\n          ],\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"<string>\",\n            \"background\": \"<string>\",\n            \"align\": \"<string>\",\n            \"valign\": \"<string>\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"mask\": \"<boolean>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"submitters\": [\n        {\n          \"name\": \"<string>\",\n          \"uuid\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"uuid\": \"<string>\"\n        }\n      ],\n      \"author_id\": \"<integer>\",\n      \"created_at\": \"<string>\",\n      \"updated_at\": \"<string>\",\n      \"source\": \"native\",\n      \"external_id\": \"<string>\",\n      \"folder_id\": \"<integer>\",\n      \"folder_name\": \"<string>\",\n      \"author\": {\n        \"id\": \"<integer>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"documents\": [\n        {\n          \"id\": \"<integer>\",\n          \"uuid\": \"<string>\",\n          \"url\": \"<string>\",\n          \"preview_image_url\": \"<string>\",\n          \"filename\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"uuid\": \"<string>\",\n          \"url\": \"<string>\",\n          \"preview_image_url\": \"<string>\",\n          \"filename\": \"<string>\"\n        }\n      ],\n      \"archived_at\": \"<string>\",\n      \"shared_link\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"name\": \"<string>\",\n      \"preferences\": {},\n      \"schema\": [\n        {\n          \"attachment_uuid\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"attachment_uuid\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"fields\": [\n        {\n          \"uuid\": \"<string>\",\n          \"submitter_uuid\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"verification\",\n          \"required\": \"<boolean>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            }\n          ],\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"<string>\",\n            \"background\": \"<string>\",\n            \"align\": \"<string>\",\n            \"valign\": \"<string>\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"mask\": \"<boolean>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"uuid\": \"<string>\",\n          \"submitter_uuid\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"file\",\n          \"required\": \"<boolean>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"attachment_uuid\": \"<string>\",\n              \"page\": \"<integer>\"\n            }\n          ],\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"<string>\",\n            \"background\": \"<string>\",\n            \"align\": \"<string>\",\n            \"valign\": \"<string>\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"mask\": \"<boolean>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"submitters\": [\n        {\n          \"name\": \"<string>\",\n          \"uuid\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"uuid\": \"<string>\"\n        }\n      ],\n      \"author_id\": \"<integer>\",\n      \"created_at\": \"<string>\",\n      \"updated_at\": \"<string>\",\n      \"source\": \"api\",\n      \"external_id\": \"<string>\",\n      \"folder_id\": \"<integer>\",\n      \"folder_name\": \"<string>\",\n      \"author\": {\n        \"id\": \"<integer>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"documents\": [\n        {\n          \"id\": \"<integer>\",\n          \"uuid\": \"<string>\",\n          \"url\": \"<string>\",\n          \"preview_image_url\": \"<string>\",\n          \"filename\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"uuid\": \"<string>\",\n          \"url\": \"<string>\",\n          \"preview_image_url\": \"<string>\",\n          \"filename\": \"<string>\"\n        }\n      ],\n      \"archived_at\": \"<string>\",\n      \"shared_link\": \"<boolean>\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": \"<integer>\",\n    \"next\": \"<integer>\",\n    \"prev\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:32:00.000Z",
+              "updatedAt": "2026-07-28T01:32:00.000Z",
+              "uid": "35240-fd2af3f4-3c41-4dc0-a8e2-48916a27c4f6"
+            }
+          ],
+          "createdAt": "2026-07-28T01:32:00.000Z",
+          "updatedAt": "2026-07-28T01:32:00.000Z",
+          "uid": "35240-c0cd9e82-6542-4b3e-beb8-89ea35e7ea13"
+        }
+      ],
+      "id": "ab009b54-016e-4119-9214-1df9961bf1fe",
+      "createdAt": "2026-07-28T01:32:00.000Z",
+      "updatedAt": "2026-07-28T01:32:00.000Z",
+      "uid": "35240-ab009b54-016e-4119-9214-1df9961bf1fe"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.docuseal.com"
+    }
+  ]
+}
