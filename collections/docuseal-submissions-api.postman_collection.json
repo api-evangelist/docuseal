@@ -1,0 +1,1151 @@
+{
+  "item": [
+    {
+      "id": "41ed0ad3-863b-4d00-938c-19c5237963f2",
+      "name": "Submissions",
+      "description": {
+        "content": "Signature requests can be initiated with Submissions API. Submissions can contain one submitter if signed by a single party or multiple submitters if the document template form contains signatures and fields to be collected and filled by multiple parties. Initiate new submissions to request signatures for specified submitters via email or phone number.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80616da2-2b90-4f9b-aa76-f5fa7e2ce4fe",
+          "name": "List all submissions",
+          "request": {
+            "name": "List all submissions",
+            "description": {
+              "content": "The API endpoint provides the ability to retrieve a list of available submissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "template_id",
+                  "value": "<integer>",
+                  "description": "The template ID allows you to receive only the submissions created from that specific template."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter submissions by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Filter submissions based on submitter's name, email or phone partial match."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Filter submissions by unique slug."
+                },
+                {
+                  "disabled": false,
+                  "key": "template_folder",
+                  "value": "<string>",
+                  "description": "Filter submissions by template folder name."
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "Returns only archived submissions when `true` and only active submissions when `false`."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of submissions to return. Default value is 10. Maximum value is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<integer>",
+                  "description": "The unique identifier of the submission to start the list from. It allows you to receive only submissions with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of submissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<integer>",
+                  "description": "The unique identifier of the submission that marks the end of the list. It allows you to receive only submissions with an ID less than the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2993729-7f58-41f2-9a1a-16ed73040a03",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "template_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "NtLDQM7eJX2ZMd"
+                    },
+                    {
+                      "key": "template_folder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": null,\n      \"source\": \"link\",\n      \"submitters_order\": \"random\",\n      \"slug\": \"VyL4szTwYoSvXq\",\n      \"status\": \"completed\",\n      \"audit_log_url\": \"https://docuseal.com/file/hash/example.pdf\",\n      \"combined_document_url\": null,\n      \"expire_at\": null,\n      \"completed_at\": \"2023-12-10T15:49:21.895Z\",\n      \"created_at\": \"2023-12-10T15:48:17.166Z\",\n      \"updated_at\": \"2023-12-10T15:49:21.895Z\",\n      \"archived_at\": null,\n      \"submitters\": [\n        {\n          \"id\": 1,\n          \"submission_id\": 1,\n          \"uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\",\n          \"email\": \"submitter@example.com\",\n          \"slug\": \"dsEeWrhRD8yDXT\",\n          \"sent_at\": \"2023-12-14T15:45:49.011Z\",\n          \"opened_at\": \"2023-12-14T15:48:23.011Z\",\n          \"completed_at\": \"2023-12-14T15:49:21.701Z\",\n          \"declined_at\": null,\n          \"created_at\": \"2023-12-10T15:48:17.173Z\",\n          \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n          \"name\": \"John Doe\",\n          \"phone\": \"+1234567890\",\n          \"status\": \"completed\",\n          \"role\": \"First Party\",\n          \"metadata\": {},\n          \"preferences\": {}\n        }\n      ],\n      \"template\": {\n        \"id\": 1,\n        \"name\": \"Example Template\",\n        \"external_id\": \"Temp123\",\n        \"folder_name\": \"Default\",\n        \"created_at\": \"2023-12-14T15:50:21.799Z\",\n        \"updated_at\": \"2023-12-14T15:50:21.799Z\"\n      },\n      \"created_by_user\": {\n        \"id\": 1,\n        \"first_name\": \"Bob\",\n        \"last_name\": \"Smith\",\n        \"email\": \"bob.smith@example.com\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"count\": 1,\n    \"next\": 1,\n    \"prev\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e880409-3ec6-4eee-b76e-2ea449f07e60",
+          "name": "Create a submission",
+          "request": {
+            "name": "Create a submission",
+            "description": {
+              "content": "This API endpoint allows you to create signature requests (submissions) for a document template and send them to the specified submitters (signers).<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/send-documents-for-signature-via-api\" class=\"link\">Send documents for signature via API</a><br><a href=\"https://www.docuseal.com/guides/pre-fill-pdf-document-form-fields-with-api\" class=\"link\">Pre-fill PDF document form fields with API</a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template_id\": \"<integer>\",\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"message\": {\n        \"subject\": \"<string>\",\n        \"body\": \"<string>\"\n      },\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"message\": {\n        \"subject\": \"<string>\",\n        \"body\": \"<string>\"\n      },\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"<string>\",\n  \"variables\": \"<object>\",\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "add75db0-8463-486e-a3e0-87a58fdf60d3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": 1000001,\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"message\": {\n        \"subject\": \"<string>\",\n        \"body\": \"<string>\"\n      },\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"message\": {\n        \"subject\": \"<string>\",\n        \"body\": \"<string>\"\n      },\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"2024-09-01 12:00:00 UTC\",\n  \"variables\": {\n    \"variable_name\": \"value\"\n  },\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"submission_id\": 1,\n    \"uuid\": \"884d545b-3396-49f1-8c07-05b8b2a78755\",\n    \"email\": \"john.doe@example.com\",\n    \"slug\": \"pAMimKcyrLjqVt\",\n    \"sent_at\": \"2023-12-13T23:04:04.252Z\",\n    \"opened_at\": null,\n    \"completed_at\": null,\n    \"declined_at\": null,\n    \"created_at\": \"2023-12-14T15:50:21.799Z\",\n    \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n    \"name\": \"string\",\n    \"phone\": \"+1234567890\",\n    \"external_id\": \"2321\",\n    \"metadata\": {\n      \"customData\": \"custom value\"\n    },\n    \"status\": \"sent\",\n    \"values\": [\n      {\n        \"field\": \"Full Name\",\n        \"value\": \"John Doe\"\n      }\n    ],\n    \"preferences\": {\n      \"send_email\": true,\n      \"send_sms\": false\n    },\n    \"role\": \"First Party\",\n    \"embed_src\": \"https://docuseal.com/s/pAMimKcyrLjqVt\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3be17bac-0d9c-4c4b-b895-b5c09dd03728",
+          "name": "Get a submission",
+          "request": {
+            "name": "Get a submission",
+            "description": {
+              "content": "The API endpoint provides the functionality to retrieve information about a submission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the submission."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83ae1f99-44ee-4654-a0de-24092415bee7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the submission."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"name\": null,\n  \"source\": \"link\",\n  \"submitters_order\": \"random\",\n  \"slug\": \"VyL4szTwYoSvXq\",\n  \"audit_log_url\": \"https://docuseal.com/blobs/proxy/hash/example.pdf\",\n  \"combined_document_url\": null,\n  \"completed_at\": \"2023-12-14T15:49:21.701Z\",\n  \"expire_at\": null,\n  \"created_at\": \"2023-12-10T15:48:17.166Z\",\n  \"updated_at\": \"2023-12-10T15:49:21.895Z\",\n  \"archived_at\": null,\n  \"submitters\": [\n    {\n      \"id\": 1,\n      \"submission_id\": 1,\n      \"uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\",\n      \"email\": \"submitter@example.com\",\n      \"slug\": \"dsEeWrhRD8yDXT\",\n      \"sent_at\": \"2023-12-14T15:45:49.011Z\",\n      \"opened_at\": \"2023-12-14T15:48:23.011Z\",\n      \"completed_at\": \"2023-12-14T15:49:21.701Z\",\n      \"declined_at\": null,\n      \"created_at\": \"2023-12-14T15:48:17.173Z\",\n      \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n      \"name\": \"John Doe\",\n      \"phone\": \"+1234567890\",\n      \"external_id\": null,\n      \"status\": \"completed\",\n      \"metadata\": {},\n      \"values\": [\n        {\n          \"field\": \"Full Name\",\n          \"value\": \"John Doe\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"name\": \"example\",\n          \"url\": \"https://docuseal.com/blobs/proxy/hash/example.pdf\"\n        }\n      ],\n      \"role\": \"First Party\"\n    }\n  ],\n  \"template\": {\n    \"id\": 1,\n    \"name\": \"Example Template\",\n    \"external_id\": \"Temp123\",\n    \"folder_name\": \"Default\",\n    \"created_at\": \"2023-12-14T15:50:21.799Z\",\n    \"updated_at\": \"2023-12-14T15:50:21.799Z\"\n  },\n  \"created_by_user\": {\n    \"id\": 1,\n    \"first_name\": \"Bob\",\n    \"last_name\": \"Smith\",\n    \"email\": \"bob.smith@example.com\"\n  },\n  \"submission_events\": [\n    {\n      \"id\": 1,\n      \"submitter_id\": 2,\n      \"event_type\": \"view_form\",\n      \"event_timestamp\": \"2023-12-14T15:47:24.566Z\",\n      \"data\": {}\n    }\n  ],\n  \"documents\": [\n    {\n      \"name\": \"example\",\n      \"url\": \"https://docuseal.com/file/hash/example.pdf\"\n    }\n  ],\n  \"status\": \"completed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccff344a-80e7-4c1d-bd0a-a90b00a63575",
+          "name": "Archive a submission",
+          "request": {
+            "name": "Archive a submission",
+            "description": {
+              "content": "The API endpoint allows you to archive a submission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the submission."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "67053ce7-e69b-4ec1-9501-e095ed8e1ed1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the submission."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"archived_at\": \"2023-12-14T15:50:21.799Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0e3d56d-0bcd-4303-bb85-367200115cb3",
+          "name": "Get submission documents",
+          "request": {
+            "name": "Get submission documents",
+            "description": {
+              "content": "This endpoint returns a list of partially filled documents for a submission. If the submission has been completed, the final signed documents are returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                ":id",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "merge",
+                  "value": "false",
+                  "description": "When `true`, merges all documents into a single PDF."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the submission."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "45276ed3-cd41-4b82-8377-991e7168b14d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    ":id",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merge",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the submission."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"documents\": [\n    {\n      \"name\": \"example\",\n      \"url\": \"https://docuseal.com/file/hash/example.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7081a71-7f58-41c4-8775-2d17ba2beef3",
+          "name": "Create submissions from emails",
+          "request": {
+            "name": "Create submissions from emails",
+            "description": {
+              "content": "This API endpoint allows you to create submissions for a document template and send them to the specified email addresses. This is a simplified version of the POST /submissions API to be used with Zapier or other automation tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                "emails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template_id\": \"<integer>\",\n  \"emails\": \"<string>\",\n  \"send_email\": true,\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc71c738-54c0-4438-9323-2703dc479431",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "emails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": 1000001,\n  \"emails\": \"{{emails}}\",\n  \"send_email\": true,\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"submission_id\": 1,\n    \"uuid\": \"884d545b-3396-49f1-8c07-05b8b2a78755\",\n    \"email\": \"john.doe@example.com\",\n    \"slug\": \"pAMimKcyrLjqVt\",\n    \"sent_at\": \"2023-12-13T23:04:04.252Z\",\n    \"opened_at\": null,\n    \"completed_at\": null,\n    \"declined_at\": null,\n    \"created_at\": \"2023-12-14T15:50:21.799Z\",\n    \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n    \"name\": \"string\",\n    \"phone\": \"+1234567890\",\n    \"external_id\": \"2321\",\n    \"metadata\": {\n      \"customData\": \"custom value\"\n    },\n    \"status\": \"sent\",\n    \"values\": [\n      {\n        \"field\": \"Full Name\",\n        \"value\": \"John Doe\"\n      }\n    ],\n    \"preferences\": {\n      \"send_email\": true,\n      \"send_sms\": false\n    },\n    \"role\": \"First Party\",\n    \"embed_src\": \"https://docuseal.com/s/pAMimKcyrLjqVt\"\n  },\n  {\n    \"id\": 2,\n    \"submission_id\": 1,\n    \"uuid\": \"884d545b-3396-49f1-8c07-05b8b2a78755\",\n    \"email\": \"alan.smith@example.com\",\n    \"slug\": \"SEwc65vHNDH3QS\",\n    \"sent_at\": \"2023-12-13T23:04:04.252Z\",\n    \"opened_at\": null,\n    \"completed_at\": null,\n    \"declined_at\": null,\n    \"created_at\": \"2023-12-14T15:50:21.799Z\",\n    \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n    \"name\": \"string\",\n    \"phone\": \"+1234567890\",\n    \"external_id\": \"2321\",\n    \"metadata\": {\n      \"customData\": \"custom value\"\n    },\n    \"status\": \"sent\",\n    \"values\": [\n      {\n        \"field\": \"Full Name\",\n        \"value\": \"Roe Moe\"\n      }\n    ],\n    \"preferences\": {\n      \"send_email\": true,\n      \"send_sms\": false\n    },\n    \"role\": \"First Party\",\n    \"embed_src\": \"SEwc65vHNDH3QS\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29b7de9a-17f2-4e5f-9a18-ee9c8f44ab1b",
+          "name": "Create a submission from PDF",
+          "request": {
+            "name": "Create a submission from PDF",
+            "description": {
+              "content": "The API endpoint provides the functionality to create one-off submission request from a PDF. Use <code>{{Field Name;role=Signer1;type=date}}</code> text tags to define fillable fields in the document. See <a href=\"https://www.docuseal.com/examples/fieldtags.pdf\" target=\"_blank\" class=\"link font-bold\">https://www.docuseal.com/examples/fieldtags.pdf</a> for more text tag formats. Or specify the exact pixel coordinates of the document fields using `fields` param.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/use-embedded-text-field-tags-in-the-pdf-to-create-a-fillable-form\" class=\"link\">Use embedded text field tags to create a fillable form</a>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"<string>\",\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"flatten\": false,\n  \"merge_documents\": false,\n  \"remove_tags\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24e194df-de1c-490b-90ab-9e5fba97bf2f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ]\n        }\n      ],\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ]\n        }\n      ],\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"name\": \"Test Submission Document\",\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"2024-09-01 12:00:00 UTC\",\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"flatten\": false,\n  \"merge_documents\": false,\n  \"remove_tags\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5,\n  \"name\": \"Test Submission\",\n  \"submitters\": [\n    {\n      \"id\": 1,\n      \"uuid\": \"884d545b-3396-49f1-8c07-05b8b2a78755\",\n      \"email\": \"john.doe@example.com\",\n      \"slug\": \"pAMimKcyrLjqVt\",\n      \"sent_at\": \"2025-06-02T15:55:51.310Z\",\n      \"opened_at\": null,\n      \"completed_at\": null,\n      \"declined_at\": null,\n      \"created_at\": \"2025-06-02T15:55:50.320Z\",\n      \"updated_at\": \"2025-06-02T15:55:50.320Z\",\n      \"name\": \"string\",\n      \"phone\": \"+1234567890\",\n      \"external_id\": \"2321\",\n      \"metadata\": {\n        \"customData\": \"custom value\"\n      },\n      \"status\": \"sent\",\n      \"values\": [\n        {\n          \"field\": \"Full Name\",\n          \"value\": \"John Doe\"\n        }\n      ],\n      \"preferences\": {\n        \"send_email\": true,\n        \"send_sms\": false,\n        \"reply_to\": \"reply@example.com\",\n        \"completed_redirect_url\": \"https://example.com/\"\n      },\n      \"role\": \"First Party\",\n      \"embed_src\": \"https://docuseal.com/s/pAMimKcyrLjqVt\"\n    }\n  ],\n  \"source\": \"api\",\n  \"submitters_order\": \"preserved\",\n  \"status\": \"pending\",\n  \"schema\": [\n    {\n      \"name\": \"Demo PDF\",\n      \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"name\": \"Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"uuid\": \"d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff\",\n      \"submitter_uuid\": \"0b0bff58-bc9a-475d-b4a9-2f3e5323faf7\",\n      \"areas\": [\n        {\n          \"page\": 1,\n          \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"expire_at\": null,\n  \"created_at\": \"2025-06-02T15:55:50.270Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36c2157d-f03a-44a4-9f62-c540431c01aa",
+          "name": "Create a submission from DOCX",
+          "request": {
+            "name": "Create a submission from DOCX",
+            "description": {
+              "content": "The API endpoint provides functionality to create a one-off submission request from a DOCX file with dynamic content variables. Use <code>[[variable_name]]</code> text tags to define dynamic content variables in the document. See <a href=\"https://www.docuseal.com/examples/demo_template.docx\" target=\"_blank\" class=\"link font-bold\">https://www.docuseal.com/examples/demo_template.docx</a> for the specific text variable syntax, including dynamic content tables and lists. You can also use the <code>{{signature}}</code> field syntax to define fillable fields, as in a PDF.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/use-dynamic-content-variables-in-docx-to-create-personalized-documents\" class=\"link\">Use dynamic content variables in DOCX to create personalized documents</a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                "docx"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"variables\": \"<object>\",\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"<string>\",\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"merge_documents\": false,\n  \"remove_tags\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5047ad66-8b77-4107-bacb-b3a4e86b2873",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "docx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"name\": \"Test Submission Document\",\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"variables\": {\n    \"variable_name\": \"value\"\n  },\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"2024-09-01 12:00:00 UTC\",\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"merge_documents\": false,\n  \"remove_tags\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5,\n  \"name\": \"Test Submission\",\n  \"submitters\": [\n    {\n      \"id\": 1,\n      \"uuid\": \"884d545b-3396-49f1-8c07-05b8b2a78755\",\n      \"email\": \"john.doe@example.com\",\n      \"slug\": \"pAMimKcyrLjqVt\",\n      \"sent_at\": \"2025-06-02T15:55:51.310Z\",\n      \"opened_at\": null,\n      \"completed_at\": null,\n      \"declined_at\": null,\n      \"created_at\": \"2025-06-02T15:55:50.320Z\",\n      \"updated_at\": \"2025-06-02T15:55:50.320Z\",\n      \"name\": \"string\",\n      \"phone\": \"+1234567890\",\n      \"external_id\": \"2321\",\n      \"metadata\": {\n        \"customData\": \"custom value\"\n      },\n      \"status\": \"sent\",\n      \"values\": [\n        {\n          \"field\": \"Full Name\",\n          \"value\": \"John Doe\"\n        }\n      ],\n      \"preferences\": {\n        \"send_email\": true,\n        \"send_sms\": false,\n        \"reply_to\": \"reply@example.com\",\n        \"completed_redirect_url\": \"https://example.com/\"\n      },\n      \"role\": \"First Party\",\n      \"embed_src\": \"https://docuseal.com/s/pAMimKcyrLjqVt\"\n    }\n  ],\n  \"source\": \"api\",\n  \"submitters_order\": \"preserved\",\n  \"status\": \"pending\",\n  \"schema\": [\n    {\n      \"name\": \"Demo PDF\",\n      \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"name\": \"Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"uuid\": \"d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff\",\n      \"submitter_uuid\": \"0b0bff58-bc9a-475d-b4a9-2f3e5323faf7\",\n      \"areas\": [\n        {\n          \"page\": 1,\n          \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"expire_at\": null,\n  \"created_at\": \"2025-06-02T15:55:50.270Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "462ea75d-b4d8-4452-87b5-2b8e7bbec6b1",
+          "name": "Create a submission from HTML",
+          "request": {
+            "name": "Create a submission from HTML",
+            "description": {
+              "content": "This API endpoint allows you to create a one-off submission request document using the provided HTML content, with special field tags rendered as a fillable and signable form.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/create-pdf-document-fillable-form-with-html-api\" class=\"link\">Create PDF document fillable form with HTML</a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submissions",
+                "html"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\",\n      \"html_header\": \"<string>\",\n      \"html_footer\": \"<string>\",\n      \"size\": \"Letter\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\",\n      \"html_header\": \"<string>\",\n      \"html_footer\": \"<string>\",\n      \"size\": \"Letter\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"<string>\",\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"merge_documents\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c012fde4-0f6d-4a44-89bc-cb7cf92c84ea",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submissions",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"html\": \"<p>Lorem Ipsum is simply dummy text of the\\n<text-field\\n  name=\\\"Industry\\\"\\n  role=\\\"First Party\\\"\\n  required=\\\"false\\\"\\n  style=\\\"width: 80px; height: 16px; display: inline-block; margin-bottom: -4px\\\">\\n</text-field>\\nand typesetting industry</p>\\n\",\n      \"name\": \"Test Document\",\n      \"html_header\": \"<string>\",\n      \"html_footer\": \"<string>\",\n      \"size\": \"A4\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"html\": \"<p>Lorem Ipsum is simply dummy text of the\\n<text-field\\n  name=\\\"Industry\\\"\\n  role=\\\"First Party\\\"\\n  required=\\\"false\\\"\\n  style=\\\"width: 80px; height: 16px; display: inline-block; margin-bottom: -4px\\\">\\n</text-field>\\nand typesetting industry</p>\\n\",\n      \"name\": \"Test Document\",\n      \"html_header\": \"<string>\",\n      \"html_footer\": \"<string>\",\n      \"size\": \"A4\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"role\": \"First Party\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+1234567890\",\n      \"values\": \"<object>\",\n      \"external_id\": \"<string>\",\n      \"completed\": \"<boolean>\",\n      \"metadata\": \"<object>\",\n      \"send_email\": true,\n      \"send_sms\": false,\n      \"reply_to\": \"<string>\",\n      \"completed_redirect_url\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"require_phone_2fa\": false,\n      \"require_email_2fa\": false,\n      \"invite_by\": \"<string>\",\n      \"fields\": [\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"First Name\",\n          \"default_value\": \"<string>\",\n          \"readonly\": false,\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"name\": \"Test Submission Document\",\n  \"send_email\": true,\n  \"send_sms\": false,\n  \"order\": \"preserved\",\n  \"completed_redirect_url\": \"<string>\",\n  \"bcc_completed\": \"<string>\",\n  \"reply_to\": \"<string>\",\n  \"expire_at\": \"2024-09-01 12:00:00 UTC\",\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"merge_documents\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5,\n  \"name\": \"Test Submission\",\n  \"submitters\": [\n    {\n      \"id\": 1,\n      \"uuid\": \"884d545b-3396-49f1-8c07-05b8b2a78755\",\n      \"email\": \"john.doe@example.com\",\n      \"slug\": \"pAMimKcyrLjqVt\",\n      \"sent_at\": \"2025-06-02T15:55:51.310Z\",\n      \"opened_at\": null,\n      \"completed_at\": null,\n      \"declined_at\": null,\n      \"created_at\": \"2025-06-02T15:55:50.320Z\",\n      \"updated_at\": \"2025-06-02T15:55:50.320Z\",\n      \"name\": \"string\",\n      \"phone\": \"+1234567890\",\n      \"external_id\": \"2321\",\n      \"metadata\": {\n        \"customData\": \"custom value\"\n      },\n      \"status\": \"sent\",\n      \"values\": [\n        {\n          \"field\": \"Full Name\",\n          \"value\": \"John Doe\"\n        }\n      ],\n      \"preferences\": {\n        \"send_email\": true,\n        \"send_sms\": false,\n        \"reply_to\": \"reply@example.com\",\n        \"completed_redirect_url\": \"https://example.com/\"\n      },\n      \"role\": \"First Party\",\n      \"embed_src\": \"https://docuseal.com/s/pAMimKcyrLjqVt\"\n    }\n  ],\n  \"source\": \"api\",\n  \"submitters_order\": \"preserved\",\n  \"status\": \"pending\",\n  \"schema\": [\n    {\n      \"name\": \"Demo PDF\",\n      \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"name\": \"Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"uuid\": \"d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff\",\n      \"submitter_uuid\": \"0b0bff58-bc9a-475d-b4a9-2f3e5323faf7\",\n      \"areas\": [\n        {\n          \"page\": 1,\n          \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"expire_at\": null,\n  \"created_at\": \"2025-06-02T15:55:50.270Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.docuseal.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a7d96b0d-31b0-421d-b16b-2d0e952fc38f",
+    "name": "DocuSeal Submissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "DocuSeal API specs\n\nContact Support:\n Name: DocuSeal\n Email: admin@docuseal.com",
+      "type": "text/plain"
+    }
+  }
+}

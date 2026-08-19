@@ -1,0 +1,1303 @@
+{
+  "item": [
+    {
+      "id": "338e5e8a-462c-4624-a696-2cc1b36debeb",
+      "name": "Templates",
+      "description": {
+        "content": "Templates represent reusable document signing forms with fields and signatures to be collected. It's possible to create unique template forms with fields and signatures using HTML or with tagged PDFs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9826be8-6eca-4742-856b-c1ad2ed35105",
+          "name": "List all templates",
+          "request": {
+            "name": "List all templates",
+            "description": {
+              "content": "The API endpoint provides the ability to retrieve a list of available document templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Filter templates based on the name partial match."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Filter templates by unique slug."
+                },
+                {
+                  "disabled": false,
+                  "key": "external_id",
+                  "value": "<string>",
+                  "description": "The unique application-specific identifier provided for the template via API or Embedded template form builder. It allows you to receive only templates with your specified external ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "folder",
+                  "value": "<string>",
+                  "description": "Filter templates by folder name."
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "Get only archived templates instead of active ones."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of templates to return. Default value is 10. Maximum value is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<integer>",
+                  "description": "The unique identifier of the template to start the list from. It allows you to receive only templates with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of templates."
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<integer>",
+                  "description": "The unique identifier of the template to end the list with. It allows you to receive only templates with an ID less than the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b006bc3a-40cb-4ce9-bcf3-113a90490a65",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "opaKWh8WWTAcVG"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "folder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"slug\": \"iRgjDX7WDK6BRo\",\n      \"name\": \"Example Template\",\n      \"preferences\": {},\n      \"schema\": [\n        {\n          \"attachment_uuid\": \"d94e615f-76e3-46d5-8f98-36bdacb8664a\",\n          \"name\": \"example-document\"\n        }\n      ],\n      \"fields\": [\n        {\n          \"uuid\": \"594bdf04-d941-4ca6-aa73-93e61d625c02\",\n          \"submitter_uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\",\n          \"name\": \"Full Name\",\n          \"type\": \"text\",\n          \"required\": true,\n          \"preferences\": {},\n          \"areas\": [\n            {\n              \"x\": 0.2638888888888889,\n              \"y\": 0.168958742632613,\n              \"w\": 0.325,\n              \"h\": 0.04616895874263263,\n              \"attachment_uuid\": \"d94e615f-76e3-46d5-8f98-36bdacb8664a\",\n              \"page\": 0\n            }\n          ]\n        }\n      ],\n      \"submitters\": [\n        {\n          \"name\": \"First Party\",\n          \"uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\"\n        }\n      ],\n      \"author_id\": 1,\n      \"archived_at\": null,\n      \"created_at\": \"2023-12-14T15:21:57.375Z\",\n      \"updated_at\": \"2023-12-14T15:22:55.094Z\",\n      \"source\": \"native\",\n      \"folder_id\": 1,\n      \"folder_name\": \"Default\",\n      \"external_id\": \"c248ffba-ef81-48b7-8e17-e3cecda1c1c5\",\n      \"shared_link\": true,\n      \"author\": {\n        \"id\": 1,\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"john.doe@example.com\"\n      },\n      \"documents\": [\n        {\n          \"id\": 5,\n          \"uuid\": \"d94e615f-76e3-46d5-8f98-36bdacb8664a\",\n          \"url\": \"https://docuseal.com/file/hash/sample-document.pdf\",\n          \"preview_image_url\": \"https://docuseal.com/file/hash/0.jpg\",\n          \"filename\": \"example-document.pdf\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"count\": 1,\n    \"next\": 1,\n    \"prev\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63b42c97-4f57-4889-a498-2b45483c52ea",
+          "name": "Get a template",
+          "request": {
+            "name": "Get a template",
+            "description": {
+              "content": "The API endpoint provides the functionality to retrieve information about a document template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the document template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c85c867a-5523-4bcd-bbb2-524d2feaa2bb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"slug\": \"iRgjDX7WDK6BRo\",\n  \"name\": \"Example Template\",\n  \"preferences\": {},\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"d94e615f-76e3-46d5-8f98-36bdacb8664a\",\n      \"name\": \"example-document\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"594bdf04-d941-4ca6-aa73-93e61d625c02\",\n      \"submitter_uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\",\n      \"name\": \"Full Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"preferences\": {},\n      \"areas\": [\n        {\n          \"x\": 0.2638888888888889,\n          \"y\": 0.168958742632613,\n          \"w\": 0.325,\n          \"h\": 0.04616895874263263,\n          \"attachment_uuid\": \"d94e615f-76e3-46d5-8f98-36bdacb8664a\",\n          \"page\": 0\n        }\n      ]\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"First Party\",\n      \"uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\"\n    }\n  ],\n  \"author_id\": 1,\n  \"archived_at\": null,\n  \"created_at\": \"2023-12-14T15:21:57.375Z\",\n  \"updated_at\": \"2023-12-14T15:22:55.094Z\",\n  \"source\": \"native\",\n  \"folder_id\": 1,\n  \"folder_name\": \"Default\",\n  \"external_id\": \"c248ffba-ef81-48b7-8e17-e3cecda1c1c5\",\n  \"shared_link\": true,\n  \"author\": {\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"documents\": [\n    {\n      \"id\": 5,\n      \"uuid\": \"d94e615f-76e3-46d5-8f98-36bdacb8664a\",\n      \"url\": \"https://docuseal.com/file/hash/sample-document.pdf\",\n      \"preview_image_url\": \"https://docuseal.com/file/hash/0.jpg\",\n      \"filename\": \"example-document.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0296f230-133b-4978-8448-a1592b54f311",
+          "name": "Archive a template",
+          "request": {
+            "name": "Archive a template",
+            "description": {
+              "content": "The API endpoint allows you to archive a document template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the document template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b088a48-aa0d-45b1-bdd9-684cadba916f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"archived_at\": \"2023-12-14T15:50:21.799Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bffb4431-4ae5-4420-9a00-445cc2ad0f88",
+          "name": "Update a template",
+          "request": {
+            "name": "Update a template",
+            "description": {
+              "content": "The API endpoint provides the functionality to move a document template to a different folder and update the name of the template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the document template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"archived\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b06a121d-3b3a-4221-8f4b-d3d149f6e4aa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"New Document Name\",\n  \"folder_name\": \"New Folder\",\n  \"roles\": [\n    \"Agent\",\n    \"Customer\"\n  ],\n  \"archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "796f431e-976d-4682-899e-2f9966c58ddb",
+          "name": "Update template documents",
+          "request": {
+            "name": "Update template documents",
+            "description": {
+              "content": "The API endpoint allows you to add, remove or replace documents in the template with provided PDF/DOCX file or HTML content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the document template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"html\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"replace\": false,\n      \"remove\": false\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"html\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"replace\": false,\n      \"remove\": false\n    }\n  ],\n  \"merge\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e40bac95-ca2e-4e54-8f9c-a4d32a6176a7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"Test Template\",\n      \"file\": \"<base64>\",\n      \"html\": \"<string>\",\n      \"position\": 0,\n      \"replace\": false,\n      \"remove\": false\n    },\n    {\n      \"name\": \"Test Template\",\n      \"file\": \"<base64>\",\n      \"html\": \"<string>\",\n      \"position\": 0,\n      \"replace\": false,\n      \"remove\": false\n    }\n  ],\n  \"merge\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3,\n  \"slug\": \"ZQpF222rFBv71q\",\n  \"name\": \"Demo Template\",\n  \"schema\": [\n    {\n      \"name\": \"Demo Template\",\n      \"attachment_uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"name\": \"Name\",\n      \"required\": false,\n      \"type\": \"text\",\n      \"uuid\": \"a06c49f6-4b20-4442-ac7f-c1040d2cf1ac\",\n      \"submitter_uuid\": \"93ba628c-5913-4456-a1e9-1a81ad7444b3\",\n      \"areas\": [\n        {\n          \"page\": 0,\n          \"attachment_uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"Submitter\",\n      \"uuid\": \"93ba628c-5913-4456-a1e9-1a81ad7444b3\"\n    }\n  ],\n  \"author_id\": 1,\n  \"archived_at\": null,\n  \"created_at\": \"2023-12-14T15:50:21.799Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"source\": \"api\",\n  \"folder_id\": 1,\n  \"folder_name\": \"Default\",\n  \"external_id\": \"f0b4714f-e44b-4993-905b-68b4451eef8c\",\n  \"author\": {\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"documents\": [\n    {\n      \"id\": 3,\n      \"uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\",\n      \"url\": \"https://docuseal.com/file/hash/Test%20Template.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d59269e8-71c1-4b9e-a9d1-99265229cef6",
+          "name": "Clone a template",
+          "request": {
+            "name": "Clone a template",
+            "description": {
+              "content": "The API endpoint allows you to clone an existing template into a new template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":id",
+                "clone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the document template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db6def64-c0a1-49b6-8d18-b5d28111f7cc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":id",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the document template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Cloned Template\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6,\n  \"slug\": \"Xc7opTqwwV9P7x\",\n  \"name\": \"Cloned Template\",\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"68aa0716-61f0-4535-9ba4-6c00f835b080\",\n      \"name\": \"sample-document\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"93c7065b-1b19-4551-b67b-9946bf1c11c9\",\n      \"submitter_uuid\": \"ad128012-756d-4d17-b728-6f6b1d482bb5\",\n      \"name\": \"Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"areas\": [\n        {\n          \"page\": 0,\n          \"attachment_uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"First Party\",\n      \"uuid\": \"ad128012-756d-4d17-b728-6f6b1d482bb5\"\n    }\n  ],\n  \"author_id\": 1,\n  \"archived_at\": null,\n  \"created_at\": \"2023-12-14T15:50:21.799Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"source\": \"api\",\n  \"folder_id\": 2,\n  \"folder_name\": \"Default\",\n  \"external_id\": null,\n  \"shared_link\": true,\n  \"author\": {\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"documents\": [\n    {\n      \"id\": 9,\n      \"uuid\": \"ded62277-9705-4fac-b5dc-58325d4102eb\",\n      \"url\": \"https://docuseal.com/file/hash/sample-document.pdf\",\n      \"filename\": \"sample-document.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e040085b-e54c-40aa-9afd-ae25b6f250c5",
+          "name": "Create a template from HTML",
+          "request": {
+            "name": "Create a template from HTML",
+            "description": {
+              "content": "The API endpoint provides the functionality to seamlessly generate a PDF document template by utilizing the provided HTML content while incorporating pre-defined fields.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/create-pdf-document-fillable-form-with-html-api\" class=\"link\">Create PDF document fillable form with HTML</a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                "html"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"html\": \"<string>\",\n  \"html_header\": \"<string>\",\n  \"html_footer\": \"<string>\",\n  \"name\": \"<string>\",\n  \"size\": \"Letter\",\n  \"external_id\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true,\n  \"documents\": [\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"html\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2eae24a0-7d96-4400-9d0f-01dfb80d451e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    "html"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"html\": \"<p>Lorem Ipsum is simply dummy text of the\\n<text-field\\n  name=\\\"Industry\\\"\\n  role=\\\"First Party\\\"\\n  required=\\\"false\\\"\\n  style=\\\"width: 80px; height: 16px; display: inline-block; margin-bottom: -4px\\\">\\n</text-field>\\nand typesetting industry</p>\\n\",\n  \"html_header\": \"<string>\",\n  \"html_footer\": \"<string>\",\n  \"name\": \"Test Template\",\n  \"size\": \"A4\",\n  \"external_id\": \"714d974e-83d8-11ee-b962-0242ac120002\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true,\n  \"documents\": [\n    {\n      \"html\": \"<p>Lorem Ipsum is simply dummy text of the\\n<text-field\\n  name=\\\"Industry\\\"\\n  role=\\\"First Party\\\"\\n  required=\\\"false\\\"\\n  style=\\\"width: 80px; height: 16px; display: inline-block; margin-bottom: -4px\\\">\\n</text-field>\\nand typesetting industry</p>\\n\",\n      \"name\": \"Test Document\"\n    },\n    {\n      \"html\": \"<p>Lorem Ipsum is simply dummy text of the\\n<text-field\\n  name=\\\"Industry\\\"\\n  role=\\\"First Party\\\"\\n  required=\\\"false\\\"\\n  style=\\\"width: 80px; height: 16px; display: inline-block; margin-bottom: -4px\\\">\\n</text-field>\\nand typesetting industry</p>\\n\",\n      \"name\": \"Test Document\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3,\n  \"slug\": \"ZQpF222rFBv71q\",\n  \"name\": \"Demo Template\",\n  \"schema\": [\n    {\n      \"name\": \"Demo Template\",\n      \"attachment_uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"name\": \"Name\",\n      \"required\": false,\n      \"type\": \"text\",\n      \"uuid\": \"a06c49f6-4b20-4442-ac7f-c1040d2cf1ac\",\n      \"submitter_uuid\": \"93ba628c-5913-4456-a1e9-1a81ad7444b3\",\n      \"areas\": [\n        {\n          \"page\": 0,\n          \"attachment_uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"Submitter\",\n      \"uuid\": \"93ba628c-5913-4456-a1e9-1a81ad7444b3\"\n    }\n  ],\n  \"author_id\": 1,\n  \"archived_at\": null,\n  \"created_at\": \"2023-12-14T15:50:21.799Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"source\": \"api\",\n  \"folder_id\": 1,\n  \"folder_name\": \"Default\",\n  \"external_id\": \"f0b4714f-e44b-4993-905b-68b4451eef8c\",\n  \"shared_link\": true,\n  \"author\": {\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"documents\": [\n    {\n      \"id\": 3,\n      \"uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\",\n      \"url\": \"https://docuseal.com/file/hash/Test%20Template.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff871b88-e5c2-4825-9e27-fbb4766b4bf8",
+          "name": "Create a template from Word DOCX",
+          "request": {
+            "name": "Create a template from Word DOCX",
+            "description": {
+              "content": "The API endpoint provides the functionality to create a fillable document template for an existing Microsoft Word document. Use <code>{{Field Name;role=Signer1;type=date}}</code> text tags to define fillable fields in the document. See <a href=\"https://www.docuseal.com/examples/fieldtags.docx\" target=\"_blank\" class=\"link font-bold\" >https://www.docuseal.com/examples/fieldtags.docx</a> for more text tag formats. Or specify the exact pixel coordinates of the document fields using `fields` param.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/use-embedded-text-field-tags-in-the-pdf-to-create-a-fillable-form\" class=\"link\">Use embedded text field tags to create a fillable form</a>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                "docx"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "437b23c7-6537-4b4e-a0e7-23fb76a6628a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    "docx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"dynamic\": false,\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"Test DOCX\",\n  \"external_id\": \"unique-key\",\n  \"folder_name\": \"<string>\",\n  \"shared_link\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5,\n  \"slug\": \"s3ff992CoPjvaX\",\n  \"name\": \"Demo PDF\",\n  \"schema\": [\n    {\n      \"name\": \"Demo PDF\",\n      \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"name\": \"Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"uuid\": \"d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff\",\n      \"submitter_uuid\": \"0b0bff58-bc9a-475d-b4a9-2f3e5323faf7\",\n      \"areas\": [\n        {\n          \"page\": 1,\n          \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"Submitter\",\n      \"uuid\": \"0b0bff58-bc9a-475d-b4a9-2f3e5323faf7\"\n    }\n  ],\n  \"author_id\": 1,\n  \"archived_at\": null,\n  \"created_at\": \"2023-12-14T15:50:21.799Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"source\": \"api\",\n  \"folder_id\": 1,\n  \"folder_name\": \"Default\",\n  \"external_id\": \"c248ffba-ef81-48b7-8e17-e3cecda1c1c5\",\n  \"shared_link\": true,\n  \"author\": {\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"documents\": [\n    {\n      \"id\": 7,\n      \"uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\",\n      \"url\": \"https://docuseal.com/hash/DemoPDF.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "885dfca9-722c-43d9-b9de-6f2250ae4b46",
+          "name": "Create a template from PDF",
+          "request": {
+            "name": "Create a template from PDF",
+            "description": {
+              "content": "The API endpoint provides the functionality to create a fillable document template for a PDF file. Use <code>{{Field Name;role=Signer1;type=date}}</code> text tags to define fillable fields in the document. See <a href=\"https://www.docuseal.com/examples/fieldtags.pdf\" target=\"_blank\" class=\"link font-bold\">https://www.docuseal.com/examples/fieldtags.pdf</a> for more text tag formats. Or specify the exact pixel coordinates of the document fields using `fields` param.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/use-embedded-text-field-tags-in-the-pdf-to-create-a-fillable-form\" class=\"link\">Use embedded text field tags to create a fillable form</a>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"<base64>\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": \"<integer>\",\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"validation\": {\n            \"pattern\": \"<string>\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": \"<integer>\",\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"<string>\",\n            \"price\": \"<number>\",\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"shared_link\": true,\n  \"flatten\": false,\n  \"remove_tags\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "080cf6d8-6025-4671-8a23-1ce72ff06866",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"file\": \"base64\",\n      \"fields\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\",\n          \"role\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"areas\": [\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            },\n            {\n              \"x\": \"<number>\",\n              \"y\": \"<number>\",\n              \"w\": \"<number>\",\n              \"h\": \"<number>\",\n              \"page\": 1,\n              \"option\": \"<string>\"\n            }\n          ],\n          \"options\": [\n            \"Option A\",\n            \"Option B\"\n          ],\n          \"validation\": {\n            \"pattern\": \"[A-Z]{4}\",\n            \"message\": \"<string>\",\n            \"min\": \"<number>\",\n            \"max\": \"<number>\",\n            \"step\": \"<number>\"\n          },\n          \"preferences\": {\n            \"font_size\": 12,\n            \"font_type\": \"<string>\",\n            \"font\": \"<string>\",\n            \"color\": \"black\",\n            \"background\": \"<string>\",\n            \"align\": \"left\",\n            \"valign\": \"center\",\n            \"format\": \"DD/MM/YYYY\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"mask\": \"<integer>\",\n            \"reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ]\n    }\n  ],\n  \"name\": \"Test PDF\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"unique-key\",\n  \"shared_link\": true,\n  \"flatten\": false,\n  \"remove_tags\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5,\n  \"slug\": \"s3ff992CoPjvaX\",\n  \"name\": \"Demo PDF\",\n  \"schema\": [\n    {\n      \"name\": \"Demo PDF\",\n      \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"name\": \"Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"uuid\": \"d0bf3c0c-1928-40c8-80f9-d9f3c6ad4eff\",\n      \"submitter_uuid\": \"0b0bff58-bc9a-475d-b4a9-2f3e5323faf7\",\n      \"areas\": [\n        {\n          \"page\": 1,\n          \"attachment_uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"Submitter\",\n      \"uuid\": \"0b0bff58-bc9a-475d-b4a9-2f3e5323faf7\"\n    }\n  ],\n  \"author_id\": 1,\n  \"archived_at\": null,\n  \"created_at\": \"2023-12-14T15:50:21.799Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"source\": \"api\",\n  \"folder_id\": 1,\n  \"folder_name\": \"Default\",\n  \"external_id\": \"c248ffba-ef81-48b7-8e17-e3cecda1c1c5\",\n  \"shared_link\": true,\n  \"author\": {\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"documents\": [\n    {\n      \"id\": 7,\n      \"uuid\": \"48d2998f-266b-47e4-beb2-250ab7ccebdf\",\n      \"url\": \"https://docuseal.com/file/hash/Demo%20PDF.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ccbefab-1eff-463c-a173-bb5b597a2e1b",
+          "name": "Merge templates",
+          "request": {
+            "name": "Merge templates",
+            "description": {
+              "content": "The API endpoint allows you to merge multiple templates with documents and fields into a new combined template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"name\": \"<string>\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"shared_link\": true,\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e21d7d9d-c224-4a04-b351-b5da551d3bed",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_ids\": [\n    321,\n    432\n  ],\n  \"name\": \"Merged Template\",\n  \"folder_name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"shared_link\": true,\n  \"roles\": [\n    \"Agent\",\n    \"Customer\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6,\n  \"slug\": \"Xc7opTqwwV9P7x\",\n  \"name\": \"Merged Template\",\n  \"schema\": [\n    {\n      \"attachment_uuid\": \"68aa0716-61f0-4535-9ba4-6c00f835b080\",\n      \"name\": \"sample-document\"\n    }\n  ],\n  \"fields\": [\n    {\n      \"uuid\": \"93c7065b-1b19-4551-b67b-9946bf1c11c9\",\n      \"submitter_uuid\": \"ad128012-756d-4d17-b728-6f6b1d482bb5\",\n      \"name\": \"Name\",\n      \"type\": \"text\",\n      \"required\": true,\n      \"areas\": [\n        {\n          \"page\": 0,\n          \"attachment_uuid\": \"09a8bc73-a7a9-4fd9-8173-95752bdf0af5\",\n          \"x\": 0.403158189124654,\n          \"y\": 0.04211750189825361,\n          \"w\": 0.100684625476058,\n          \"h\": 0.01423690205011389\n        }\n      ]\n    }\n  ],\n  \"submitters\": [\n    {\n      \"name\": \"First Party\",\n      \"uuid\": \"ad128012-756d-4d17-b728-6f6b1d482bb5\"\n    }\n  ],\n  \"author_id\": 1,\n  \"archived_at\": null,\n  \"created_at\": \"2023-12-14T15:50:21.799Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"source\": \"api\",\n  \"folder_id\": 2,\n  \"folder_name\": \"Default\",\n  \"external_id\": null,\n  \"shared_link\": true,\n  \"author\": {\n    \"id\": 1,\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"documents\": [\n    {\n      \"id\": 9,\n      \"uuid\": \"ded62277-9705-4fac-b5dc-58325d4102eb\",\n      \"url\": \"https://docuseal.com/file/hash/sample-document.pdf\",\n      \"filename\": \"sample-document.pdf\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.docuseal.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "94cb79b2-b990-4576-ab61-63b67c16a442",
+    "name": "DocuSeal Submissions Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "DocuSeal API specs\n\nContact Support:\n Name: DocuSeal\n Email: admin@docuseal.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,463 @@
+{
+  "item": [
+    {
+      "id": "869efaca-01e1-4266-84be-8b38f03f9add",
+      "name": "Submitters",
+      "description": {
+        "content": "Submitters API allows you to load all details provided by the signer of the document.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f421701-eae4-45e9-9523-f86e01043b40",
+          "name": "Get a submitter",
+          "request": {
+            "name": "Get a submitter",
+            "description": {
+              "content": "The API endpoint provides functionality to retrieve information about a submitter, along with the submitter documents and field values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submitters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the submitter."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1fddf289-8bc4-468e-9f96-49c8792d784e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submitters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the submitter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7,\n  \"submission_id\": 3,\n  \"uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\",\n  \"email\": \"submitter@example.com\",\n  \"slug\": \"dsEeWrhRD8yDXT\",\n  \"sent_at\": \"2023-12-14T15:45:49.011Z\",\n  \"opened_at\": \"2023-12-14T15:48:23.011Z\",\n  \"completed_at\": \"2023-12-10T15:49:21.701Z\",\n  \"declined_at\": null,\n  \"created_at\": \"2023-12-14T15:48:17.173Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"name\": \"John Doe\",\n  \"phone\": \"+1234567890\",\n  \"status\": \"completed\",\n  \"external_id\": null,\n  \"metadata\": {},\n  \"preferences\": {},\n  \"template\": {\n    \"id\": 2,\n    \"name\": \"Example Template\",\n    \"created_at\": \"2023-12-14T15:50:21.799Z\",\n    \"updated_at\": \"2023-12-14T15:50:21.799Z\"\n  },\n  \"submission_events\": [\n    {\n      \"id\": 12,\n      \"submitter_id\": 7,\n      \"event_type\": \"view_form\",\n      \"event_timestamp\": \"2023-12-14T15:47:17.351Z\",\n      \"data\": {}\n    }\n  ],\n  \"values\": [\n    {\n      \"field\": \"Full Name\",\n      \"value\": \"John Doe\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"name\": \"sample-document\",\n      \"url\": \"https://docuseal.com/file/hash/sample-document.pdf\"\n    }\n  ],\n  \"role\": \"First Party\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c376c7a5-a5ce-4472-89a0-e08f419c6926",
+          "name": "Update a submitter",
+          "request": {
+            "name": "Update a submitter",
+            "description": {
+              "content": "The API endpoint allows you to update submitter details, pre-fill or update field values and re-send emails.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/pre-fill-pdf-document-form-fields-with-api#automatically_sign_documents_via_api\" class=\"link\">Automatically sign documents via API</a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submitters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the submitter."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"values\": \"<object>\",\n  \"external_id\": \"<string>\",\n  \"send_email\": \"<boolean>\",\n  \"send_sms\": false,\n  \"reply_to\": \"<string>\",\n  \"completed\": \"<boolean>\",\n  \"metadata\": \"<object>\",\n  \"completed_redirect_url\": \"<string>\",\n  \"require_phone_2fa\": false,\n  \"require_email_2fa\": false,\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"<string>\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"black\",\n        \"background\": \"<string>\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"<string>\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": \"<integer>\",\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"black\",\n        \"background\": \"<string>\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"<string>\",\n        \"price\": \"<number>\",\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b43829e-1972-4360-a2ae-a1fc480c25e5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submitters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the submitter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"+1234567890\",\n  \"values\": \"<object>\",\n  \"external_id\": \"<string>\",\n  \"send_email\": \"<boolean>\",\n  \"send_sms\": false,\n  \"reply_to\": \"<string>\",\n  \"completed\": \"<boolean>\",\n  \"metadata\": \"<object>\",\n  \"completed_redirect_url\": \"<string>\",\n  \"require_phone_2fa\": false,\n  \"require_email_2fa\": false,\n  \"message\": {\n    \"subject\": \"<string>\",\n    \"body\": \"<string>\"\n  },\n  \"fields\": [\n    {\n      \"name\": \"First Name\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"[A-Z]{4}\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": 12,\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"black\",\n        \"background\": \"<string>\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"DD/MM/YYYY\",\n        \"price\": 99.99,\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"name\": \"First Name\",\n      \"default_value\": \"<string>\",\n      \"readonly\": false,\n      \"required\": \"<boolean>\",\n      \"validation\": {\n        \"pattern\": \"[A-Z]{4}\",\n        \"message\": \"<string>\",\n        \"min\": \"<number>\",\n        \"max\": \"<number>\",\n        \"step\": \"<number>\"\n      },\n      \"preferences\": {\n        \"font_size\": 12,\n        \"font_type\": \"<string>\",\n        \"font\": \"<string>\",\n        \"color\": \"black\",\n        \"background\": \"<string>\",\n        \"align\": \"left\",\n        \"valign\": \"center\",\n        \"format\": \"DD/MM/YYYY\",\n        \"price\": 99.99,\n        \"currency\": \"USD\",\n        \"mask\": \"<integer>\",\n        \"reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"submission_id\": 12,\n  \"uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\",\n  \"email\": \"submitter@example.com\",\n  \"slug\": \"dsEeWrhRD8yDXT\",\n  \"sent_at\": \"2023-12-14T15:45:49.011Z\",\n  \"opened_at\": \"2023-12-14T15:48:23.011Z\",\n  \"completed_at\": \"2023-12-10T15:49:21.701Z\",\n  \"declined_at\": null,\n  \"created_at\": \"2023-12-14T15:48:17.173Z\",\n  \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n  \"name\": \"John Doe\",\n  \"phone\": \"+1234567890\",\n  \"status\": \"completed\",\n  \"external_id\": null,\n  \"metadata\": {},\n  \"preferences\": {},\n  \"values\": [\n    {\n      \"field\": \"Full Name\",\n      \"value\": \"John Doe\"\n    }\n  ],\n  \"documents\": [],\n  \"role\": \"First Party\",\n  \"embed_src\": \"https://docuseal.com/s/pAMimKcyrLjqVt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9337b488-aace-4bfe-a023-b9c936f60516",
+          "name": "List all submitters",
+          "request": {
+            "name": "List all submitters",
+            "description": {
+              "content": "The API endpoint provides the ability to retrieve a list of submitters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "submitters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "submission_id",
+                  "value": "<integer>",
+                  "description": "The submission ID allows you to receive only the submitters related to that specific submission."
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Filter submitters on name, email or phone partial match."
+                },
+                {
+                  "disabled": false,
+                  "key": "slug",
+                  "value": "<string>",
+                  "description": "Filter submitters by unique slug."
+                },
+                {
+                  "disabled": false,
+                  "key": "completed_after",
+                  "value": "<dateTime>",
+                  "description": "The date and time string value to filter submitters that completed the submission after the specified date and time."
+                },
+                {
+                  "disabled": false,
+                  "key": "completed_before",
+                  "value": "<dateTime>",
+                  "description": "The date and time string value to filter submitters that completed the submission before the specified date and time."
+                },
+                {
+                  "disabled": false,
+                  "key": "external_id",
+                  "value": "<string>",
+                  "description": "The unique application-specific identifier provided for a submitter when initializing a signature request. It allows you to receive only submitters with a specified external ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of submitters to return. Default value is 10. Maximum value is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<integer>",
+                  "description": "The unique identifier of the submitter to start the list from. It allows you to receive only submitters with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of submitters."
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<integer>",
+                  "description": "The unique identifier of the submitter to end the list with. It allows you to receive only submitters with an ID less than the specified value."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "10a9a628-1497-4836-8545-c138eabddd3c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "submitters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "submission_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slug",
+                      "value": "zAyL9fH36Havvm"
+                    },
+                    {
+                      "key": "completed_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completed_before",
+                      "value": "2024-03-06 19:32:20"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 7,\n      \"submission_id\": 3,\n      \"uuid\": \"0954d146-db8c-4772-aafe-2effc7c0e0c0\",\n      \"email\": \"submitter@example.com\",\n      \"slug\": \"dsEeWrhRD8yDXT\",\n      \"sent_at\": \"2023-12-14T15:45:49.011Z\",\n      \"opened_at\": \"2023-12-14T15:48:23.011Z\",\n      \"completed_at\": \"2023-12-14T15:49:21.701Z\",\n      \"declined_at\": null,\n      \"created_at\": \"2023-12-14T15:48:17.173Z\",\n      \"updated_at\": \"2023-12-14T15:50:21.799Z\",\n      \"name\": \"John Doe\",\n      \"phone\": \"+1234567890\",\n      \"status\": \"completed\",\n      \"external_id\": null,\n      \"preferences\": {},\n      \"metadata\": {},\n      \"template\": {\n        \"id\": 2,\n        \"name\": \"Example Template\",\n        \"created_at\": \"2023-12-14T15:50:21.799Z\",\n        \"updated_at\": \"2023-12-14T15:50:21.799Z\"\n      },\n      \"submission_events\": [\n        {\n          \"id\": 12,\n          \"submitter_id\": 7,\n          \"event_type\": \"view_form\",\n          \"event_timestamp\": \"2023-12-14T15:48:17.351Z\",\n          \"data\": {}\n        }\n      ],\n      \"values\": [\n        {\n          \"field\": \"Full Name\",\n          \"value\": \"John Doe\"\n        }\n      ],\n      \"documents\": [\n        {\n          \"name\": \"sample-document\",\n          \"url\": \"https://docuseal.com/file/eyJfcmFpbHMiOnsiIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9758362acced0f3c86cdffad02800e/sample-document.pdf\"\n        }\n      ],\n      \"role\": \"First Party\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": 1,\n    \"next\": 1,\n    \"prev\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.docuseal.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8ba2d869-8fa9-4cd4-9dad-2e5aa36cce3e",
+    "name": "DocuSeal Submissions Submitters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "DocuSeal API specs\n\nContact Support:\n Name: DocuSeal\n Email: admin@docuseal.com",
+      "type": "text/plain"
+    }
+  }
+}

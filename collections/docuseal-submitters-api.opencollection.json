@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocuSeal Submissions Submitters API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Submitters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a submitter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.docuseal.com/submitters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "500001",
+                "type": "path",
+                "description": "The unique identifier of the submitter."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint provides functionality to retrieve information about a submitter, along with the submitter documents and field values."
+        },
+        {
+          "info": {
+            "name": "Update a submitter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.docuseal.com/submitters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "500001",
+                "type": "path",
+                "description": "The unique identifier of the submitter."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint allows you to update submitter details, pre-fill or update field values and re-send emails.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/pre-fill-pdf-document-form-fields-with-api#automatically_sign_documents_via_api\" class=\"link\">Automatically sign documents via API</a>"
+        },
+        {
+          "info": {
+            "name": "List all submitters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.docuseal.com/submitters",
+            "params": [
+              {
+                "name": "submission_id",
+                "value": "",
+                "type": "query",
+                "description": "The submission ID allows you to receive only the submitters related to that specific submission."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Filter submitters on name, email or phone partial match."
+              },
+              {
+                "name": "slug",
+                "value": "zAyL9fH36Havvm",
+                "type": "query",
+                "description": "Filter submitters by unique slug."
+              },
+              {
+                "name": "completed_after",
+                "value": "2024-03-05 9:32:20",
+                "type": "query",
+                "description": "The date and time string value to filter submitters that completed the submission after the specified date and time."
+              },
+              {
+                "name": "completed_before",
+                "value": "2024-03-06 19:32:20",
+                "type": "query",
+                "description": "The date and time string value to filter submitters that completed the submission before the specified date and time."
+              },
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique application-specific identifier provided for a submitter when initializing a signature request. It allows you to receive only submitters with a specified external ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of submitters to return. Default value is 10. Maximum value is 100."
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the submitter to start the list from. It allows you to receive only submitters with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of submitters."
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the submitter to end the list with. It allows you to receive only submitters with an ID less than the specified value."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint provides the ability to retrieve a list of submitters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

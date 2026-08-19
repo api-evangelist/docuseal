@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DocuSeal Submissions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Submissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.docuseal.com/submissions",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "query",
+                "description": "The template ID allows you to receive only the submissions created from that specific template."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter submissions by status."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Filter submissions based on submitter's name, email or phone partial match."
+              },
+              {
+                "name": "slug",
+                "value": "NtLDQM7eJX2ZMd",
+                "type": "query",
+                "description": "Filter submissions by unique slug."
+              },
+              {
+                "name": "template_folder",
+                "value": "",
+                "type": "query",
+                "description": "Filter submissions by template folder name."
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Returns only archived submissions when `true` and only active submissions when `false`."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of submissions to return. Default value is 10. Maximum value is 100."
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the submission to start the list from. It allows you to receive only submissions with an ID greater than the specified value. Pass ID value from the `pagination.next` response to load the next batch of submissions."
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the submission that marks the end of the list. It allows you to receive only submissions with an ID less than the specified value."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint provides the ability to retrieve a list of available submissions."
+        },
+        {
+          "info": {
+            "name": "Create a submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.docuseal.com/submissions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This API endpoint allows you to create signature requests (submissions) for a document template and send them to the specified submitters (signers).<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/send-documents-for-signature-via-api\" class=\"link\">Send documents for signature via API</a><br><a href=\"https://www.docuseal.com/guides/pre-fill-pdf-document-form-fields-with-api\" class=\"link\">Pre-fill PDF document form fields with API</a>"
+        },
+        {
+          "info": {
+            "name": "Get a submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.docuseal.com/submissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1001",
+                "type": "path",
+                "description": "The unique identifier of the submission."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint provides the functionality to retrieve information about a submission."
+        },
+        {
+          "info": {
+            "name": "Archive a submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.docuseal.com/submissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1001",
+                "type": "path",
+                "description": "The unique identifier of the submission."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint allows you to archive a submission."
+        },
+        {
+          "info": {
+            "name": "Get submission documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.docuseal.com/submissions/:id/documents",
+            "params": [
+              {
+                "name": "id",
+                "value": "1001",
+                "type": "path",
+                "description": "The unique identifier of the submission."
+              },
+              {
+                "name": "merge",
+                "value": "false",
+                "type": "query",
+                "description": "When `true`, merges all documents into a single PDF."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint returns a list of partially filled documents for a submission. If the submission has been completed, the final signed documents are returned."
+        },
+        {
+          "info": {
+            "name": "Create submissions from emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.docuseal.com/submissions/emails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This API endpoint allows you to create submissions for a document template and send them to the specified email addresses. This is a simplified version of the POST /submissions API to be used with Zapier or other automation tools."
+        },
+        {
+          "info": {
+            "name": "Create a submission from PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.docuseal.com/submissions/pdf",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint provides the functionality to create one-off submission request from a PDF. Use <code>{{Field Name;role=Signer1;type=date}}</code> text tags to define fillable fields in the document. See <a href=\"https://www.docuseal.com/examples/fieldtags.pdf\" target=\"_blank\" class=\"link font-bold\">https://www.docuseal.com/examples/fieldtags.pdf</a> for more text tag formats. Or specify the exact pixel coordinates of the document fields using `fields` param.<br><b>Related Guides</b><br><a href"
+        },
+        {
+          "info": {
+            "name": "Create a submission from DOCX",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.docuseal.com/submissions/docx",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The API endpoint provides functionality to create a one-off submission request from a DOCX file with dynamic content variables. Use <code>[[variable_name]]</code> text tags to define dynamic content variables in the document. See <a href=\"https://www.docuseal.com/examples/demo_template.docx\" target=\"_blank\" class=\"link font-bold\">https://www.docuseal.com/examples/demo_template.docx</a> for the specific text variable syntax, including dynamic content tables and lists. You can also use the <code>{"
+        },
+        {
+          "info": {
+            "name": "Create a submission from HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.docuseal.com/submissions/html",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Auth-Token",
+              "value": "{{X-Auth-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This API endpoint allows you to create a one-off submission request document using the provided HTML content, with special field tags rendered as a fillable and signable form.<br><b>Related Guides</b><br><a href=\"https://www.docuseal.com/guides/create-pdf-document-fillable-form-with-html-api\" class=\"link\">Create PDF document fillable form with HTML</a>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
