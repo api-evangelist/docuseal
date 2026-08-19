@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/docuseal.p
 url: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: "0.19"
+specificationVersion: '0.23'
 description: >
   DocuSeal is an open-source document signing platform that provides a REST API
   for building electronic signature workflows into applications. The API supports
