@@ -31,6 +31,16 @@ description: >
   deployment under an AGPL-3.0 open-source license.
 tags:
   - Document Signing
+  - E-Signature
+  - Electronic Signature
+  - Document-Management
+  - PDF
+  - Templates
+  - Open-Source
+  - Webhook
+  - Embedding
+tags_raw:
+  - Document Signing
   - eSignature
   - Electronic Signature
   - Document Management
