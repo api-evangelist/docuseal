@@ -3,13 +3,10 @@
   "feeds": [
     {
       "source": "https://www.linkedin.com/company/docuseal",
-      "feed_url": "https://www.linkedin.com/company/docuseal",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-08-15T12:22:01Z",
+  "fetched": "2026-08-22T20:20:02Z",
   "post_count": 5,
   "agent_pulled": "2026-07-04"
 }
