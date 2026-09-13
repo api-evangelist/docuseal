@@ -1,0 +1,23 @@
+generated: '2026-09-11'
+method: probed
+source: https://mcp.docuseal.com/
+status: published
+server:
+  name: docuseal
+  transport: http
+  url: https://mcp.docuseal.com/
+deployment:
+  mode: remote
+  endpoint: https://mcp.docuseal.com/
+  verified: probed
+  probe: live
+  checked: '2026-09-11'
+  source: docs-check 2026-09-11 (endpoint found in the provider's own documentation, then probed)
+tools_count: 2
+tools:
+- name: search
+  description: ''
+- name: load_resource
+  description: ''
+tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
+authorship: provider
