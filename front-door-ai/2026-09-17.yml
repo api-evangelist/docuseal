@@ -1,0 +1,27 @@
+# Front Door AI Index — docuseal — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: docuseal
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.docuseal.com
+  final_host: www.docuseal.com
+  ownership: own
+  owner: docuseal
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 4
+  host_score: 4
+  density: 1.96
+  words: 2039
+  tiers:
+    agentic: 3
+    core: 1
+    model: 0
+  ambiguous: 3
+  top_terms:
+    automation: 3
+    embedding: 3
+    AI: 1

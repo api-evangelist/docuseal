@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: DocuSeal Submissions Submitters API
+  title: DocuSeal Submitters API
   description: DocuSeal API specs
   contact:
     name: DocuSeal
@@ -74,27 +74,32 @@ paths:
                     type: string
                     description: Submitter UUID.
                   email:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The email address of the submitter.
                   slug:
                     type: string
                     description: Unique key to be used in the form signing link and embedded form.
                   sent_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the signing request was sent to the submitter.
                   opened_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the submitter opened the signing form.
                   completed_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the submitter completed the signing form.
                   declined_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the submitter declined the signing form.
                   created_at:
                     type: string
@@ -103,12 +108,14 @@ paths:
                     type: string
                     description: The date and time when the submitter was last updated.
                   name:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The name of the submitter.
                   phone:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The phone number of the submitter.
                   status:
                     type: string
@@ -120,8 +127,9 @@ paths:
                     - sent
                     - awaiting
                   external_id:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Your application-specific unique string key to identify this submitter within your app.
                   metadata:
                     type: object
@@ -281,7 +289,11 @@ paths:
       tags:
       - Submitters
       summary: Update a submitter
-      description: The API endpoint allows you to update submitter details, pre-fill or update field values and re-send emails.<br><b>Related Guides</b><br><a href="https://www.docuseal.com/guides/pre-fill-pdf-document-form-fields-with-api#automatically_sign_documents_via_api" class="link">Automatically sign documents via API</a>
+      description: 'The API endpoint allows you to update submitter details, pre-fill or update field values and re-send emails.
+
+        Related Guides
+
+        Automatically sign documents via API'
       operationId: updateSubmitter
       parameters:
       - name: id
@@ -532,27 +544,32 @@ paths:
                     type: string
                     description: Submitter UUID.
                   email:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The email address of the submitter.
                   slug:
                     type: string
                     description: Unique key to be used in the form signing link and embedded form.
                   sent_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the signing request was sent to the submitter.
                   opened_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the submitter opened the signing form.
                   completed_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the submitter completed the signing form.
                   declined_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The date and time when the submitter declined the signing form.
                   created_at:
                     type: string
@@ -561,12 +578,14 @@ paths:
                     type: string
                     description: The date and time when the submitter was last updated.
                   name:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The name of the submitter.
                   phone:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The phone number of the submitter.
                   status:
                     type: string
@@ -578,8 +597,9 @@ paths:
                     - sent
                     - awaiting
                   external_id:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Your application-specific unique string key to identify this submitter within your app.
                   metadata:
                     type: object
@@ -776,20 +796,24 @@ paths:
                           type: string
                           description: Unique key to be used in the form signing link and embedded form.
                         sent_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the signing request was sent to the submitter.
                         opened_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the submitter opened the signing form.
                         completed_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the submitter completed the signing form.
                         declined_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The date and time when the submitter declined the signing form.
                         created_at:
                           type: string
@@ -798,12 +822,14 @@ paths:
                           type: string
                           description: The date and time when the submitter was last updated.
                         name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The name of the submitter.
                         phone:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The phone number of the submitter.
                         status:
                           type: string
@@ -815,8 +841,9 @@ paths:
                           - sent
                           - awaiting
                         external_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Your application-specific unique string key to identify this submitter within your app.
                         preferences:
                           type: object
@@ -922,12 +949,14 @@ paths:
                         type: integer
                         description: Submitters count.
                       next:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the submitter after which the next page starts.
                       prev:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                         description: The ID of the submitter before which the previous page ends.
               example:
                 data:
