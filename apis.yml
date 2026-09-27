@@ -46,10 +46,10 @@ tags:
   - Document Signing
   - E-Signature
   - Electronic Signature
-  - Document-Management
+  - Document Management
   - PDF
   - Templates
-  - Open-Source
+  - Open Source
   - Webhook
   - Embeddings
 tags_raw:
@@ -62,6 +62,8 @@ tags_raw:
   - Open Source
   - Webhooks
   - Embedding
+  - Document-Management
+  - Open-Source
 
 apis:
 - aid: docuseal:docuseal-submissions-api
