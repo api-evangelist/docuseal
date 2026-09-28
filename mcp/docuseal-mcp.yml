@@ -16,8 +16,13 @@ deployment:
 tools_count: 2
 tools:
 - name: search
-  description: ''
+  description: Semantic search across DocuSeal knowledge base. Returns titles, URLs, and short descriptions.
+    Use this tool first to find relevant documentation, then use load_resource to read full page content.
+    You can call multiple search tools in parall
 - name: load_resource
-  description: ''
+  description: Load the full content of a documentation page by its URL. Use URLs from search results
+    to read complete documentation.
 tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
