@@ -282,3 +282,40 @@ plans:
       price: 0
       currency: USD
       period: month
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units: []
+  plans:
+  - name: Basic
+    access: freemium
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Open Source On-Premises
+    access: free
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro On-Premises
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Sandbox
+    access: free
+    model: free
+    model_how: derived
+    units: []
+    periods: []
