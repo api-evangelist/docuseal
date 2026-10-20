@@ -1,0 +1,48 @@
+{
+  "endpoint": "https://mcp.docuseal.com/",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "docuseal-mcp-server",
+    "version": "1.0.0"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "search",
+        "title": "Search",
+        "description": "Semantic search across DocuSeal knowledge base. Returns titles, URLs, and short descriptions. Use this tool first to find relevant documentation, then use load_resource to read full page content. You can call multiple search tools in parallel for completely different topics.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Semantic search query about DocuSeal. Must be in English language."
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "load_resource",
+        "title": "Load Resource",
+        "description": "Load the full content of a documentation page by its URL. Use URLs from search results to read complete documentation.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Page URL from search results"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      }
+    ]
+  }
+}
