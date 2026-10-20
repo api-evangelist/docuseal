@@ -18,7 +18,7 @@ tools:
 - name: search
   description: Semantic search across DocuSeal knowledge base. Returns titles, URLs, and short descriptions.
     Use this tool first to find relevant documentation, then use load_resource to read full page content.
-    You can call multiple search tools in parall
+    You can call multiple search tools in parallel for completely different topics.
 - name: load_resource
   description: Load the full content of a documentation page by its URL. Use URLs from search results
     to read complete documentation.
