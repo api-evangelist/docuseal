@@ -1,4 +1,4 @@
-# DocuSeal (docuseal)
+# DocuSeal
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,91 +64,171 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-DocuSeal is an open-source document signing platform that provides a REST API for building electronic signature workflows into applications. It supports creating and managing document templates, sending signature requests, tracking submission status, and receiving real-time webhook events for document lifecycle management. DocuSeal is available as a cloud-hosted service with US and EU data residency options, or as a self-hosted on-premises deployment under an AGPL-3.0 open-source license.
+DocuSeal is an open-source document signing platform that provides a REST API for building electronic signature workflows into applications. The API supports creating and managing templates, sending signature requests via submissions, and tracking signing status through submitter endpoints. DocuSeal supports embedding signing forms directly into web applications using JavaScript SDKs for React, Vue, and Angular. Webhooks deliver real-time events when documents are viewed, started, or completed by signers. The platform is available as a cloud-hosted service with US and EU data residency options, or as a self-hosted on-premises deployment under an AGPL-3.0 open-source license.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/docuseal/refs/heads/main/apis.yml
+**Areas:** E-Signature · Document Management · PDF · Templates · Open Source · Webhook · Embeddings
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=docuseal-api-evangelist&utm_content=repo
+## DocuSeal on APIs.io
 
-## Tags
+Everything profiled for DocuSeal is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/docuseal/](https://apis.io/providers/docuseal/)** — or go straight to one of the APIs or properties below.
 
-- Document Signing
-- eSignature
-- Electronic Signature
-- Document Management
-- PDF
-- Templates
-- Open Source
-- Webhooks
-- Embedding
+### APIs (3)
 
-## APIs
+- [DocuSeal Submissions API](https://apis.io/apis/docuseal/docuseal-submissions-api/) — Signature requests can be initiated with Submissions API. Submissions can contain one submitter if signed by a single party or multiple submitters if the…
+- [DocuSeal Submitters API](https://apis.io/apis/docuseal/docuseal-submitters-api/) — Submitters API allows you to load all details provided by the signer of the document.
+- [DocuSeal Templates API](https://apis.io/apis/docuseal/docuseal-templates-api/) — Templates represent reusable document signing forms with fields and signatures to be collected. It's possible to create unique template forms with fields…
 
-### DocuSeal REST API
+### Published properties
 
-REST API for creating document signing workflows, managing templates, sending signature requests, tracking submission status, and receiving webhook events for document lifecycle management.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Documentation:** https://www.docuseal.com/docs/api
-- **Base URL (US):** https://api.docuseal.com
-- **Base URL (EU):** https://api.docuseal.eu
-- **Authentication:** API key via `X-Auth-Token` header
+#### MCP servers (1)
 
-**Endpoints:**
+Model Context Protocol servers that expose the API to agents.
 
-- Submissions: Create, list, retrieve, and archive signature requests from templates, PDFs, DOCX, and HTML
-- Submitters: List, retrieve, and update signer information and status
-- Templates: Create, list, and update document templates
+- [docuseal](https://apis.io/servers/docuseal/docuseal/)
 
-**Webhooks:** `form.viewed`, `form.started`, `form.completed`
+#### Agentic access (1)
 
-## Plans / Rate Limits / FinOps
+Which operations an agent can call, which act, and which need a human in the loop.
 
-| Resource | Path |
+- [Docuseal Agentic Access](https://apis.io/agentic-access/docuseal/docuseal-agentic-access/)
+
+#### JSON Schema (2)
+
+The data models the API reads and writes.
+
+- [DocuSeal Submission](https://apis.io/schemas/docuseal/docuseal-submission/)
+- [DocuSeal Template](https://apis.io/schemas/docuseal/docuseal-template/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Docuseal Context](https://apis.io/jsonld/docuseal/docuseal-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [DocuSeal API Vocabulary](https://apis.io/vocabularies/docuseal/docuseal-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Docuseal Create Submission Example](https://apis.io/examples/docuseal/docuseal-create-submission-example/)
+- [Docuseal Create Template From Pdf Example](https://apis.io/examples/docuseal/docuseal-create-template-from-pdf-example/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [DocuSeal Submissions API](https://apis.io/collections/docuseal/open-docuseal-submissions-api/)
+- [DocuSeal Submissions Submitters API](https://apis.io/collections/docuseal/open-docuseal-submitters-api/)
+- [DocuSeal Submissions Templates API](https://apis.io/collections/docuseal/open-docuseal-templates-api/)
+- [DocuSeal Submissions API](https://apis.io/collections/docuseal/postman-docuseal-submissions-api/)
+- [DocuSeal Submissions Submitters API](https://apis.io/collections/docuseal/postman-docuseal-submitters-api/)
+- [DocuSeal Submissions Templates API](https://apis.io/collections/docuseal/postman-docuseal-templates-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [DocuSeal — jsonschema rules](https://apis.io/rules/docuseal/docuseal-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Docuseal Authentication](https://apis.io/security/docuseal/docuseal-authentication/)
+- [Docuseal Domain Security](https://apis.io/security/docuseal/docuseal-domain-security/)
+- [Docuseal Trust Center](https://apis.io/security/docuseal/docuseal-trust-center/)
+- [Docuseal Vulnerability Disclosure](https://apis.io/security/docuseal/docuseal-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Docuseal Plans Pricing](https://apis.io/plans/docuseal/docuseal-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Docuseal Rate Limits](https://apis.io/rate-limits/docuseal/docuseal-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Docuseal Finops](https://apis.io/finops/docuseal/docuseal-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.docuseal.com/)
+- [Documentation](https://www.docuseal.com/docs)
+- [Getting started](https://www.docuseal.com/resources/quick-start)
+- [API reference](https://www.docuseal.com/docs/api)
+- [Pricing](https://www.docuseal.com/pricing)
+- [Changelog](https://www.docuseal.com/changelog)
+- [Blog](https://www.docuseal.com/blog)
+- [GitHub](https://github.com/docusealco)
+- [Status](https://status.docuseal.net/)
+
+## API Evangelist rating
+
+**Kin Score 47.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| Plans & Pricing | [plans/docuseal-plans-pricing.yml](plans/docuseal-plans-pricing.yml) |
-| Rate Limits | [rate-limits/docuseal-rate-limits.yml](rate-limits/docuseal-rate-limits.yml) |
-| FinOps | [finops/docuseal-finops.yml](finops/docuseal-finops.yml) |
+| Discoverability | 68.3 |
+| Contract quality | 55.2 |
+| Contract governance | 23.5 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 26.3 |
 
-### Pricing Summary
+**Agent readiness 39.0** — agent-ready (gated down from agent-native)
 
-| Plan | Price | API Access |
-|---|---|---|
-| Basic (Cloud) | Free | No |
-| Pro (Cloud) | $20/user/month + $0.20/completion | Yes |
-| Open Source (On-Premises) | Free | No |
-| Pro (On-Premises) | $20/user/month | Yes |
-| Sandbox | Free | Yes (testing only) |
-
-### Rate Limits
-
-DocuSeal does not publicly document specific numeric rate limits. Pagination is cursor-based with a default of 10 items per request and a maximum of 100. HTTP 429 is returned when limits are exceeded.
-
-## Timestamps
-
-- **Created:** 2026-06-12
-- **Modified:** 2026-06-12
-
-## Common Properties
-
-| Type | URL |
+| Agent-readiness dimension | Result |
 |---|---|
-| Website | https://www.docuseal.com/ |
-| Documentation | https://www.docuseal.com/docs |
-| Getting Started | https://www.docuseal.com/resources/quick-start |
-| API Reference | https://www.docuseal.com/docs/api |
-| Developers | https://www.docuseal.com/developers |
-| Guides | https://www.docuseal.com/guides |
-| GitHub Organization | https://github.com/docusealco |
-| LinkedIn | https://www.linkedin.com/company/docuseal |
-| Blog | https://www.docuseal.com/blog |
-| Changelog | https://www.docuseal.com/changelog |
-| Pricing | https://www.docuseal.com/pricing |
-| Status Page | https://status.docuseal.net/ |
-| Webhooks | https://www.docuseal.com/resources/use-webhooks |
-| On-Premises | https://www.docuseal.com/on-premises |
-| Signing API | https://www.docuseal.com/signing-api |
-| Postman Collection | https://www.postman.com/docuseal/docuseal/documentation/baauu23/docuseal-api |
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
 
-## Maintainers
+**Regulatory alignment 25.5** — Horizontal (data, software, accessibility, platform)
 
-- **Kin Lane** — kin@apievangelist.com
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/docuseal/](https://apis.io/providers/docuseal/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DocuSeal: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/docuseal/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
